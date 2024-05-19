@@ -1,3 +1,4 @@
+import 'package:alcool_ou_gasolina/components/AppAssets/app_assets.dart';
 import 'package:alcool_ou_gasolina/components/AppTheme/app_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -15,6 +16,14 @@ class _IntroPageState extends State<IntroPage> {
     double myWidth = MediaQuery.of(context).size.width;
     return Scaffold(
         backgroundColor: AppTheme.primaryColor,
-        body: SizedBox(height: myHeight, width: myWidth, child: Column()));
+        body: SizedBox(
+            height: myHeight,
+            width: myWidth,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                ImageOne.asset(),
+              ],
+            )));
   }
 }

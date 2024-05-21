@@ -1,3 +1,4 @@
+import 'package:alcool_ou_gasolina/components/AppTheme/app_theme.dart';
 import 'package:alcool_ou_gasolina/pages/HomePage/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
@@ -27,18 +28,21 @@ class _IntroPageState extends State<IntroPage> {
     double myHeight = MediaQuery.of(context).size.height;
     double myWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: Colors.orangeAccent,
+      backgroundColor: AppTheme.primaryColor,
       body: SizedBox(
         height: myHeight,
         width: myWidth,
         child: SafeArea(
           child: GFIntroScreen(
-            color: Colors.orangeAccent,
+            color: AppTheme.primaryColor,
             slides: slides(),
             pageController: _pageController,
             currentIndex: initialPage,
             pageCount: 2,
             introScreenBottomNavigationBar: GFIntroScreenBottomNavigationBar(
+              skipButtonText: 'Pular',
+              backButtonText: 'Voltar',
+              doneButtonText: 'Concluir',
               pageController: _pageController,
               pageCount: slideList.length,
               currentIndex: initialPage,
@@ -54,10 +58,16 @@ class _IntroPageState extends State<IntroPage> {
                   curve: Curves.linear,
                 );
               },
-              navigationBarColor: Colors.orange,
+              onDoneTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HomePage()),
+                );
+              },
+              navigationBarColor: BarColor.primaryColor,
               showDivider: false,
-              inactiveColor: Colors.grey,
-              activeColor: GFColors.SUCCESS,
+              inactiveColor: Inactive.primaryColor,
+              activeColor: Active.primaryColor,
             ),
           ),
         ),
@@ -70,21 +80,25 @@ class _IntroPageState extends State<IntroPage> {
       GFImageOverlay(
         width: MediaQuery.of(context).size.width,
         padding: const EdgeInsets.all(16),
-        color: Colors.orangeAccent,
+        color: AppTheme.primaryColor,
         image: const AssetImage('lib/assets/gasoline.png'),
         boxFit: BoxFit.contain,
+        colorFilter: ColorFilter.mode(
+            ColorFilterIntro.primaryColor.withOpacity(0.01), BlendMode.darken),
         borderRadius: BorderRadius.circular(5),
-        child: const Row(
+        child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(top: 40.0, left: 20),
+              padding: const EdgeInsets.only(top: 30.0, left: 20),
               child: Text(
-                'Bem vindo ao app\n Gasolina ou Álcool?',
-                style: TextStyle(
-                    color: Colors.white,
-                    decoration: TextDecoration.none,
-                    fontSize: 22),
+                'Bem vindo ao app\n Álcool ou Gasolina?',
+                style: GoogleFonts.jetBrainsMono(
+                  textStyle: TextStyle(
+                      color: TextColor.primaryColor,
+                      decoration: TextDecoration.underline,
+                      fontSize: 22),
+                ),
               ),
             ),
           ],
@@ -98,7 +112,7 @@ class _IntroPageState extends State<IntroPage> {
           children: [
             Container(
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 0.6,
+              height: MediaQuery.of(context).size.height * 0.3,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(0),
                 image: const DecorationImage(
@@ -106,24 +120,6 @@ class _IntroPageState extends State<IntroPage> {
                   fit: BoxFit.contain,
                 ),
               ),
-            ),
-            const SizedBox(height: 2),
-            GFButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const HomePage()),
-                );
-              },
-              text: "Iniciar",
-              textStyle: TextStyle(
-                color: Colors.white,
-                fontFamily: GoogleFonts.jetBrainsMono().fontFamily,
-                fontSize: 14,
-              ),
-              color: Colors.orange,
-              shape: GFButtonShape.square,
-              size: GFSize.LARGE,
             ),
           ],
         ),

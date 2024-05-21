@@ -96,6 +96,7 @@ class _IntroPageState extends State<IntroPage> {
                 style: GoogleFonts.jetBrainsMono(
                   textStyle: TextStyle(
                       color: TextColor.primaryColor,
+                      fontWeight: FontWeight.bold,
                       decoration: TextDecoration.underline,
                       fontSize: 22),
                 ),

@@ -98,32 +98,46 @@ class _IntroPageState extends State<IntroPage> {
                       color: TextColor.primaryColor,
                       fontWeight: FontWeight.bold,
                       decoration: TextDecoration.underline,
-                      fontSize: 22),
+                      fontSize: 20),
                 ),
               ),
             ),
           ],
         ),
       ),
-      SizedBox(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 0.3,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(0),
-                image: const DecorationImage(
-                  image: AssetImage('lib/assets/fuel.png'),
-                  fit: BoxFit.contain,
+      Row(
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 60.0, left: 20),
+                child: Text(
+                  'Qual Compensa mais?',
+                  style: GoogleFonts.jetBrainsMono(
+                    textStyle: TextStyle(
+                        color: TextColor.primaryColor,
+                        fontWeight: FontWeight.bold,
+                        decoration: TextDecoration.underline,
+                        fontSize: 20),
+                  ),
                 ),
               ),
-            ),
-          ],
-        ),
+              const SizedBox(height: 80),
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * 0.3,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(0),
+                  image: const DecorationImage(
+                    image: AssetImage('lib/assets/fuel.png'),
+                    fit: BoxFit.contain,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     ];
     return slideList;

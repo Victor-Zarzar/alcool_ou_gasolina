@@ -29,45 +29,53 @@ class _IntroPageState extends State<IntroPage> {
     double myWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: AppTheme.primaryColor,
-      body: SizedBox(
-        height: myHeight,
-        width: myWidth,
-        child: SafeArea(
-          child: GFIntroScreen(
-            color: AppTheme.primaryColor,
-            slides: slides(),
-            pageController: _pageController,
-            currentIndex: initialPage,
-            pageCount: 2,
-            introScreenBottomNavigationBar: GFIntroScreenBottomNavigationBar(
-              skipButtonText: 'Pular',
-              backButtonText: 'Voltar',
-              doneButtonText: 'Concluir',
+      body: SingleChildScrollView(
+        child: SizedBox(
+          height: myHeight,
+          width: myWidth,
+          child: SafeArea(
+            child: GFIntroScreen(
+              color: AppTheme.primaryColor,
+              slides: slides(),
               pageController: _pageController,
-              pageCount: slideList.length,
               currentIndex: initialPage,
-              onForwardButtonTap: () {
-                _pageController.nextPage(
-                  duration: const Duration(milliseconds: 500),
-                  curve: Curves.linear,
-                );
-              },
-              onBackButtonTap: () {
-                _pageController.previousPage(
-                  duration: const Duration(milliseconds: 500),
-                  curve: Curves.linear,
-                );
-              },
-              onDoneTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const HomePage()),
-                );
-              },
-              navigationBarColor: BarColor.primaryColor,
-              showDivider: false,
-              inactiveColor: Inactive.primaryColor,
-              activeColor: Active.primaryColor,
+              pageCount: 2,
+              introScreenBottomNavigationBar: GFIntroScreenBottomNavigationBar(
+                navigationBarHeight: 60,
+                skipButtonText: 'Pular',
+                backButtonText: 'Voltar',
+                doneButtonText: 'Concluir',
+                forwardButtonText: 'Avançar',
+                pageController: _pageController,
+                pageCount: slideList.length,
+                currentIndex: initialPage,
+                onForwardButtonTap: () {
+                  _pageController.nextPage(
+                    duration: const Duration(milliseconds: 500),
+                    curve: Curves.linear,
+                  );
+                },
+                onBackButtonTap: () {
+                  _pageController.previousPage(
+                    duration: const Duration(milliseconds: 500),
+                    curve: Curves.linear,
+                  );
+                },
+                onDoneTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const HomePage()),
+                  );
+                },
+                navigationBarColor: BarColor.primaryColor,
+                showDivider: false,
+                inactiveColor: Inactive.primaryColor,
+                activeColor: Active.primaryColor,
+                backButtonTextStyle: const TextStyle(fontSize: 13),
+                skipButtonTextStyle: const TextStyle(fontSize: 13),
+                forwardButtonTextStyle: const TextStyle(fontSize: 13),
+                doneButtonTextStyle: const TextStyle(fontSize: 13),
+              ),
             ),
           ),
         ),
@@ -77,32 +85,36 @@ class _IntroPageState extends State<IntroPage> {
 
   List<Widget> slides() {
     slideList = [
-      GFImageOverlay(
-        width: MediaQuery.of(context).size.width,
-        padding: const EdgeInsets.all(16),
-        color: AppTheme.primaryColor,
-        image: const AssetImage('lib/assets/gasoline.png'),
-        boxFit: BoxFit.contain,
-        colorFilter: ColorFilter.mode(
-            ColorFilterIntro.primaryColor.withOpacity(0.01), BlendMode.darken),
-        borderRadius: BorderRadius.circular(5),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(top: 30.0, left: 20),
-              child: Text(
-                'Bem vindo ao app\n Álcool ou Gasolina?',
-                style: GoogleFonts.jetBrainsMono(
-                  textStyle: TextStyle(
-                      color: TextColor.primaryColor,
-                      fontWeight: FontWeight.bold,
-                      decoration: TextDecoration.underline,
-                      fontSize: 20),
+      SizedBox(
+        height: 250,
+        width: 250,
+        child: GFImageOverlay(
+          padding: const EdgeInsets.all(10),
+          color: AppTheme.primaryColor,
+          image: const AssetImage('assets/gasoline.png'),
+          boxFit: BoxFit.contain,
+          colorFilter: ColorFilter.mode(
+              ColorFilterIntro.primaryColor.withOpacity(0.01),
+              BlendMode.darken),
+          borderRadius: BorderRadius.circular(5),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(top: 30.0, left: 20),
+                child: Text(
+                  'Bem vindo ao app\n Álcool ou Gasolina?',
+                  style: GoogleFonts.jetBrainsMono(
+                    textStyle: TextStyle(
+                        color: TextColor.primaryColor,
+                        fontWeight: FontWeight.bold,
+                        decoration: TextDecoration.underline,
+                        fontSize: 14),
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
       Row(
@@ -111,7 +123,7 @@ class _IntroPageState extends State<IntroPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 60.0, left: 20),
+                padding: const EdgeInsets.only(top: 50.0, left: 20),
                 child: Text(
                   'Qual Compensa mais?',
                   style: GoogleFonts.jetBrainsMono(
@@ -119,19 +131,21 @@ class _IntroPageState extends State<IntroPage> {
                         color: TextColor.primaryColor,
                         fontWeight: FontWeight.bold,
                         decoration: TextDecoration.underline,
-                        fontSize: 20),
+                        fontSize: 14),
                   ),
                 ),
               ),
-              const SizedBox(height: 80),
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height * 0.3,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(0),
-                  image: const DecorationImage(
-                    image: AssetImage('lib/assets/fuel.png'),
-                    fit: BoxFit.contain,
+              const SizedBox(height: 5),
+              Expanded(
+                child: Container(
+                  height: 250,
+                  width: 250,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(0),
+                    image: const DecorationImage(
+                      image: AssetImage('assets/fuel.png'),
+                      fit: BoxFit.contain,
+                    ),
                   ),
                 ),
               ),

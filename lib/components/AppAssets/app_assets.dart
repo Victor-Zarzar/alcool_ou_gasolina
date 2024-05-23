@@ -4,7 +4,7 @@ class ImageOne {
   ImageOne._();
 
   static Image asset() {
-    return Image.asset('lib/assets/imageone.png',
+    return Image.asset('assets/imageone.png',
     height: 250,
     width: 220,
     );

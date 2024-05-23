@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
           'Álcool ou Gasolina?',
           style: GoogleFonts.jetBrainsMono(
             textStyle: TextStyle(
-              fontSize: 17,
+              fontSize: 14,
               fontWeight: FontWeight.bold,
               color: TextColor.primaryColor,
             ),
@@ -48,18 +48,27 @@ class _HomePageState extends State<HomePage> {
                 'Calcule Aqui',
                 style: GoogleFonts.jetBrainsMono(
                   textStyle: TextStyle(
-                    fontSize: 14,
+                    fontSize: 12,
                     fontWeight: FontWeight.bold,
                     color: TextColor.primaryColor,
                   ),
                 ),
               ),
               const SizedBox(height: 20),
-              TextFormField(
-                controller: fuelController,
-                keyboardType: TextInputType.number,
-                decoration: const InputDecoration(
-                    labelText: 'Calcular', border: OutlineInputBorder()),
+              SizedBox(
+                height: 50,
+                width: 190,
+                child: TextFormField(
+                  controller: fuelController,
+                  keyboardType: TextInputType.number,
+                  decoration: const InputDecoration(
+                    labelText: 'Calcular',
+                    border: OutlineInputBorder(),
+                    labelStyle: TextStyle(
+                      fontSize: 12,
+                    ),
+                  ),
+                ),
               ),
             ],
           ),

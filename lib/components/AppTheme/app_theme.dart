@@ -11,6 +11,8 @@ class TextColor  {
   TextColor._();
 
   static Color get primaryColor => const Color(0XFF000000);
+
+  static Color get secondaryColor => const Color(0xFFFFFFFF);
 }
 
 class ColorFilterIntro {
@@ -35,4 +37,10 @@ class Active {
   Active._();
 
   static Color get primaryColor => const Color(0xFF303030);
+}
+
+class ButtonColor {
+  ButtonColor._();
+
+  static Color get primaryColor => const Color(0xFF90A4AE);
 }

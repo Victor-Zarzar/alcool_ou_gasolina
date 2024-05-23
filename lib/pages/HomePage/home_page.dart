@@ -95,18 +95,23 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
+      body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            const SizedBox(height: 20),
+            Image.asset("assets/imageone.png",
+            height: 140,
+            width: 190,
+            ),
+            const SizedBox(height: 10),
             Text(
               'Calcule Aqui',
               style: GoogleFonts.jetBrainsMono(
-                textStyle: const TextStyle(
+                textStyle: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black, 
+                  color: TextColor.primaryColor,
                 ),
               ),
             ),
@@ -121,6 +126,9 @@ class _HomePageState extends State<HomePage> {
                       const TextInputType.numberWithOptions(decimal: true),
                   decoration: const InputDecoration(
                     labelText: 'Gasolina',
+                    labelStyle: TextStyle(
+                      fontSize: 12,
+                    ),
                     border: OutlineInputBorder(),
                   ),
                 ),
@@ -136,19 +144,42 @@ class _HomePageState extends State<HomePage> {
                     const TextInputType.numberWithOptions(decimal: true),
                 decoration: const InputDecoration(
                   labelText: 'Álcool',
+                  labelStyle: TextStyle(
+                    fontSize: 12,
+                  ),
                   border: OutlineInputBorder(),
                 ),
               ),
             ),
             const SizedBox(height: 10),
-            ElevatedButton(
+            GFButton(
+              color: ButtonColor.primaryColor,
+              shape: GFButtonShape.square,
               onPressed: loading ? null : handleCalc,
-              child: const Text('Calcular'),
+              child: Text('Calcular',
+                  style: GoogleFonts.jetBrainsMono(
+                    textStyle: TextStyle(
+                      fontSize: 10,
+                      fontWeight: FontWeight.bold,
+                      color: TextColor.secondaryColor,
+                    ),
+                  )),
             ),
             const SizedBox(height: 10),
-            ElevatedButton(
+            GFButton(
+              color: ButtonColor.primaryColor,
+              shape: GFButtonShape.square,
               onPressed: clearResult,
-              child: const Text('Limpar Resultado'),
+              child: Text(
+                'Limpar Resultado',
+                style: GoogleFonts.jetBrainsMono(
+                  textStyle: TextStyle(
+                    fontSize: 10,
+                    fontWeight: FontWeight.bold,
+                    color: TextColor.secondaryColor,
+                  ),
+                ),
+              ),
             ),
             const SizedBox(height: 10),
             Text(resultText),

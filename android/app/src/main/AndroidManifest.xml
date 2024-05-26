@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="alcool_ou_gasolina"
+        android:label="Álcool ou Gasolina?"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

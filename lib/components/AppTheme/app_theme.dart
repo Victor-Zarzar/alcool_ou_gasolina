@@ -5,6 +5,8 @@ class AppTheme {
 
   static Color get primaryColor => const Color(0xFFE0E0E0);
 
+  static Color get secondaryColor => const Color(0xFFFFF);
+
 }
 
 class TextColor  {

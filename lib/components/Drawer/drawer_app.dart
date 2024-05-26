@@ -1,5 +1,6 @@
 import 'package:alcool_ou_gasolina/components/AppTheme/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:getwidget/getwidget.dart';
 import 'package:provider/provider.dart';
 import '../DarkTheme/darktheme_provider_app.dart';
 
@@ -19,26 +20,45 @@ class _DrawerComponentState extends State<DrawerComponent> {
           width: MediaQuery.of(context).size.width,
           child: Drawer(
             child: Container(
-              color: AppTheme.primaryColor,
+              color: notifier.isDark
+                  ? AppTheme.secondaryColor
+                  : AppTheme.primaryColor,
               child: ListView(
                 padding: EdgeInsets.zero,
                 children: <Widget>[
                   DrawerHeader(
-                    decoration: BoxDecoration(
-                      color: AppTheme.primaryColor,
-                    ),
+                    decoration: const BoxDecoration(),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         IconButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            icon: Icon(
-                              Icons.arrow_back,
-                            ))
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          icon: const Icon(
+                            Icons.arrow_back,
+                          ),
+                        ),
+                        GFAvatar(
+                          backgroundColor: notifier.isDark
+                              ? AppTheme.secondaryColor
+                              : AppTheme.primaryColor,
+                          radius: 80.0,
+                          backgroundImage: AssetImage(
+                            "assets/gasoline.png",
+                          ),
+                        ),
                       ],
                     ),
                   ),
+                  ListTile(
+                    trailing: Switch(
+                      activeColor: Colors.black,
+                      inactiveTrackColor: Colors.white,
+                      value: notifier.isDark,
+                      onChanged: (value) => notifier.changeTheme(),
+                    ),
+                  )
                 ],
               ),
             ),

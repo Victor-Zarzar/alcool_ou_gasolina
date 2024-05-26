@@ -84,11 +84,9 @@ class _HomePageState extends State<HomePage> {
     return Consumer<UiProvider>(
       builder: (context, notifier, child) {
         return Scaffold(
-          backgroundColor: notifier.isDark ? AppTheme.primaryColor : AppTheme.primaryColor,
           appBar: GFAppBar(
             automaticallyImplyLeading: false,
             centerTitle: true,
-            backgroundColor: AppTheme.primaryColor,
             title: Text(
               'Álcool ou Gasolina?',
               style: GoogleFonts.jetBrainsMono(

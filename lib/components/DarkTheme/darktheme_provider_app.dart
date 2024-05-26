@@ -10,6 +10,7 @@ class UiProvider extends ChangeNotifier {
   final darkTheme = ThemeData(
     primaryColor: Colors.black12,
     brightness: Brightness.dark,
+    scaffoldBackgroundColor: Colors.grey.shade600,
     primaryColorDark: Colors.black12,
   );
 

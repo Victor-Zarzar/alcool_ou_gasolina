@@ -28,14 +28,12 @@ class _IntroPageState extends State<IntroPage> {
     double myHeight = MediaQuery.of(context).size.height;
     double myWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: AppTheme.primaryColor,
       body: SingleChildScrollView(
         child: SizedBox(
           height: myHeight,
           width: myWidth,
           child: SafeArea(
             child: GFIntroScreen(
-              color: AppTheme.primaryColor,
               slides: slides(),
               pageController: _pageController,
               currentIndex: initialPage,
@@ -90,7 +88,6 @@ class _IntroPageState extends State<IntroPage> {
         width: 250,
         child: GFImageOverlay(
           padding: const EdgeInsets.all(10),
-          color: AppTheme.primaryColor,
           image: const AssetImage('assets/gasoline.png'),
           boxFit: BoxFit.contain,
           colorFilter: ColorFilter.mode(

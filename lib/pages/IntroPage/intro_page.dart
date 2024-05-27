@@ -1,5 +1,5 @@
 import 'package:alcool_ou_gasolina/components/AppTheme/app_theme.dart';
-import 'package:alcool_ou_gasolina/pages/HomePage/home_page.dart';
+import 'package:alcool_ou_gasolina/pages/AppPage/app_page.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -62,7 +62,7 @@ class _IntroPageState extends State<IntroPage> {
                 onDoneTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const HomePage()),
+                    MaterialPageRoute(builder: (context) => const AppPage()),
                   );
                 },
                 navigationBarColor: BarColor.primaryColor,

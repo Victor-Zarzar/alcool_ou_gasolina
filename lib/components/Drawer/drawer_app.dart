@@ -19,48 +19,43 @@ class _DrawerComponentState extends State<DrawerComponent> {
         return SizedBox(
           width: MediaQuery.of(context).size.width,
           child: Drawer(
-            child: Container(
-              color: notifier.isDark
-                  ? AppTheme.secondaryColor
-                  : AppTheme.primaryColor,
-              child: ListView(
-                padding: EdgeInsets.zero,
-                children: <Widget>[
-                  DrawerHeader(
-                    decoration: const BoxDecoration(),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          icon: const Icon(
-                            Icons.arrow_back,
-                          ),
+            child: ListView(
+              padding: EdgeInsets.zero,
+              children: <Widget>[
+                DrawerHeader(
+                  decoration: const BoxDecoration(),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: const Icon(
+                          Icons.arrow_back,
                         ),
-                        GFAvatar(
-                          backgroundColor: notifier.isDark
-                              ? AppTheme.secondaryColor
-                              : AppTheme.primaryColor,
-                          radius: 80.0,
-                          backgroundImage: AssetImage(
-                            "assets/gasoline.png",
-                          ),
+                      ),
+                      GFAvatar(
+                        backgroundColor: notifier.isDark
+                            ? AppTheme.secondaryColor
+                            : AppTheme.primaryColor,
+                        radius: 80.0,
+                        backgroundImage: AssetImage(
+                          "assets/gasoline.png",
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                  ListTile(
-                    trailing: Switch(
-                      activeColor: Colors.black,
-                      inactiveTrackColor: Colors.white,
-                      value: notifier.isDark,
-                      onChanged: (value) => notifier.changeTheme(),
-                    ),
-                  )
-                ],
-              ),
+                ),
+                ListTile(
+                  trailing: Switch(
+                    activeColor: Colors.black,
+                    inactiveTrackColor: Colors.white,
+                    value: notifier.isDark,
+                    onChanged: (value) => notifier.changeTheme(),
+                  ),
+                )
+              ],
             ),
           ),
         );

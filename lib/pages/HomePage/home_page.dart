@@ -93,18 +93,17 @@ class _HomePageState extends State<HomePage> {
                 textStyle: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
-                  color: TextColor.primaryColor,
+                  color: notifier.isDark ? Colors.grey.shade600 : Colors.black,
                 ),
               ),
             ),
-              actions: [
+            actions: [
               Builder(
                 builder: (context) => IconButton(
                   icon: Icon(
                     Icons.settings,
-                    color: notifier.isDark
-                        ? Colors.black
-                        : Colors.grey.shade600,
+                    color:
+                        notifier.isDark ? Colors.grey.shade600 : Colors.black,
                   ),
                   onPressed: () {
                     Scaffold.of(context).openDrawer();
@@ -131,7 +130,7 @@ class _HomePageState extends State<HomePage> {
                     textStyle: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
-                      color: TextColor.primaryColor,
+                      color: notifier.isDark ? Colors.grey.shade600 : Colors.black,
                     ),
                   ),
                 ),
@@ -173,8 +172,8 @@ class _HomePageState extends State<HomePage> {
                 ),
                 const SizedBox(height: 10),
                 GFButton(
-                  color: ButtonColor.primaryColor,
-                  shape: GFButtonShape.square,
+                  color: notifier.isDark ? Colors.grey.shade600 : Colors.black,
+                  shape: GFButtonShape.pills,
                   onPressed: loading ? null : handleCalc,
                   child: Text('Calcular',
                       style: GoogleFonts.jetBrainsMono(
@@ -187,8 +186,8 @@ class _HomePageState extends State<HomePage> {
                 ),
                 const SizedBox(height: 10),
                 GFButton(
-                  color: ButtonColor.primaryColor,
-                  shape: GFButtonShape.square,
+                  color: notifier.isDark ? Colors.grey.shade600 : Colors.black,
+                  shape: GFButtonShape.pills,
                   onPressed: clearResult,
                   child: Text(
                     'Limpar Resultado',

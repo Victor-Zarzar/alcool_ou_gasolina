@@ -1,4 +1,9 @@
+import 'package:alcool_ou_gasolina/components/AppTheme/app_theme.dart';
+import 'package:alcool_ou_gasolina/components/DarkTheme/darktheme_provider_app.dart';
 import 'package:flutter/material.dart';
+import 'package:getwidget/getwidget.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class AboutPage extends StatefulWidget {
   const AboutPage({super.key});
@@ -10,6 +15,74 @@ class AboutPage extends StatefulWidget {
 class _AboutPageState extends State<AboutPage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    double myHeight = MediaQuery.of(context).size.height;
+    double myWidth = MediaQuery.of(context).size.width;
+    return Consumer<UiProvider>(builder: (context, notifier, child) {
+      return Scaffold(
+          body: SizedBox(
+              height: myHeight,
+              width: myWidth,
+              child: Column(children: [
+                SizedBox(
+                  width: myWidth,
+                  child: GFAppBar(
+                    centerTitle: true,
+                    backgroundColor: notifier.isDark
+                        ? AppTheme.secondaryColor
+                        : AppTheme.primaryColor,
+                    title: Text(
+                      "about",
+                      style: GoogleFonts.jetBrainsMono(
+                        textStyle: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          color: notifier.isDark
+                              ? TextColor.secondaryColor
+                              : TextColor.primaryColor,
+                        ),
+                      ),
+                    ),
+                    leading: IconButton(
+                      icon: Icon(
+                        Icons.arrow_back,
+                        color: notifier.isDark
+                            ? TextColor.secondaryColor
+                            : TextColor.primaryColor,
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Row(
+                      children: [
+                        const Icon(
+                          Icons.info,
+                        ),
+                        const SizedBox(width: 10),
+                        Expanded(
+                          child: Text(
+                            "abouttext",
+                            style: GoogleFonts.jetBrainsMono(
+                              textStyle: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold,
+                                color: notifier.isDark
+                                    ? TextColor.secondaryColor
+                                    : TextColor.primaryColor,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ])));
+    });
   }
 }

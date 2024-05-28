@@ -65,7 +65,7 @@ class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
           bottomNavigationBar: GFTabBar(
             labelPadding: EdgeInsets.zero,
             length: 4,
-            tabBarHeight: 70,
+            tabBarHeight: 60,
             controller: tabController,
             tabBarColor: notifier.isDark
                 ? AppTheme.secondaryColor
@@ -85,8 +85,11 @@ class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
                   Icons.home,
                   size: 16,
                 ),
-                child: Text(
-                  'Home',
+               child: FittedBox(
+                  fit: BoxFit.fitWidth,
+                  child: Text(
+                    'Home',
+                  ),
                 ),
               ),
                Tab(
@@ -94,8 +97,11 @@ class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
                   Icons.gas_meter_outlined,
                   size: 16,
                 ),
-                child: Text(
-                  'Consumption',
+                child: FittedBox(
+                  fit: BoxFit.fitWidth,
+                  child: Text(
+                    'Consumption',
+                  ),
                 ),
               ),
               Tab(
@@ -103,8 +109,11 @@ class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
                   Icons.car_rental,
                   size: 16,
                 ),
-                child: Text(
-                  'My Car',
+                child: FittedBox(
+                  fit: BoxFit.fitWidth,
+                  child: Text(
+                    'My Car',
+                  ),
                 ),
               ),
               Tab(
@@ -112,12 +121,14 @@ class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
                   Icons.settings,
                   size: 16,
                 ),
-                child: Text(
-                  'Settings',
+                 child: FittedBox(
+                  fit: BoxFit.fitWidth,
+                  child: Text(
+                    'Settings',
+                  ),
                 ),
               ),
             ],
-           
           ),
         );
       },

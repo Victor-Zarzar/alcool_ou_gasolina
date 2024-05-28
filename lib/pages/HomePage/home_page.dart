@@ -82,6 +82,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Consumer<UiProvider>(builder: (context, notifier, child) {
       return Scaffold(
+        backgroundColor: notifier.isDark ? AppTheme.secondaryColor : AppTheme.primaryColor,
         body: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -99,8 +100,9 @@ class _HomePageState extends State<HomePage> {
                   textStyle: TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.bold,
-                    color:
-                        notifier.isDark ? Colors.grey.shade600 : Colors.black,
+                    color: notifier.isDark
+                                ? TextColor.secondaryColor
+                                : TextColor.primaryColor,
                   ),
                 ),
               ),

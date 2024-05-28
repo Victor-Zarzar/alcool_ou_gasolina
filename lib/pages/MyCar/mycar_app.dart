@@ -1,3 +1,4 @@
+import 'package:alcool_ou_gasolina/components/AppTheme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -59,7 +60,12 @@ class _MyCarPageState extends State<MyCarPage> {
     return Consumer<UiProvider>(
       builder: (context, notifier, child) {
         return Scaffold(
+          backgroundColor:
+              notifier.isDark ? AppTheme.secondaryColor : AppTheme.primaryColor,
           appBar: AppBar(
+            backgroundColor: notifier.isDark
+                ? AppTheme.secondaryColor
+                : AppTheme.primaryColor,
             automaticallyImplyLeading: false,
             title: Text(
               'My Car',
@@ -67,7 +73,9 @@ class _MyCarPageState extends State<MyCarPage> {
                 textStyle: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
-                  color: notifier.isDark ? Colors.grey.shade600 : Colors.black,
+                  color: notifier.isDark
+                      ? TextColor.secondaryColor
+                      : TextColor.primaryColor,
                 ),
               ),
             ),

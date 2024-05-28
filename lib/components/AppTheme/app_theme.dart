@@ -3,13 +3,14 @@ import 'dart:ui';
 class AppTheme {
   AppTheme._();
 
-  static Color get primaryColor => const Color(0xFFE0E0E0);
+  static Color get primaryColor => const Color(0xFFCFD8DC);
 
-  static Color get secondaryColor => const Color(0xFFFFF);
+  static Color get secondaryColor => const Color(0x00000000);
 
+  static Color get thirdColor => const Color(0xFF212121);
 }
 
-class TextColor  {
+class TextColor {
   TextColor._();
 
   static Color get primaryColor => const Color(0XFF000000);
@@ -23,10 +24,44 @@ class ColorFilterIntro {
   static Color get primaryColor => const Color(0XFF000000);
 }
 
+class FormColor {
+  FormColor._();
+
+  static Color get primaryColor => const Color(0xFF000000);
+
+  static Color get secondaryColor => const Color(0XFFBDBDBD);
+}
+
+class IconColor {
+  IconColor._();
+
+  static Color get primaryColor => const Color(0xFF000000);
+
+  static Color get secondaryColor => const Color(0xFF2196F3);
+
+  static Color get thirdColor => const Color(0xFFCFD8DC);
+}
+
 class BarColor {
   BarColor._();
 
-  static Color get primaryColor => const Color(0xFFBDBDBD);
+  static Color get primaryColor => const Color(0xFFCFD8DC);
+
+  static Color get secondaryColor => const Color(0x00000000);
+}
+
+class SnackBarColor {
+  SnackBarColor._();
+
+  static Color get primaryColor => const Color(0xFF212121);
+
+  static Color get secondColor => const Color(0xFF616161);
+}
+
+class TabBarColor {
+  TabBarColor._();
+
+  static Color get primaryColor => const Color(0xFFCFD8DC);
 }
 
 class Inactive {
@@ -39,6 +74,14 @@ class Active {
   Active._();
 
   static Color get primaryColor => const Color(0xFF303030);
+}
+
+class SwitchColor {
+  SwitchColor._();
+
+  static Color get primaryColor => const Color(0xFFECEFF1);
+
+  static Color get secondaryColor => const Color(0xFFCFD8DC);
 }
 
 class ButtonColor {

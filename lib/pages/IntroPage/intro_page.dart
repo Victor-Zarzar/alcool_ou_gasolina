@@ -1,8 +1,10 @@
 import 'package:alcool_ou_gasolina/components/AppTheme/app_theme.dart';
+import 'package:alcool_ou_gasolina/components/DarkTheme/darktheme_provider_app.dart';
 import 'package:alcool_ou_gasolina/pages/AppPage/app_page.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class IntroPage extends StatefulWidget {
   const IntroPage({super.key});
@@ -27,57 +29,66 @@ class _IntroPageState extends State<IntroPage> {
   Widget build(BuildContext context) {
     double myHeight = MediaQuery.of(context).size.height;
     double myWidth = MediaQuery.of(context).size.width;
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: SizedBox(
-          height: myHeight,
-          width: myWidth,
-          child: SafeArea(
-            child: GFIntroScreen(
-              slides: slides(),
-              pageController: _pageController,
-              currentIndex: initialPage,
-              pageCount: 2,
-              introScreenBottomNavigationBar: GFIntroScreenBottomNavigationBar(
-                navigationBarHeight: 60,
-                skipButtonText: 'Pular',
-                backButtonText: 'Voltar',
-                doneButtonText: 'Concluir',
-                forwardButtonText: 'Avançar',
-                pageController: _pageController,
-                pageCount: slideList.length,
-                currentIndex: initialPage,
-                onForwardButtonTap: () {
-                  _pageController.nextPage(
-                    duration: const Duration(milliseconds: 500),
-                    curve: Curves.linear,
-                  );
-                },
-                onBackButtonTap: () {
-                  _pageController.previousPage(
-                    duration: const Duration(milliseconds: 500),
-                    curve: Curves.linear,
-                  );
-                },
-                onDoneTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const AppPage()),
-                  );
-                },
-                navigationBarColor: BarColor.primaryColor,
-                showDivider: false,
-                inactiveColor: Inactive.primaryColor,
-                activeColor: Active.primaryColor,
-                backButtonTextStyle: const TextStyle(fontSize: 13),
-                skipButtonTextStyle: const TextStyle(fontSize: 13),
-                forwardButtonTextStyle: const TextStyle(fontSize: 13),
-                doneButtonTextStyle: const TextStyle(fontSize: 13),
+    return Consumer<UiProvider>(
+      builder: (context, notifier, child) {
+        return Scaffold(
+          body: SingleChildScrollView(
+            child: SizedBox(
+              height: myHeight,
+              width: myWidth,
+              child: SafeArea(
+                child: GFIntroScreen(
+                  slides: slides(),
+                  pageController: _pageController,
+                  currentIndex: initialPage,
+                  pageCount: 2,
+                  introScreenBottomNavigationBar:
+                      GFIntroScreenBottomNavigationBar(
+                    navigationBarHeight: 60,
+                    skipButtonText: 'Pular',
+                    backButtonText: 'Voltar',
+                    doneButtonText: 'Concluir',
+                    forwardButtonText: 'Avançar',
+                    pageController: _pageController,
+                    pageCount: slideList.length,
+                    currentIndex: initialPage,
+                    onForwardButtonTap: () {
+                      _pageController.nextPage(
+                        duration: const Duration(milliseconds: 500),
+                        curve: Curves.linear,
+                      );
+                    },
+                    onBackButtonTap: () {
+                      _pageController.previousPage(
+                        duration: const Duration(milliseconds: 500),
+                        curve: Curves.linear,
+                      );
+                    },
+                    onDoneTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const AppPage(),
+                        ),
+                      );
+                    },
+                    navigationBarColor: notifier.isDark
+                        ? BarColor.secondaryColor
+                        : BarColor.primaryColor,
+                    showDivider: false,
+                    inactiveColor: Inactive.primaryColor,
+                    activeColor: Active.primaryColor,
+                    backButtonTextStyle: const TextStyle(fontSize: 13),
+                    skipButtonTextStyle: const TextStyle(fontSize: 13),
+                    forwardButtonTextStyle: const TextStyle(fontSize: 13),
+                    doneButtonTextStyle: const TextStyle(fontSize: 13),
+                  ),
+                ),
               ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 
@@ -86,32 +97,38 @@ class _IntroPageState extends State<IntroPage> {
       SizedBox(
         height: 250,
         width: 250,
-        child: GFImageOverlay(
-          padding: const EdgeInsets.all(10),
-          image: const AssetImage('assets/gasoline.png'),
-          boxFit: BoxFit.contain,
-          colorFilter: ColorFilter.mode(
-              ColorFilterIntro.primaryColor.withOpacity(0.01),
-              BlendMode.darken),
-          borderRadius: BorderRadius.circular(5),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(top: 30.0, left: 20),
-                child: Text(
-                  'Bem vindo ao app\n Álcool ou Gasolina?',
-                  style: GoogleFonts.jetBrainsMono(
-                    textStyle: TextStyle(
-                        color: TextColor.primaryColor,
-                        fontWeight: FontWeight.bold,
-                        decoration: TextDecoration.underline,
-                        fontSize: 14),
+        child: Consumer<UiProvider>(
+          builder: (context, notifier, child) {
+            return GFImageOverlay(
+              padding: const EdgeInsets.all(10),
+              image: const AssetImage('assets/gasoline.png'),
+              boxFit: BoxFit.contain,
+              colorFilter: ColorFilter.mode(
+                  ColorFilterIntro.primaryColor.withOpacity(0.01),
+                  BlendMode.darken),
+              borderRadius: BorderRadius.circular(5),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(top: 30.0, left: 20),
+                    child: Text(
+                      'Bem vindo ao app\n Álcool ou Gasolina?',
+                      style: GoogleFonts.jetBrainsMono(
+                        textStyle: TextStyle(
+                            color: notifier.isDark
+                                ? TextColor.secondaryColor
+                                : TextColor.primaryColor,
+                            fontWeight: FontWeight.bold,
+                            decoration: TextDecoration.underline,
+                            fontSize: 14),
+                      ),
+                    ),
                   ),
-                ),
+                ],
               ),
-            ],
-          ),
+            );
+          },
         ),
       ),
       Row(
@@ -120,16 +137,23 @@ class _IntroPageState extends State<IntroPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 50.0, left: 20),
-                child: Text(
-                  'Qual Compensa mais?',
-                  style: GoogleFonts.jetBrainsMono(
-                    textStyle: TextStyle(
-                        color: TextColor.primaryColor,
-                        fontWeight: FontWeight.bold,
-                        decoration: TextDecoration.underline,
-                        fontSize: 14),
-                  ),
+                padding: const EdgeInsets.only(top: 50.0, left: 30),
+                child: Consumer<UiProvider>(
+                  builder: (context, notifier, child) {
+                    return Text(
+                      'Qual Compensa mais?',
+                      style: GoogleFonts.jetBrainsMono(
+                        textStyle: TextStyle(
+                          color: notifier.isDark
+                              ? TextColor.secondaryColor
+                              : TextColor.primaryColor,
+                          fontWeight: FontWeight.bold,
+                          decoration: TextDecoration.underline,
+                          fontSize: 14,
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ),
               const SizedBox(height: 5),

@@ -20,6 +20,9 @@ class _SettingsPageState extends State<SettingsPage> {
       builder: (context, notifier, child) {
         return SizedBox(
           child: Drawer(
+            backgroundColor: notifier.isDark
+                ? AppTheme.secondaryColor
+                : AppTheme.primaryColor,
             child: ListView(
               padding: EdgeInsets.zero,
               children: <Widget>[
@@ -41,8 +44,8 @@ class _SettingsPageState extends State<SettingsPage> {
                   padding: const EdgeInsets.only(top: 40),
                   child: ListTile(
                     trailing: Switch(
-                      activeColor: Colors.black,
-                      inactiveTrackColor: Colors.white,
+                      activeColor: SwitchColor.primaryColor,
+                      inactiveTrackColor: SwitchColor.secondaryColor,
                       value: notifier.isDark,
                       onChanged: (value) => notifier.changeTheme(),
                     ),

@@ -89,26 +89,43 @@ class _MyCarPageState extends State<MyCarPage> {
               ),
             ],
           ),
-          body: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const SizedBox(height: 20),
-                Image.asset(
-                  "assets/car.png",
-                  height: 140,
-                  width: 190,
-                ),
-                const SizedBox(height: 10),
-                Center(
-                  child: SizedBox(
+          body: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const SizedBox(height: 20),
+                  Image.asset(
+                    "assets/car.png",
+                    height: 140,
+                    width: 190,
+                  ),
+                  const SizedBox(height: 10),
+                  Center(
+                    child: SizedBox(
+                      height: 50,
+                      width: 180,
+                      child: TextField(
+                        controller: _plateController,
+                        decoration: const InputDecoration(
+                          labelText: 'Plate',
+                          labelStyle: TextStyle(
+                            fontSize: 12,
+                          ),
+                          border: OutlineInputBorder(),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 15),
+                  SizedBox(
                     height: 50,
                     width: 180,
                     child: TextField(
-                      controller: _plateController,
+                      controller: _modelController,
                       decoration: const InputDecoration(
-                        labelText: 'Plate',
+                        labelText: 'Car Model',
                         labelStyle: TextStyle(
                           fontSize: 12,
                         ),
@@ -116,39 +133,24 @@ class _MyCarPageState extends State<MyCarPage> {
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(height: 15),
-                SizedBox(
-                  height: 50,
-                  width: 180,
-                  child: TextField(
-                    controller: _modelController,
-                    decoration: const InputDecoration(
-                      labelText: 'Car Model',
-                      labelStyle: TextStyle(
-                        fontSize: 12,
+                  const SizedBox(height: 15),
+                  SizedBox(
+                    height: 50,
+                    width: 180,
+                    child: TextField(
+                      controller: _yearController,
+                      keyboardType: TextInputType.number,
+                      decoration: const InputDecoration(
+                        labelText: 'Year',
+                        labelStyle: TextStyle(
+                          fontSize: 12,
+                        ),
+                        border: OutlineInputBorder(),
                       ),
-                      border: OutlineInputBorder(),
                     ),
                   ),
-                ),
-                const SizedBox(height: 15),
-                SizedBox(
-                  height: 50,
-                  width: 180,
-                  child: TextField(
-                    controller: _yearController,
-                    keyboardType: TextInputType.number,
-                    decoration: const InputDecoration(
-                      labelText: 'Year',
-                      labelStyle: TextStyle(
-                        fontSize: 12,
-                      ),
-                      border: OutlineInputBorder(),
-                    ),
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         );

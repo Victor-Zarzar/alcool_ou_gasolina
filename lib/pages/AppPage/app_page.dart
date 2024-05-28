@@ -32,6 +32,7 @@ class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
       builder: (context, notifier, child) {
         return Scaffold(
           appBar: GFAppBar(
+            backgroundColor: notifier.isDark ? Colors.grey.shade900 : Colors.grey.shade200,
             automaticallyImplyLeading: false,
             centerTitle: true,
             title: Text(
@@ -71,7 +72,7 @@ class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
                 ? TextColor.secondaryColor
                 : TextColor.primaryColor,
             labelStyle: GoogleFonts.jetBrainsMono(
-              textStyle: const TextStyle(fontSize: 8),
+              textStyle: const TextStyle(fontSize: 9),
             ),
             tabs: const [
               Tab(

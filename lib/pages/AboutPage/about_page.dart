@@ -17,12 +17,14 @@ class _AboutPageState extends State<AboutPage> {
   Widget build(BuildContext context) {
     double myHeight = MediaQuery.of(context).size.height;
     double myWidth = MediaQuery.of(context).size.width;
-    return Consumer<UiProvider>(builder: (context, notifier, child) {
-      return Scaffold(
+    return Consumer<UiProvider>(
+      builder: (context, notifier, child) {
+        return Scaffold(
           body: SizedBox(
-              height: myHeight,
-              width: myWidth,
-              child: Column(children: [
+            height: myHeight,
+            width: myWidth,
+            child: Column(
+              children: [
                 SizedBox(
                   width: myWidth,
                   child: GFAppBar(
@@ -82,7 +84,11 @@ class _AboutPageState extends State<AboutPage> {
                     ),
                   ),
                 ),
-              ])));
-    });
+              ],
+            ),
+          ),
+        );
+      },
+    );
   }
 }

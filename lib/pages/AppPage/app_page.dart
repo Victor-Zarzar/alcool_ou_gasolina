@@ -1,5 +1,6 @@
 import 'package:alcool_ou_gasolina/components/AppTheme/app_theme.dart';
 import 'package:alcool_ou_gasolina/components/DarkTheme/darktheme_provider_app.dart';
+import 'package:alcool_ou_gasolina/pages/ConsumptionPage/consumption_page.dart';
 import 'package:alcool_ou_gasolina/pages/HomePage/home_page.dart';
 import 'package:alcool_ou_gasolina/pages/MyCar/mycar_app.dart';
 import 'package:alcool_ou_gasolina/pages/SettingsPage/settings_app.dart';
@@ -21,7 +22,7 @@ class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    tabController = TabController(length: 3, vsync: this);
+    tabController = TabController(length: 4, vsync: this);
   }
 
   @override
@@ -53,13 +54,15 @@ class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
               controller: tabController,
               children: const <Widget>[
                 HomePage(),
+                ConsumptionPage(),
                 MyCarPage(),
                 SettingsPage(),
               ],
             ),
           ),
           bottomNavigationBar: GFTabBar(
-            length: 3,
+            labelPadding: EdgeInsetsGeometry.infinity,
+            length: 4,
             tabBarHeight: 60,
             controller: tabController,
             tabBarColor: notifier.isDark
@@ -72,7 +75,7 @@ class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
                 ? TextColor.secondaryColor
                 : TextColor.primaryColor,
             labelStyle: GoogleFonts.jetBrainsMono(
-              textStyle: const TextStyle(fontSize: 9),
+              textStyle: const TextStyle(fontSize: 8),
             ),
             tabs: const [
               Tab(
@@ -82,6 +85,15 @@ class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
                 ),
                 child: Text(
                   'Home',
+                ),
+              ),
+               Tab(
+                icon: Icon(
+                  Icons.gas_meter_outlined,
+                  size: 16,
+                ),
+                child: Text(
+                  'Consumption',
                 ),
               ),
               Tab(
@@ -103,6 +115,7 @@ class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
                 ),
               ),
             ],
+           
           ),
         );
       },

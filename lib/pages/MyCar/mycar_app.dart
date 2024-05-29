@@ -17,6 +17,7 @@ class _MyCarPageState extends State<MyCarPage> {
   late final TextEditingController _plateController = TextEditingController();
   late final TextEditingController _modelController = TextEditingController();
   late final TextEditingController _yearController = TextEditingController();
+  late final TextEditingController _consumptionController = TextEditingController();
 
   @override
   void initState() {
@@ -30,6 +31,7 @@ class _MyCarPageState extends State<MyCarPage> {
       _plateController.text = prefs.getString('plate') ?? '';
       _modelController.text = prefs.getString('model') ?? '';
       _yearController.text = prefs.getInt('year')?.toString() ?? '';
+      _consumptionController.text = prefs.getString('consumption') ?? '';
     });
   }
 
@@ -38,19 +40,23 @@ class _MyCarPageState extends State<MyCarPage> {
     await prefs.setString('plate', _plateController.text);
     await prefs.setString('model', _modelController.text);
     await prefs.setInt('year', int.tryParse(_yearController.text) ?? 0);
+    await prefs.setString('consumption', _consumptionController.text);
   }
 
   Future<void> _deleteCarInfo() async {
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.remove('plate');
     await prefs.remove('model');
     await prefs.remove('year');
+    await prefs.remove('consumption');
     setState(() {
       _plateController.clear();
       _modelController.clear();
       _yearController.clear();
+      _consumptionController.clear();
     });
-    ScaffoldMessenger.of(context).showSnackBar(
+    scaffoldMessenger.showSnackBar(
       const SnackBar(content: Text('Car info deleted')),
     );
   }
@@ -83,8 +89,9 @@ class _MyCarPageState extends State<MyCarPage> {
               IconButton(
                 icon: const Icon(Icons.save),
                 onPressed: () async {
+                  final scaffoldMessenger = ScaffoldMessenger.of(context);
                   await _saveCarInfo();
-                  ScaffoldMessenger.of(context).showSnackBar(
+                  scaffoldMessenger.showSnackBar(
                     const SnackBar(content: Text('Car info saved')),
                   );
                 },
@@ -150,6 +157,21 @@ class _MyCarPageState extends State<MyCarPage> {
                       keyboardType: TextInputType.number,
                       decoration: const InputDecoration(
                         labelText: 'Year',
+                        labelStyle: TextStyle(
+                          fontSize: 12,
+                        ),
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 15),
+                  SizedBox(
+                    height: 50,
+                    width: 180,
+                    child: TextField(
+                      controller: _consumptionController,
+                      decoration: const InputDecoration(
+                        labelText: 'Consumption',
                         labelStyle: TextStyle(
                           fontSize: 12,
                         ),

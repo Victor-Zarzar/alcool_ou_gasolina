@@ -17,7 +17,8 @@ class _MyCarPageState extends State<MyCarPage> {
   late final TextEditingController _plateController = TextEditingController();
   late final TextEditingController _modelController = TextEditingController();
   late final TextEditingController _yearController = TextEditingController();
-  late final TextEditingController _consumptionController = TextEditingController();
+  late final TextEditingController _consumptionController =
+      TextEditingController();
 
   @override
   void initState() {
@@ -63,54 +64,58 @@ class _MyCarPageState extends State<MyCarPage> {
 
   @override
   Widget build(BuildContext context) {
+    double myHeight = MediaQuery.of(context).size.height;
+    double myWidth = MediaQuery.of(context).size.width;
     return Consumer<UiProvider>(
       builder: (context, notifier, child) {
-        return Scaffold(
-          backgroundColor:
-              notifier.isDark ? AppTheme.secondaryColor : AppTheme.primaryColor,
-          appBar: AppBar(
+        return SizedBox(
+          height: myHeight,
+          width: myWidth,
+          child: Scaffold(
             backgroundColor: notifier.isDark
                 ? AppTheme.secondaryColor
                 : AppTheme.primaryColor,
-            automaticallyImplyLeading: false,
-            title: Text(
-              'My Car',
-              style: GoogleFonts.jetBrainsMono(
-                textStyle: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                  color: notifier.isDark
-                      ? TextColor.secondaryColor
-                      : TextColor.primaryColor,
+            appBar: AppBar(
+              backgroundColor: notifier.isDark
+                  ? AppTheme.secondaryColor
+                  : AppTheme.primaryColor,
+              automaticallyImplyLeading: false,
+              title: Text(
+                'My Car',
+                style: GoogleFonts.jetBrainsMono(
+                  textStyle: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: notifier.isDark
+                        ? TextColor.secondaryColor
+                        : TextColor.primaryColor,
+                  ),
                 ),
               ),
+              actions: [
+                IconButton(
+                  icon: const Icon(Icons.save),
+                  onPressed: () async {
+                    final scaffoldMessenger = ScaffoldMessenger.of(context);
+                    await _saveCarInfo();
+                    scaffoldMessenger.showSnackBar(
+                      const SnackBar(content: Text('Car info saved')),
+                    );
+                  },
+                ),
+                IconButton(
+                  icon: const Icon(Icons.delete),
+                  onPressed: () async {
+                    await _deleteCarInfo();
+                  },
+                ),
+              ],
             ),
-            actions: [
-              IconButton(
-                icon: const Icon(Icons.save),
-                onPressed: () async {
-                  final scaffoldMessenger = ScaffoldMessenger.of(context);
-                  await _saveCarInfo();
-                  scaffoldMessenger.showSnackBar(
-                    const SnackBar(content: Text('Car info saved')),
-                  );
-                },
-              ),
-              IconButton(
-                icon: const Icon(Icons.delete),
-                onPressed: () async {
-                  await _deleteCarInfo();
-                },
-              ),
-            ],
-          ),
-          body: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
+            body: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 4),
                   Image.asset(
                     "assets/car.png",
                     height: 140,

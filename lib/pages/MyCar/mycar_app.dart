@@ -17,8 +17,7 @@ class _MyCarPageState extends State<MyCarPage> {
   late final TextEditingController _plateController = TextEditingController();
   late final TextEditingController _modelController = TextEditingController();
   late final TextEditingController _yearController = TextEditingController();
-  late final TextEditingController _consumptionController =
-      TextEditingController();
+  late final TextEditingController _consumptionController = TextEditingController();
 
   @override
   void initState() {

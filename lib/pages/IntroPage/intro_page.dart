@@ -38,6 +38,8 @@ class _IntroPageState extends State<IntroPage> {
               width: myWidth,
               child: SafeArea(
                 child: GFIntroScreen(
+                  height: myHeight * 0.8,
+                  width: myWidth * 1,
                   slides: slides(),
                   pageController: _pageController,
                   currentIndex: initialPage,
@@ -102,7 +104,7 @@ class _IntroPageState extends State<IntroPage> {
             return GFImageOverlay(
               padding: const EdgeInsets.all(10),
               image: const AssetImage('assets/gasoline.png'),
-              boxFit: BoxFit.contain,
+               boxFit: BoxFit.contain,
               colorFilter: ColorFilter.mode(
                   ColorFilterIntro.primaryColor.withOpacity(0.01),
                   BlendMode.darken),
@@ -111,7 +113,7 @@ class _IntroPageState extends State<IntroPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.only(top: 30.0, left: 20),
+                   padding: const EdgeInsets.only(top: 70.0, left: 20),
                     child: Text(
                       'Bem vindo ao app\n Álcool ou Gasolina?',
                       style: GoogleFonts.jetBrainsMono(
@@ -141,7 +143,7 @@ class _IntroPageState extends State<IntroPage> {
                 child: Consumer<UiProvider>(
                   builder: (context, notifier, child) {
                     return Text(
-                      'Qual Compensa mais?',
+                      'Calcule o consumo Km/l',
                       style: GoogleFonts.jetBrainsMono(
                         textStyle: TextStyle(
                           color: notifier.isDark
@@ -159,8 +161,8 @@ class _IntroPageState extends State<IntroPage> {
               const SizedBox(height: 5),
               Expanded(
                 child: Container(
-                  height: 250,
-                  width: 250,
+                  height: 340,
+                  width: 330,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(0),
                     image: const DecorationImage(

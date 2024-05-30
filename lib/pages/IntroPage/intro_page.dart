@@ -1,6 +1,7 @@
 import 'package:alcool_ou_gasolina/components/AppTheme/app_theme.dart';
 import 'package:alcool_ou_gasolina/components/DarkTheme/darktheme_provider_app.dart';
 import 'package:alcool_ou_gasolina/pages/AppPage/app_page.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -38,8 +39,6 @@ class _IntroPageState extends State<IntroPage> {
               width: myWidth,
               child: SafeArea(
                 child: GFIntroScreen(
-                  height: myHeight * 0.8,
-                  width: myWidth * 1,
                   slides: slides(),
                   pageController: _pageController,
                   currentIndex: initialPage,
@@ -47,13 +46,21 @@ class _IntroPageState extends State<IntroPage> {
                   introScreenBottomNavigationBar:
                       GFIntroScreenBottomNavigationBar(
                     navigationBarHeight: 60,
-                    skipButtonText: 'Pular',
-                    backButtonText: 'Voltar',
-                    doneButtonText: 'Concluir',
-                    forwardButtonText: 'Avançar',
+                    skipButtonText: 'tojump'.tr(),
+                    backButtonText: 'previous'.tr(),
+                    doneButtonText: 'conclude'.tr(),
+                    forwardButtonText: 'next'.tr(),
                     pageController: _pageController,
                     pageCount: slideList.length,
                     currentIndex: initialPage,
+                    onSkipTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const AppPage(),
+                        ),
+                      );
+                    },
                     onForwardButtonTap: () {
                       _pageController.nextPage(
                         duration: const Duration(milliseconds: 500),
@@ -104,7 +111,7 @@ class _IntroPageState extends State<IntroPage> {
             return GFImageOverlay(
               padding: const EdgeInsets.all(10),
               image: const AssetImage('assets/gasoline.png'),
-               boxFit: BoxFit.contain,
+              boxFit: BoxFit.contain,
               colorFilter: ColorFilter.mode(
                   ColorFilterIntro.primaryColor.withOpacity(0.01),
                   BlendMode.darken),
@@ -113,9 +120,9 @@ class _IntroPageState extends State<IntroPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Padding(
-                   padding: const EdgeInsets.only(top: 70.0, left: 20),
+                    padding: const EdgeInsets.only(top: 30.0, left: 20),
                     child: Text(
-                      'Bem vindo ao app\n Álcool ou Gasolina?',
+                      'introtext'.tr(),
                       style: GoogleFonts.jetBrainsMono(
                         textStyle: TextStyle(
                             color: notifier.isDark
@@ -143,7 +150,7 @@ class _IntroPageState extends State<IntroPage> {
                 child: Consumer<UiProvider>(
                   builder: (context, notifier, child) {
                     return Text(
-                      'Calcule o consumo Km/l',
+                      'introtexttwo'.tr(),
                       style: GoogleFonts.jetBrainsMono(
                         textStyle: TextStyle(
                           color: notifier.isDark

@@ -1,5 +1,6 @@
 import 'package:alcool_ou_gasolina/components/AppTheme/app_theme.dart';
 import 'package:alcool_ou_gasolina/components/DarkTheme/darktheme_provider_app.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -34,7 +35,7 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            content: const Text('Preencha ambos os dados.'),
+            content: Text('fillinbothdetails'.tr()),
             actions: [
               TextButton(
                 onPressed: () {
@@ -82,7 +83,7 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
                 ),
                 const SizedBox(height: 10),
                 Text(
-                  'Calcular Consumo',
+                  'calculateconsumption'.tr(),
                   style: GoogleFonts.jetBrainsMono(
                     textStyle: TextStyle(
                       fontSize: 12,
@@ -93,7 +94,7 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 20),
                 Center(
                   child: SizedBox(
                     height: 50,
@@ -102,12 +103,12 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
                       controller: distanceController,
                       keyboardType:
                           const TextInputType.numberWithOptions(decimal: true),
-                      decoration: const InputDecoration(
-                        labelText: 'KM/S Rodados',
-                        labelStyle: TextStyle(
+                      decoration:  InputDecoration(
+                        labelText: 'kmsdriven'.tr(),
+                        labelStyle: const TextStyle(
                           fontSize: 12,
                         ),
-                        border: OutlineInputBorder(),
+                        border: const OutlineInputBorder(),
                       ),
                     ),
                   ),
@@ -120,12 +121,12 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
                     controller: fuelController,
                     keyboardType:
                         const TextInputType.numberWithOptions(decimal: true),
-                    decoration: const InputDecoration(
-                      labelText: 'Litros',
-                      labelStyle: TextStyle(
+                    decoration:  InputDecoration(
+                      labelText: 'liters'.tr(),
+                      labelStyle: const TextStyle(
                         fontSize: 12,
                       ),
-                      border: OutlineInputBorder(),
+                      border: const OutlineInputBorder(),
                     ),
                   ),
                 ),
@@ -134,7 +135,7 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
                   color: notifier.isDark ? Colors.grey.shade600 : Colors.black,
                   shape: GFButtonShape.pills,
                   onPressed: loading ? null : handleCalc,
-                  child: Text('Calcular',
+                  child: Text('calculate'.tr(),
                       style: GoogleFonts.jetBrainsMono(
                         textStyle: TextStyle(
                           fontSize: 10,
@@ -149,7 +150,7 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
                   shape: GFButtonShape.pills,
                   onPressed: clearResult,
                   child: Text(
-                    'Limpar Resultado',
+                    'clearresult'.tr(),
                     style: GoogleFonts.jetBrainsMono(
                       textStyle: TextStyle(
                         fontSize: 10,

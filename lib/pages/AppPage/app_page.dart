@@ -4,6 +4,7 @@ import 'package:alcool_ou_gasolina/pages/ConsumptionPage/consumption_page.dart';
 import 'package:alcool_ou_gasolina/pages/HomePage/home_page.dart';
 import 'package:alcool_ou_gasolina/pages/MyCar/mycar_app.dart';
 import 'package:alcool_ou_gasolina/pages/SettingsPage/settings_app.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -37,7 +38,7 @@ class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
             automaticallyImplyLeading: false,
             centerTitle: true,
             title: Text(
-              'Álcool ou Gasolina?',
+              'titleappbar'.tr(),
               style: GoogleFonts.jetBrainsMono(
                 textStyle: TextStyle(
                   fontSize: 14,
@@ -79,52 +80,52 @@ class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
             labelStyle: GoogleFonts.jetBrainsMono(
               textStyle: const TextStyle(fontSize: 8),
             ),
-            tabs: const [
+            tabs: [
               Tab(
-                icon: Icon(
+                icon: const Icon(
                   Icons.home,
                   size: 16,
                 ),
                child: FittedBox(
                   fit: BoxFit.fitWidth,
                   child: Text(
-                    'Home',
+                    'home'.tr(),
                   ),
                 ),
               ),
                Tab(
-                icon: Icon(
+                icon: const Icon(
                   Icons.gas_meter_outlined,
                   size: 16,
                 ),
                 child: FittedBox(
                   fit: BoxFit.fitWidth,
                   child: Text(
-                    'Consumption',
+                    'consumption'.tr(),
                   ),
                 ),
               ),
               Tab(
-                icon: Icon(
+                icon: const Icon(
                   Icons.car_rental,
                   size: 16,
                 ),
                 child: FittedBox(
                   fit: BoxFit.fitWidth,
                   child: Text(
-                    'My Car',
+                    'mycar'.tr(),
                   ),
                 ),
               ),
               Tab(
-                icon: Icon(
+                icon: const Icon(
                   Icons.settings,
                   size: 16,
                 ),
                  child: FittedBox(
                   fit: BoxFit.fitWidth,
                   child: Text(
-                    'Settings',
+                    'settings'.tr(),
                   ),
                 ),
               ),

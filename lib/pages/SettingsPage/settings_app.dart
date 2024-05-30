@@ -1,6 +1,7 @@
 import 'package:alcool_ou_gasolina/components/AppTheme/app_theme.dart';
 import 'package:alcool_ou_gasolina/components/DarkTheme/darktheme_provider_app.dart';
 import 'package:alcool_ou_gasolina/pages/AboutPage/about_page.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -51,7 +52,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     ),
                     leading: const Icon(Icons.dark_mode),
                     title: Text(
-                      'darkmode',
+                      'darkmode'.tr(),
                       style: GoogleFonts.jetBrainsMono(
                         textStyle: TextStyle(
                           fontSize: 14,
@@ -67,7 +68,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 ListTile(
                   leading: const Icon(Icons.info),
                   title: Text(
-                    'about',
+                    'about'.tr(),
                     style: GoogleFonts.jetBrainsMono(
                       textStyle: TextStyle(
                         fontSize: 14,

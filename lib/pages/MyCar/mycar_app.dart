@@ -1,4 +1,5 @@
 import 'package:alcool_ou_gasolina/components/AppTheme/app_theme.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -17,7 +18,8 @@ class _MyCarPageState extends State<MyCarPage> {
   late final TextEditingController _plateController = TextEditingController();
   late final TextEditingController _modelController = TextEditingController();
   late final TextEditingController _yearController = TextEditingController();
-  late final TextEditingController _consumptionController = TextEditingController();
+  late final TextEditingController _consumptionController =
+      TextEditingController();
 
   @override
   void initState() {
@@ -44,7 +46,6 @@ class _MyCarPageState extends State<MyCarPage> {
   }
 
   Future<void> _deleteCarInfo() async {
-    final scaffoldMessenger = ScaffoldMessenger.of(context);
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.remove('plate');
     await prefs.remove('model');
@@ -56,9 +57,21 @@ class _MyCarPageState extends State<MyCarPage> {
       _yearController.clear();
       _consumptionController.clear();
     });
-    scaffoldMessenger.showSnackBar(
-      const SnackBar(content: Text('Car info deleted')),
-    );
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            content: Text('successfullydeleted'.tr()),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text('OK'),
+              ),
+            ],
+          );
+        });
   }
 
   @override
@@ -80,7 +93,7 @@ class _MyCarPageState extends State<MyCarPage> {
                   : AppTheme.primaryColor,
               automaticallyImplyLeading: false,
               title: Text(
-                'My Car',
+                'mycar'.tr(),
                 style: GoogleFonts.jetBrainsMono(
                   textStyle: TextStyle(
                     fontSize: 14,
@@ -93,15 +106,26 @@ class _MyCarPageState extends State<MyCarPage> {
               ),
               actions: [
                 IconButton(
-                  icon: const Icon(Icons.save),
-                  onPressed: () async {
-                    final scaffoldMessenger = ScaffoldMessenger.of(context);
-                    await _saveCarInfo();
-                    scaffoldMessenger.showSnackBar(
-                      const SnackBar(content: Text('Car info saved')),
-                    );
-                  },
-                ),
+                    icon: const Icon(Icons.save),
+                    onPressed: () async {
+                      await _saveCarInfo();
+
+                      showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              content: Text('datasavedsuccessfully'.tr()),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: const Text('OK'),
+                                ),
+                              ],
+                            );
+                          });
+                    }),
                 IconButton(
                   icon: const Icon(Icons.delete),
                   onPressed: () async {
@@ -127,12 +151,12 @@ class _MyCarPageState extends State<MyCarPage> {
                       width: 180,
                       child: TextField(
                         controller: _plateController,
-                        decoration: const InputDecoration(
-                          labelText: 'Plate',
-                          labelStyle: TextStyle(
+                        decoration: InputDecoration(
+                          labelText: 'plate'.tr(),
+                          labelStyle: const TextStyle(
                             fontSize: 12,
                           ),
-                          border: OutlineInputBorder(),
+                          border: const OutlineInputBorder(),
                         ),
                       ),
                     ),
@@ -143,12 +167,12 @@ class _MyCarPageState extends State<MyCarPage> {
                     width: 180,
                     child: TextField(
                       controller: _modelController,
-                      decoration: const InputDecoration(
-                        labelText: 'Car Model',
-                        labelStyle: TextStyle(
+                      decoration:  InputDecoration(
+                        labelText: 'carmodel'.tr(),
+                        labelStyle: const TextStyle(
                           fontSize: 12,
                         ),
-                        border: OutlineInputBorder(),
+                        border: const OutlineInputBorder(),
                       ),
                     ),
                   ),
@@ -159,12 +183,12 @@ class _MyCarPageState extends State<MyCarPage> {
                     child: TextField(
                       controller: _yearController,
                       keyboardType: TextInputType.number,
-                      decoration: const InputDecoration(
-                        labelText: 'Year',
-                        labelStyle: TextStyle(
+                      decoration:  InputDecoration(
+                        labelText: 'year'.tr(),
+                        labelStyle: const TextStyle(
                           fontSize: 12,
                         ),
-                        border: OutlineInputBorder(),
+                        border: const OutlineInputBorder(),
                       ),
                     ),
                   ),
@@ -174,12 +198,12 @@ class _MyCarPageState extends State<MyCarPage> {
                     width: 180,
                     child: TextField(
                       controller: _consumptionController,
-                      decoration: const InputDecoration(
-                        labelText: 'Consumption',
-                        labelStyle: TextStyle(
+                      decoration:  InputDecoration(
+                        labelText: 'consumption'.tr(),
+                        labelStyle: const TextStyle(
                           fontSize: 12,
                         ),
-                        border: OutlineInputBorder(),
+                        border: const OutlineInputBorder(),
                       ),
                     ),
                   ),

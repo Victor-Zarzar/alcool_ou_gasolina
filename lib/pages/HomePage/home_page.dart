@@ -1,4 +1,5 @@
 import 'package:alcool_ou_gasolina/components/AppTheme/app_theme.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -32,7 +33,7 @@ class _HomePageState extends State<HomePage> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            content: const Text('Preencha ambos os dados.'),
+            content: Text('fillinbothdetails'.tr()),
             actions: [
               TextButton(
                 onPressed: () {
@@ -95,7 +96,7 @@ class _HomePageState extends State<HomePage> {
               ),
               const SizedBox(height: 10),
               Text(
-                'Calcule Aqui',
+                'whichonepaysmore'.tr(),
                 style: GoogleFonts.jetBrainsMono(
                   textStyle: TextStyle(
                     fontSize: 12,
@@ -106,7 +107,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 20),
               Center(
                 child: SizedBox(
                   height: 50,
@@ -115,12 +116,12 @@ class _HomePageState extends State<HomePage> {
                     controller: gasolineController,
                     keyboardType:
                         const TextInputType.numberWithOptions(decimal: true),
-                    decoration: const InputDecoration(
-                      labelText: 'Gasolina',
-                      labelStyle: TextStyle(
+                    decoration: InputDecoration(
+                      labelText: 'gasoline'.tr(),
+                      labelStyle: const TextStyle(
                         fontSize: 12,
                       ),
-                      border: OutlineInputBorder(),
+                      border: const OutlineInputBorder(),
                     ),
                   ),
                 ),
@@ -133,12 +134,12 @@ class _HomePageState extends State<HomePage> {
                   controller: alcoholController,
                   keyboardType:
                       const TextInputType.numberWithOptions(decimal: true),
-                  decoration: const InputDecoration(
-                    labelText: 'Álcool',
-                    labelStyle: TextStyle(
+                  decoration: InputDecoration(
+                    labelText: 'alcohol'.tr(),
+                    labelStyle: const TextStyle(
                       fontSize: 12,
                     ),
-                    border: OutlineInputBorder(),
+                    border: const OutlineInputBorder(),
                   ),
                 ),
               ),
@@ -147,7 +148,7 @@ class _HomePageState extends State<HomePage> {
                 color: notifier.isDark ? Colors.grey.shade600 : Colors.black,
                 shape: GFButtonShape.pills,
                 onPressed: loading ? null : handleCalc,
-                child: Text('Calcular',
+                child: Text('calculate'.tr(),
                     style: GoogleFonts.jetBrainsMono(
                       textStyle: TextStyle(
                         fontSize: 10,
@@ -162,7 +163,7 @@ class _HomePageState extends State<HomePage> {
                 shape: GFButtonShape.pills,
                 onPressed: clearResult,
                 child: Text(
-                  'Limpar Resultado',
+                  'clearresult'.tr(),
                   style: GoogleFonts.jetBrainsMono(
                     textStyle: TextStyle(
                       fontSize: 10,

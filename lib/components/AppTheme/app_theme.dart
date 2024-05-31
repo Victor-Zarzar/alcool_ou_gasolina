@@ -88,4 +88,6 @@ class ButtonColor {
   ButtonColor._();
 
   static Color get primaryColor => const Color(0xFF90A4AE);
+
+  static Color get secondaryColor => const Color(0xFF000000);
 }

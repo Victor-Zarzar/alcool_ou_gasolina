@@ -34,20 +34,49 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
       showDialog(
         context: context,
         builder: (context) {
-          return AlertDialog(
-            content: Text('fillinbothdetails'.tr()),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: const Text('OK'),
-              ),
-            ],
+          return Consumer<UiProvider>(
+            builder: (context, notifier, child) {
+              return AlertDialog(
+                backgroundColor: notifier.isDark
+                    ? AppTheme.thirdColor
+                    : AppTheme.primaryColor,
+                content: Text(
+                  'fillinbothdetails'.tr(),
+                  style: GoogleFonts.jetBrainsMono(
+                    textStyle: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                      color: notifier.isDark
+                          ? TextColor.secondaryColor
+                          : TextColor.primaryColor,
+                    ),
+                  ),
+                ),
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text(
+                      'OK',
+                      style: GoogleFonts.jetBrainsMono(
+                        textStyle: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                          color: notifier.isDark
+                              ? TextColor.secondaryColor
+                              : TextColor.primaryColor,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            },
           );
         },
       );
-      return; 
+      return;
     }
 
     double consumption = distance / fuel;
@@ -70,7 +99,7 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
       builder: (context, notifier, child) {
         return Scaffold(
           backgroundColor:
-              notifier.isDark ? AppTheme.secondaryColor : AppTheme.primaryColor,
+              notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
           body: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -103,7 +132,7 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
                       controller: distanceController,
                       keyboardType:
                           const TextInputType.numberWithOptions(decimal: true),
-                      decoration:  InputDecoration(
+                      decoration: InputDecoration(
                         labelText: 'kmsdriven'.tr(),
                         labelStyle: const TextStyle(
                           fontSize: 12,
@@ -121,7 +150,7 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
                     controller: fuelController,
                     keyboardType:
                         const TextInputType.numberWithOptions(decimal: true),
-                    decoration:  InputDecoration(
+                    decoration: InputDecoration(
                       labelText: 'liters'.tr(),
                       labelStyle: const TextStyle(
                         fontSize: 12,

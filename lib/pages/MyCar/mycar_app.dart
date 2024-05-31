@@ -58,20 +58,49 @@ class _MyCarPageState extends State<MyCarPage> {
       _consumptionController.clear();
     });
     showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            content: Text('successfullydeleted'.tr()),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: const Text('OK'),
+      context: context,
+      builder: (context) {
+        return Consumer<UiProvider>(
+          builder: (context, notifier, child) {
+            return AlertDialog(
+              backgroundColor:
+                  notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
+              content: Text(
+                'successfullydeleted'.tr(),
+                style: GoogleFonts.jetBrainsMono(
+                  textStyle: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    color: notifier.isDark
+                        ? TextColor.secondaryColor
+                        : TextColor.primaryColor,
+                  ),
+                ),
               ),
-            ],
-          );
-        });
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text(
+                    'OK',
+                    style: GoogleFonts.jetBrainsMono(
+                      textStyle: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                        color: notifier.isDark
+                            ? TextColor.secondaryColor
+                            : TextColor.primaryColor,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            );
+          },
+        );
+      },
+    );
   }
 
   @override
@@ -84,9 +113,8 @@ class _MyCarPageState extends State<MyCarPage> {
           height: myHeight,
           width: myWidth,
           child: Scaffold(
-            backgroundColor: notifier.isDark
-                ? AppTheme.secondaryColor
-                : AppTheme.primaryColor,
+            backgroundColor:
+                notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
             appBar: AppBar(
               backgroundColor: notifier.isDark
                   ? AppTheme.secondaryColor
@@ -106,26 +134,56 @@ class _MyCarPageState extends State<MyCarPage> {
               ),
               actions: [
                 IconButton(
-                    icon: const Icon(Icons.save),
-                    onPressed: () async {
-                      await _saveCarInfo();
-
-                      showDialog(
-                          context: context,
-                          builder: (context) {
+                  icon: const Icon(Icons.save),
+                  onPressed: () async {
+                    await _saveCarInfo();
+                    return showDialog(
+                      context: context,
+                      builder: (context) {
+                        return Consumer<UiProvider>(
+                          builder: (context, notifier, child) {
                             return AlertDialog(
-                              content: Text('datasavedsuccessfully'.tr()),
+                              backgroundColor: notifier.isDark
+                                  ? AppTheme.thirdColor
+                                  : AppTheme.primaryColor,
+                              content: Text(
+                                'datasavedsuccessfully'.tr(),
+                                style: GoogleFonts.jetBrainsMono(
+                                  textStyle: TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
+                                    color: notifier.isDark
+                                        ? TextColor.secondaryColor
+                                        : TextColor.primaryColor,
+                                  ),
+                                ),
+                              ),
                               actions: [
                                 TextButton(
                                   onPressed: () {
                                     Navigator.pop(context);
                                   },
-                                  child: const Text('OK'),
+                                  child: Text(
+                                    'OK',
+                                    style: GoogleFonts.jetBrainsMono(
+                                      textStyle: TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.bold,
+                                        color: notifier.isDark
+                                            ? TextColor.secondaryColor
+                                            : TextColor.primaryColor,
+                                      ),
+                                    ),
+                                  ),
                                 ),
                               ],
                             );
-                          });
-                    }),
+                          },
+                        );
+                      },
+                    );
+                  },
+                ),
                 IconButton(
                   icon: const Icon(Icons.delete),
                   onPressed: () async {
@@ -167,7 +225,7 @@ class _MyCarPageState extends State<MyCarPage> {
                     width: 180,
                     child: TextField(
                       controller: _modelController,
-                      decoration:  InputDecoration(
+                      decoration: InputDecoration(
                         labelText: 'carmodel'.tr(),
                         labelStyle: const TextStyle(
                           fontSize: 12,
@@ -183,7 +241,7 @@ class _MyCarPageState extends State<MyCarPage> {
                     child: TextField(
                       controller: _yearController,
                       keyboardType: TextInputType.number,
-                      decoration:  InputDecoration(
+                      decoration: InputDecoration(
                         labelText: 'year'.tr(),
                         labelStyle: const TextStyle(
                           fontSize: 12,
@@ -198,7 +256,7 @@ class _MyCarPageState extends State<MyCarPage> {
                     width: 180,
                     child: TextField(
                       controller: _consumptionController,
-                      decoration:  InputDecoration(
+                      decoration: InputDecoration(
                         labelText: 'consumption'.tr(),
                         labelStyle: const TextStyle(
                           fontSize: 12,

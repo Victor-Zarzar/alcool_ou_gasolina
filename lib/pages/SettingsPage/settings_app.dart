@@ -22,7 +22,7 @@ class _SettingsPageState extends State<SettingsPage> {
         return SizedBox(
           child: Drawer(
             backgroundColor: notifier.isDark
-                ? AppTheme.secondaryColor
+                ? AppTheme.thirdColor
                 : AppTheme.primaryColor,
             child: ListView(
               padding: EdgeInsets.zero,
@@ -50,12 +50,14 @@ class _SettingsPageState extends State<SettingsPage> {
                       value: notifier.isDark,
                       onChanged: (value) => notifier.changeTheme(),
                     ),
-                    leading: const Icon(Icons.dark_mode),
+                    leading: const Icon(Icons.dark_mode,
+                    size: 20,
+                    ),
                     title: Text(
                       'darkmode'.tr(),
                       style: GoogleFonts.jetBrainsMono(
                         textStyle: TextStyle(
-                          fontSize: 14,
+                          fontSize: 12,
                           fontWeight: FontWeight.bold,
                           color: notifier.isDark
                               ? TextColor.secondaryColor
@@ -66,12 +68,14 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                 ),
                 ListTile(
-                  leading: const Icon(Icons.info),
+                  leading: const Icon(Icons.info,
+                  size: 20,
+                  ),
                   title: Text(
                     'about'.tr(),
                     style: GoogleFonts.jetBrainsMono(
                       textStyle: TextStyle(
-                        fontSize: 14,
+                        fontSize: 12,
                         fontWeight: FontWeight.bold,
                         color: notifier.isDark
                             ? TextColor.secondaryColor

@@ -33,6 +33,9 @@ class _IntroPageState extends State<IntroPage> {
     return Consumer<UiProvider>(
       builder: (context, notifier, child) {
         return Scaffold(
+          backgroundColor: notifier.isDark
+                        ? AppTheme.thirdColor
+                        : AppTheme.primaryColor,
           body: SingleChildScrollView(
             child: SizedBox(
               height: myHeight,
@@ -46,7 +49,7 @@ class _IntroPageState extends State<IntroPage> {
                   introScreenBottomNavigationBar:
                       GFIntroScreenBottomNavigationBar(
                     navigationBarHeight: 60,
-                    skipButtonText: 'tojump'.tr(),
+                    skipButtonText: 'jump'.tr(),
                     backButtonText: 'previous'.tr(),
                     doneButtonText: 'conclude'.tr(),
                     forwardButtonText: 'next'.tr(),

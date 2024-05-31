@@ -22,7 +22,7 @@ class _AboutPageState extends State<AboutPage> {
       builder: (context, notifier, child) {
         return Scaffold(
           backgroundColor:
-              notifier.isDark ? AppTheme.secondaryColor : AppTheme.primaryColor,
+              notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
           body: SizedBox(
             height: myHeight,
             width: myWidth,
@@ -33,7 +33,7 @@ class _AboutPageState extends State<AboutPage> {
                   child: GFAppBar(
                     centerTitle: true,
                     backgroundColor: notifier.isDark
-                        ? AppTheme.secondaryColor
+                        ? AppTheme.thirdColor
                         : AppTheme.primaryColor,
                     title: Text(
                       "about".tr(),
@@ -74,7 +74,7 @@ class _AboutPageState extends State<AboutPage> {
                             "description".tr(),
                             style: GoogleFonts.jetBrainsMono(
                               textStyle: TextStyle(
-                                fontSize: 13,
+                                fontSize: 12,
                                 fontWeight: FontWeight.bold,
                                 color: notifier.isDark
                                     ? TextColor.secondaryColor

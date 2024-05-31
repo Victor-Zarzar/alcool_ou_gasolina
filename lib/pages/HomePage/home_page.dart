@@ -32,16 +32,45 @@ class _HomePageState extends State<HomePage> {
       return showDialog(
         context: context,
         builder: (context) {
-          return AlertDialog(
-            content: Text('fillinbothdetails'.tr()),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: const Text('OK'),
-              ),
-            ],
+          return Consumer<UiProvider>(
+            builder: (context, notifier, child) {
+              return AlertDialog(
+                backgroundColor: notifier.isDark
+                    ? AppTheme.thirdColor
+                    : AppTheme.primaryColor,
+                content: Text(
+                  'fillinbothdetails'.tr(),
+                  style: GoogleFonts.jetBrainsMono(
+                    textStyle: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                      color: notifier.isDark
+                          ? TextColor.secondaryColor
+                          : TextColor.primaryColor,
+                    ),
+                  ),
+                ),
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text(
+                      'OK',
+                      style: GoogleFonts.jetBrainsMono(
+                        textStyle: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                          color: notifier.isDark
+                              ? TextColor.secondaryColor
+                              : TextColor.primaryColor,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            },
           );
         },
       );
@@ -55,11 +84,11 @@ class _HomePageState extends State<HomePage> {
 
     if (auxResult >= 0.7) {
       setState(() {
-        resultText = 'Compensa utilizar Gasolina!';
+        resultText = 'alcoholresult'.tr();
       });
     } else {
       setState(() {
-        resultText = 'Compensa utilizar Álcool!';
+        resultText = 'gasolineresult'.tr();
       });
     }
 
@@ -83,7 +112,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Consumer<UiProvider>(builder: (context, notifier, child) {
       return Scaffold(
-        backgroundColor: notifier.isDark ? AppTheme.secondaryColor : AppTheme.primaryColor,
+        backgroundColor:
+            notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
         body: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -102,8 +132,8 @@ class _HomePageState extends State<HomePage> {
                     fontSize: 12,
                     fontWeight: FontWeight.bold,
                     color: notifier.isDark
-                                ? TextColor.secondaryColor
-                                : TextColor.primaryColor,
+                        ? TextColor.secondaryColor
+                        : TextColor.primaryColor,
                   ),
                 ),
               ),
@@ -145,21 +175,27 @@ class _HomePageState extends State<HomePage> {
               ),
               const SizedBox(height: 10),
               GFButton(
-                color: notifier.isDark ? Colors.grey.shade600 : Colors.black,
+                color: notifier.isDark
+                    ? ButtonColor.primaryColor
+                    : ButtonColor.secondaryColor,
                 shape: GFButtonShape.pills,
                 onPressed: loading ? null : handleCalc,
-                child: Text('calculate'.tr(),
-                    style: GoogleFonts.jetBrainsMono(
-                      textStyle: TextStyle(
-                        fontSize: 10,
-                        fontWeight: FontWeight.bold,
-                        color: TextColor.secondaryColor,
-                      ),
-                    )),
+                child: Text(
+                  'calculate'.tr(),
+                  style: GoogleFonts.jetBrainsMono(
+                    textStyle: TextStyle(
+                      fontSize: 10,
+                      fontWeight: FontWeight.bold,
+                      color: TextColor.secondaryColor,
+                    ),
+                  ),
+                ),
               ),
               const SizedBox(height: 10),
               GFButton(
-                color: notifier.isDark ? Colors.grey.shade600 : Colors.black,
+                color: notifier.isDark
+                    ? ButtonColor.primaryColor
+                    : ButtonColor.secondaryColor,
                 shape: GFButtonShape.pills,
                 onPressed: clearResult,
                 child: Text(

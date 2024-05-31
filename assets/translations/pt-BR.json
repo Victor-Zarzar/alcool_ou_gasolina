@@ -2,7 +2,7 @@
     "introtext": "Bem Vindo ao App!",
     "introtexttwo": "Calcule o consumo Km/l",
     "titleappbar": "Álcool ou Gasolina?",
-    "tojump": "Pular",
+    "jump": "Pular",
     "next": "Avançar",
     "previous": "Voltar",
     "conclude": "Concluir",
@@ -26,5 +26,7 @@
     "year": "Ano",
     "darkmode": "Modo Escuro",
     "about": "Sobre",
-    "description": "Descrição"
+    "description": "Este app foi desenvolvido para calcular a qual combustível vale mais a pena, consumo, e para registrar os dados do veículo.",
+    "alcoholresult": "Compensa usar Álcool!",
+    "gasolineresult": "Compensa usar Gasolina!"
 }

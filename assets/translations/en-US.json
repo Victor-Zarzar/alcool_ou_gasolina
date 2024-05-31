@@ -24,9 +24,10 @@
     "plate": "Plate",
     "carmodel": "Car Model",
     "year": "Year",
+    "lastconsumption": "Last Consumption Km/l",
     "darkmode": "Dark Mode",
     "about": "About",
-    "description": "This app was developed to calculate which fuel is most worth it, consumption, and to record vehicle data.",
+    "description": "This app was developed to calculate which fuel is most worth it, last average consumption, and to record vehicle data.",
     "alcoholresult": "It pays to use Alcohol!",
     "gasolineresult": "It pays to use Gasoline!"
 }

@@ -24,9 +24,10 @@
     "plate": "Placa",
     "carmodel": "Modelo do Carro",
     "year": "Ano",
+    "lastconsumption": "Último Consumo Km/l",
     "darkmode": "Modo Escuro",
     "about": "Sobre",
-    "description": "Este app foi desenvolvido para calcular a qual combustível vale mais a pena, consumo, e para registrar os dados do veículo.",
+    "description": "Este app foi desenvolvido para calcular qual combustível vale mais a pena, última média de consumo, e para registrar os dados do veículo.",
     "alcoholresult": "Compensa usar Álcool!",
     "gasolineresult": "Compensa usar Gasolina!"
 }

@@ -257,7 +257,7 @@ class _MyCarPageState extends State<MyCarPage> {
                     child: TextField(
                       controller: _consumptionController,
                       decoration: InputDecoration(
-                        labelText: 'consumption'.tr(),
+                        labelText: 'lastconsumption'.tr(),
                         labelStyle: const TextStyle(
                           fontSize: 12,
                         ),

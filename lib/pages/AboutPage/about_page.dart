@@ -62,7 +62,7 @@ class _AboutPageState extends State<AboutPage> {
                 ),
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.all(20.0),
+                    padding: const EdgeInsets.all(10.0),
                     child: Row(
                       children: [
                         const Icon(
@@ -84,6 +84,21 @@ class _AboutPageState extends State<AboutPage> {
                           ),
                         ),
                       ],
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Center(
+                  child: Text(
+                    "victorzarzar".tr(),
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.jetBrainsMono(
+                      textStyle: TextStyle(
+                        fontSize: 10,
+                        color: notifier.isDark
+                            ? TextColor.secondaryColor
+                            : TextColor.primaryColor,
+                      ),
                     ),
                   ),
                 ),

@@ -87,7 +87,7 @@ class SwitchColor {
 class ButtonColor {
   ButtonColor._();
 
-  static Color get primaryColor => const Color(0xFF90A4AE);
+  static Color get primaryColor => const Color(0xFF9E9E9E);
 
   static Color get secondaryColor => const Color(0xFF000000);
 }

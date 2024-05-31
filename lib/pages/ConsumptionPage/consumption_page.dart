@@ -161,7 +161,9 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
                 ),
                 const SizedBox(height: 10),
                 GFButton(
-                  color: notifier.isDark ? Colors.grey.shade600 : Colors.black,
+                  color: notifier.isDark
+                      ? ButtonColor.primaryColor
+                      : ButtonColor.secondaryColor,
                   shape: GFButtonShape.pills,
                   onPressed: loading ? null : handleCalc,
                   child: Text('calculate'.tr(),
@@ -175,7 +177,9 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
                 ),
                 const SizedBox(height: 10),
                 GFButton(
-                  color: notifier.isDark ? Colors.grey.shade600 : Colors.black,
+                  color: notifier.isDark
+                      ? ButtonColor.primaryColor
+                      : ButtonColor.secondaryColor,
                   shape: GFButtonShape.pills,
                   onPressed: clearResult,
                   child: Text(

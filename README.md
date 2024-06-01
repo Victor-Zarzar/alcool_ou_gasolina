@@ -38,7 +38,7 @@ Run the app:
 ### Version iOS:
 
 <img src="assets/intropageios.png" alt="intro page ios" width="250"> &nbsp; &nbsp; &nbsp; <img src="assets/homepageios.png" alt="home page ios" width="250"> &nbsp; &nbsp; &nbsp; <img src="assets/homepageios2.png" alt="home page ios 2" width="250"> &nbsp; &nbsp; &nbsp; <img src="assets/darkmodeios.png" alt="home page ios 2" width="250"> &nbsp; &nbsp; &nbsp; <img src="assets/aboutios.png" alt="home page ios 2" width="250">
-&nbsp; &nbsp; &nbsp; <img src="assets/catios.png" alt="home page ios 2" width="250">
+&nbsp; &nbsp; &nbsp; <img src="assets/consumptionios.png" alt="home page ios 2" width="250">
 
 ### Version Android:
 

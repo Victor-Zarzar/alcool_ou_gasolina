@@ -78,13 +78,13 @@ class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
                 ? TextColor.secondaryColor
                 : TextColor.primaryColor,
             labelStyle: GoogleFonts.jetBrainsMono(
-              textStyle: const TextStyle(fontSize: 8),
+              textStyle: const TextStyle(fontSize: 10),
             ),
             tabs: [
               Tab(
                 icon: const Icon(
                   Icons.home,
-                  size: 16,
+                  size: 18,
                 ),
                child: FittedBox(
                   fit: BoxFit.fitWidth,
@@ -96,7 +96,7 @@ class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
                Tab(
                 icon: const Icon(
                   Icons.gas_meter_outlined,
-                  size: 16,
+                  size: 18,
                 ),
                 child: FittedBox(
                   fit: BoxFit.fitWidth,
@@ -108,7 +108,7 @@ class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
               Tab(
                 icon: const Icon(
                   Icons.car_rental,
-                  size: 16,
+                  size: 18,
                 ),
                 child: FittedBox(
                   fit: BoxFit.fitWidth,
@@ -120,7 +120,7 @@ class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
               Tab(
                 icon: const Icon(
                   Icons.settings,
-                  size: 16,
+                  size: 18,
                 ),
                  child: FittedBox(
                   fit: BoxFit.fitWidth,

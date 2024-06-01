@@ -11,8 +11,9 @@
     "mycar": "My Car",
     "settings": "Settings",
     "whichonepaysmore": "Which one pays more?",
-    "gasoline": "Gasoline",
-    "alcohol": "Alcohol",
+    "priceforlitre": "Price for litre:",
+    "gasoline": "R$: Gasoline",
+    "alcohol": "R$ :Alcohol",
     "calculate": "Calculate",
     "clearresult": "Clear Result",
     "calculateconsumption": "Calculate Consumption",
@@ -21,6 +22,8 @@
     "fillinbothdetails": "Fill in both details.",
     "datasavedsuccessfully": "Data saved successfully",
     "successfullydeleted": "Successfully deleted.",
+    "save": "Save",
+    "delete": "Delete",
     "plate": "Plate",
     "carmodel": "Car Model",
     "year": "Year",
@@ -30,5 +33,5 @@
     "description": "This app was developed to calculate which fuel is most worth it, last average consumption, and to record vehicle data.",
     "alcoholresult": "It pays to use Alcohol!",
     "gasolineresult": "It pays to use Gasoline!",
-    "victorzarzar": "Developed by Victor Zarzar: www.victorzarzar.com.br"
+    "victorzarzar": "Developed by Victor Zarzar - www.victorzarzar.com.br"
 }

@@ -129,15 +129,29 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
                     height: 50,
                     width: 180,
                     child: TextField(
+                      cursorColor: notifier.isDark
+                          ? FormColor.secondaryColor
+                          : FormColor.primaryColor,
                       controller: distanceController,
                       keyboardType:
                           const TextInputType.numberWithOptions(decimal: true),
                       decoration: InputDecoration(
                         labelText: 'kmsdriven'.tr(),
-                        labelStyle: const TextStyle(
-                          fontSize: 12,
+                        labelStyle: TextStyle(
+                          fontSize: 10,
+                          color: notifier.isDark
+                              ? TextColor.secondaryColor
+                              : TextColor.primaryColor,
                         ),
                         border: const OutlineInputBorder(),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: notifier.isDark
+                                ? FormColor.secondaryColor
+                                : FormColor.primaryColor,
+                            width: 2,
+                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -147,15 +161,29 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
                   height: 50,
                   width: 180,
                   child: TextField(
+                    cursorColor: notifier.isDark
+                        ? FormColor.secondaryColor
+                        : FormColor.primaryColor,
                     controller: fuelController,
                     keyboardType:
                         const TextInputType.numberWithOptions(decimal: true),
                     decoration: InputDecoration(
                       labelText: 'liters'.tr(),
-                      labelStyle: const TextStyle(
-                        fontSize: 12,
+                      labelStyle: TextStyle(
+                        fontSize: 10,
+                        color: notifier.isDark
+                            ? TextColor.secondaryColor
+                            : TextColor.primaryColor,
                       ),
                       border: const OutlineInputBorder(),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: notifier.isDark
+                              ? FormColor.secondaryColor
+                              : FormColor.primaryColor,
+                          width: 2,
+                        ),
+                      ),
                     ),
                   ),
                 ),

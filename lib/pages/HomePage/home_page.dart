@@ -137,21 +137,48 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
+              const SizedBox(height: 14),
+              Text(
+                "priceforlitre".tr(),
+                style: GoogleFonts.jetBrainsMono(
+                  textStyle: TextStyle(
+                    fontSize: 10,
+                    fontWeight: FontWeight.bold,
+                    color: notifier.isDark
+                        ? TextColor.secondaryColor
+                        : TextColor.primaryColor,
+                  ),
+                ),
+              ),
               const SizedBox(height: 20),
               Center(
                 child: SizedBox(
                   height: 50,
                   width: 180,
                   child: TextField(
+                    cursorColor: notifier.isDark
+                        ? FormColor.secondaryColor
+                        : FormColor.primaryColor,
                     controller: gasolineController,
                     keyboardType:
                         const TextInputType.numberWithOptions(decimal: true),
                     decoration: InputDecoration(
                       labelText: 'gasoline'.tr(),
-                      labelStyle: const TextStyle(
-                        fontSize: 12,
+                      labelStyle: TextStyle(
+                        fontSize: 10,
+                        color: notifier.isDark
+                            ? TextColor.secondaryColor
+                            : TextColor.primaryColor,
                       ),
                       border: const OutlineInputBorder(),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: notifier.isDark
+                              ? FormColor.secondaryColor
+                              : FormColor.primaryColor,
+                          width: 2,
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -161,15 +188,30 @@ class _HomePageState extends State<HomePage> {
                 height: 50,
                 width: 180,
                 child: TextField(
+                  cursorColor: notifier.isDark
+                      ? FormColor.secondaryColor
+                      : FormColor.primaryColor,
                   controller: alcoholController,
                   keyboardType:
                       const TextInputType.numberWithOptions(decimal: true),
                   decoration: InputDecoration(
                     labelText: 'alcohol'.tr(),
-                    labelStyle: const TextStyle(
-                      fontSize: 12,
+                    labelStyle: TextStyle(
+                      fontSize: 10,
+                      color: notifier.isDark
+                          ? TextColor.secondaryColor
+                          : TextColor.primaryColor,
                     ),
                     border: const OutlineInputBorder(),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: notifier.isDark
+                            ? FormColor.secondaryColor
+                            : FormColor.primaryColor,
+                        width: 2,
+                      ),
+                    ),
+                    
                   ),
                 ),
               ),

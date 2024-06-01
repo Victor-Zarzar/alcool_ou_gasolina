@@ -123,7 +123,7 @@ class _IntroPageState extends State<IntroPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.only(top: 30.0, left: 20),
+                    padding: const EdgeInsets.only(top: 30.0, left: 30),
                     child: Text(
                       'introtext'.tr(),
                       style: GoogleFonts.jetBrainsMono(
@@ -171,8 +171,8 @@ class _IntroPageState extends State<IntroPage> {
               const SizedBox(height: 5),
               Expanded(
                 child: Container(
-                  height: 340,
-                  width: 330,
+                  height: 300,
+                  width: 280,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(0),
                     image: const DecorationImage(

@@ -11,8 +11,9 @@
     "mycar": "Meu Carro",
     "settings": "Configurações",
     "whichonepaysmore": "Qual compensa mais?",
-    "gasoline": "Gasolina",
-    "alcohol": "Álcool",
+    "priceforlitre": "Preço por litro:",
+    "gasoline": "R$: Gasolina",
+    "alcohol": "R$: Álcool",
     "calculate": "Calcular",
     "clearresult": "Limpar Resultado",
     "calculateconsumption": "Calcular Consumo",
@@ -21,6 +22,8 @@
     "fillinbothdetails": "Preencha ambos os dados.",
     "datasavedsuccessfully": "Dados salvos com sucesso.",
     "successfullydeleted": "Deletado com sucesso.",
+    "save": "Salvar",
+    "delete": "Deletar",
     "plate": "Placa",
     "carmodel": "Modelo do Carro",
     "year": "Ano",
@@ -30,5 +33,5 @@
     "description": "Este app foi desenvolvido para calcular qual combustível vale mais a pena, última média de consumo, e para registrar os dados do veículo.",
     "alcoholresult": "Compensa usar Álcool!",
     "gasolineresult": "Compensa usar Gasolina!",
-    "victorzarzar": "Desenvolvido por Victor Zarzar: www.victorzarzar.com.br"
+    "victorzarzar": "Desenvolvido por Victor Zarzar - www.victorzarzar.com.br"
 }

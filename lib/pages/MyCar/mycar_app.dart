@@ -120,19 +120,19 @@ class _MyCarPageState extends State<MyCarPage> {
                   ? AppTheme.secondaryColor
                   : AppTheme.primaryColor,
               automaticallyImplyLeading: false,
-              title: Text(
-                'mycar'.tr(),
-                style: GoogleFonts.jetBrainsMono(
-                  textStyle: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    color: notifier.isDark
-                        ? TextColor.secondaryColor
-                        : TextColor.primaryColor,
+              actions: [
+                Text(
+                  "save".tr(),
+                  style: GoogleFonts.jetBrainsMono(
+                    textStyle: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                      color: notifier.isDark
+                          ? TextColor.secondaryColor
+                          : TextColor.primaryColor,
+                    ),
                   ),
                 ),
-              ),
-              actions: [
                 IconButton(
                   icon: const Icon(Icons.save),
                   onPressed: () async {
@@ -184,6 +184,18 @@ class _MyCarPageState extends State<MyCarPage> {
                     );
                   },
                 ),
+                Text(
+                  "delete".tr(),
+                  style: GoogleFonts.jetBrainsMono(
+                    textStyle: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                      color: notifier.isDark
+                          ? TextColor.secondaryColor
+                          : TextColor.primaryColor,
+                    ),
+                  ),
+                ),
                 IconButton(
                   icon: const Icon(Icons.delete),
                   onPressed: () async {
@@ -202,19 +214,45 @@ class _MyCarPageState extends State<MyCarPage> {
                     height: 140,
                     width: 190,
                   ),
-                  const SizedBox(height: 10),
+                  Text(
+                    'mycar'.tr(),
+                    style: GoogleFonts.jetBrainsMono(
+                      textStyle: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: notifier.isDark
+                            ? TextColor.secondaryColor
+                            : TextColor.primaryColor,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
                   Center(
                     child: SizedBox(
                       height: 50,
                       width: 180,
                       child: TextField(
+                        cursorColor: notifier.isDark
+                            ? FormColor.secondaryColor
+                            : FormColor.primaryColor,
                         controller: _plateController,
                         decoration: InputDecoration(
                           labelText: 'plate'.tr(),
-                          labelStyle: const TextStyle(
-                            fontSize: 12,
+                          labelStyle: TextStyle(
+                            fontSize: 10,
+                            color: notifier.isDark
+                                ? TextColor.secondaryColor
+                                : TextColor.primaryColor,
                           ),
                           border: const OutlineInputBorder(),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: notifier.isDark
+                                  ? FormColor.secondaryColor
+                                  : FormColor.primaryColor,
+                              width: 2,
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -224,13 +262,27 @@ class _MyCarPageState extends State<MyCarPage> {
                     height: 50,
                     width: 180,
                     child: TextField(
+                      cursorColor: notifier.isDark
+                          ? FormColor.secondaryColor
+                          : FormColor.primaryColor,
                       controller: _modelController,
                       decoration: InputDecoration(
                         labelText: 'carmodel'.tr(),
-                        labelStyle: const TextStyle(
-                          fontSize: 12,
+                        labelStyle: TextStyle(
+                          fontSize: 10,
+                          color: notifier.isDark
+                              ? TextColor.secondaryColor
+                              : TextColor.primaryColor,
                         ),
                         border: const OutlineInputBorder(),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: notifier.isDark
+                                ? FormColor.secondaryColor
+                                : FormColor.primaryColor,
+                            width: 2,
+                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -239,14 +291,28 @@ class _MyCarPageState extends State<MyCarPage> {
                     height: 50,
                     width: 180,
                     child: TextField(
+                      cursorColor: notifier.isDark
+                          ? FormColor.secondaryColor
+                          : FormColor.primaryColor,
                       controller: _yearController,
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
                         labelText: 'year'.tr(),
-                        labelStyle: const TextStyle(
-                          fontSize: 12,
+                        labelStyle: TextStyle(
+                          fontSize: 10,
+                          color: notifier.isDark
+                              ? TextColor.secondaryColor
+                              : TextColor.primaryColor,
                         ),
                         border: const OutlineInputBorder(),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: notifier.isDark
+                                ? FormColor.secondaryColor
+                                : FormColor.primaryColor,
+                            width: 2,
+                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -258,10 +324,21 @@ class _MyCarPageState extends State<MyCarPage> {
                       controller: _consumptionController,
                       decoration: InputDecoration(
                         labelText: 'lastconsumption'.tr(),
-                        labelStyle: const TextStyle(
-                          fontSize: 12,
+                        labelStyle: TextStyle(
+                          fontSize: 10,
+                          color: notifier.isDark
+                              ? TextColor.secondaryColor
+                              : TextColor.primaryColor,
                         ),
                         border: const OutlineInputBorder(),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: notifier.isDark
+                                ? FormColor.secondaryColor
+                                : FormColor.primaryColor,
+                            width: 2,
+                          ),
+                        ),
                       ),
                     ),
                   ),

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../components/DarkTheme/darktheme_provider_app.dart';
 
 class MyCarPage extends StatefulWidget {
@@ -18,8 +17,7 @@ class _MyCarPageState extends State<MyCarPage> {
   late final TextEditingController _plateController = TextEditingController();
   late final TextEditingController _modelController = TextEditingController();
   late final TextEditingController _yearController = TextEditingController();
-  late final TextEditingController _consumptionController =
-      TextEditingController();
+  late final TextEditingController _consumptionController = TextEditingController();
 
   @override
   void initState() {
@@ -186,7 +184,10 @@ class _MyCarPageState extends State<MyCarPage> {
                   ),
                 ),
                 IconButton(
-                  icon: const Icon(Icons.save),
+                  icon: const Icon(
+                  Icons.save,
+                  size: 22,
+                  ),
                   onPressed: () async {
                     await _saveCarInfo(context);
                   },
@@ -204,7 +205,10 @@ class _MyCarPageState extends State<MyCarPage> {
                   ),
                 ),
                 IconButton(
-                  icon: const Icon(Icons.delete),
+                  icon: const Icon(
+                  Icons.delete,
+                  size: 22,
+                  ),
                   onPressed: () async {
                     await _deleteCarInfo(context);
                   },

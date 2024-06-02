@@ -114,7 +114,7 @@ class _HomePageState extends State<HomePage> {
       builder: (context, notifier, child) {
         return Scaffold(
           backgroundColor:
-            notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
+              notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
           body: SizedBox(
             height: myHeight,
             width: myWidth,
@@ -219,37 +219,45 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  GFButton(
-                    color: notifier.isDark
-                        ? ButtonColor.primaryColor
-                        : ButtonColor.secondaryColor,
-                    shape: GFButtonShape.pills,
-                    onPressed: loading ? null : handleCalc,
-                    child: Text(
-                      'calculate'.tr(),
-                      style: GoogleFonts.jetBrainsMono(
-                        textStyle: TextStyle(
-                          fontSize: 10,
-                          fontWeight: FontWeight.bold,
-                          color: TextColor.secondaryColor,
+                  SizedBox(
+                    height: 40,
+                    width: 180,
+                    child: GFButton(
+                      color: notifier.isDark
+                          ? ButtonColor.primaryColor
+                          : ButtonColor.secondaryColor,
+                      shape: GFButtonShape.pills,
+                      onPressed: loading ? null : handleCalc,
+                      child: Text(
+                        'calculate'.tr(),
+                        style: GoogleFonts.jetBrainsMono(
+                          textStyle: TextStyle(
+                            fontSize: 10,
+                            fontWeight: FontWeight.bold,
+                            color: TextColor.secondaryColor,
+                          ),
                         ),
                       ),
                     ),
                   ),
                   const SizedBox(height: 10),
-                  GFButton(
-                    color: notifier.isDark
-                        ? ButtonColor.primaryColor
-                        : ButtonColor.secondaryColor,
-                    shape: GFButtonShape.pills,
-                    onPressed: clearResult,
-                    child: Text(
-                      'clearresult'.tr(),
-                      style: GoogleFonts.jetBrainsMono(
-                        textStyle: TextStyle(
-                          fontSize: 10,
-                          fontWeight: FontWeight.bold,
-                          color: TextColor.secondaryColor,
+                  SizedBox(
+                    height: 40,
+                    width: 180,
+                    child: GFButton(
+                      color: notifier.isDark
+                          ? ButtonColor.primaryColor
+                          : ButtonColor.secondaryColor,
+                      shape: GFButtonShape.pills,
+                      onPressed: clearResult,
+                      child: Text(
+                        'clearresult'.tr(),
+                        style: GoogleFonts.jetBrainsMono(
+                          textStyle: TextStyle(
+                            fontSize: 10,
+                            fontWeight: FontWeight.bold,
+                            color: TextColor.secondaryColor,
+                          ),
                         ),
                       ),
                     ),

@@ -80,7 +80,7 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
     }
 
     double consumption = distance / fuel;
-    
+
     setState(() {
       resultText =
           '${'consumption'.tr()}: ${consumption.toStringAsFixed(2)} Km/l';
@@ -194,37 +194,45 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  GFButton(
-                    color: notifier.isDark
-                        ? ButtonColor.primaryColor
-                        : ButtonColor.secondaryColor,
-                    shape: GFButtonShape.pills,
-                    onPressed: loading ? null : handleCalc,
-                    child: Text(
-                      'calculate'.tr(),
-                      style: GoogleFonts.jetBrainsMono(
-                        textStyle: TextStyle(
-                          fontSize: 10,
-                          fontWeight: FontWeight.bold,
-                          color: TextColor.secondaryColor,
+                  SizedBox(
+                    height: 40,
+                    width: 180,
+                    child: GFButton(
+                      color: notifier.isDark
+                          ? ButtonColor.primaryColor
+                          : ButtonColor.secondaryColor,
+                      shape: GFButtonShape.pills,
+                      onPressed: loading ? null : handleCalc,
+                      child: Text(
+                        'calculate'.tr(),
+                        style: GoogleFonts.jetBrainsMono(
+                          textStyle: TextStyle(
+                            fontSize: 10,
+                            fontWeight: FontWeight.bold,
+                            color: TextColor.secondaryColor,
+                          ),
                         ),
                       ),
                     ),
                   ),
                   const SizedBox(height: 10),
-                  GFButton(
-                    color: notifier.isDark
-                        ? ButtonColor.primaryColor
-                        : ButtonColor.secondaryColor,
-                    shape: GFButtonShape.pills,
-                    onPressed: clearResult,
-                    child: Text(
-                      'clearresult'.tr(),
-                      style: GoogleFonts.jetBrainsMono(
-                        textStyle: TextStyle(
-                          fontSize: 10,
-                          fontWeight: FontWeight.bold,
-                          color: TextColor.secondaryColor,
+                  SizedBox(
+                    height: 40,
+                    width: 180,
+                    child: GFButton(
+                      color: notifier.isDark
+                          ? ButtonColor.primaryColor
+                          : ButtonColor.secondaryColor,
+                      shape: GFButtonShape.pills,
+                      onPressed: clearResult,
+                      child: Text(
+                        'clearresult'.tr(),
+                        style: GoogleFonts.jetBrainsMono(
+                          textStyle: TextStyle(
+                            fontSize: 10,
+                            fontWeight: FontWeight.bold,
+                            color: TextColor.secondaryColor,
+                          ),
                         ),
                       ),
                     ),

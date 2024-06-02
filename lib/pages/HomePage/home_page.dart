@@ -98,8 +98,6 @@ class _HomePageState extends State<HomePage> {
       loading = false;
       visible = true;
     });
-
-    FocusScope.of(context).unfocus();
   }
 
   void clearResult() {

@@ -37,15 +37,63 @@ class _MyCarPageState extends State<MyCarPage> {
     });
   }
 
-  Future<void> _saveCarInfo() async {
+  Future<void> _saveCarInfo(BuildContext context) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString('plate', _plateController.text);
     await prefs.setString('model', _modelController.text);
     await prefs.setInt('year', int.tryParse(_yearController.text) ?? 0);
     await prefs.setString('consumption', _consumptionController.text);
+    await _showSaveConfirmationDialog();
   }
 
-  Future<void> _deleteCarInfo() async {
+  Future<void> _showSaveConfirmationDialog() async {
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Consumer<UiProvider>(
+          builder: (context, notifier, child) {
+            return AlertDialog(
+              backgroundColor:
+                  notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
+              content: Text(
+                'datasavedsuccessfully'.tr(),
+                style: GoogleFonts.jetBrainsMono(
+                  textStyle: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    color: notifier.isDark
+                        ? TextColor.secondaryColor
+                        : TextColor.primaryColor,
+                  ),
+                ),
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text(
+                    'OK',
+                    style: GoogleFonts.jetBrainsMono(
+                      textStyle: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                        color: notifier.isDark
+                            ? TextColor.secondaryColor
+                            : TextColor.primaryColor,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            );
+          },
+        );
+      },
+    );
+  }
+
+  Future<void> _deleteCarInfo(BuildContext context) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.remove('plate');
     await prefs.remove('model');
@@ -57,9 +105,13 @@ class _MyCarPageState extends State<MyCarPage> {
       _yearController.clear();
       _consumptionController.clear();
     });
-    showDialog(
+    await _showDeleteConfirmationDialog();
+  }
+
+  Future<void> _showDeleteConfirmationDialog() async {
+    return showDialog(
       context: context,
-      builder: (context) {
+      builder: (BuildContext context) {
         return Consumer<UiProvider>(
           builder: (context, notifier, child) {
             return AlertDialog(
@@ -136,52 +188,7 @@ class _MyCarPageState extends State<MyCarPage> {
                 IconButton(
                   icon: const Icon(Icons.save),
                   onPressed: () async {
-                    await _saveCarInfo();
-                    return showDialog(
-                      context: context,
-                      builder: (context) {
-                        return Consumer<UiProvider>(
-                          builder: (context, notifier, child) {
-                            return AlertDialog(
-                              backgroundColor: notifier.isDark
-                                  ? AppTheme.thirdColor
-                                  : AppTheme.primaryColor,
-                              content: Text(
-                                'datasavedsuccessfully'.tr(),
-                                style: GoogleFonts.jetBrainsMono(
-                                  textStyle: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.bold,
-                                    color: notifier.isDark
-                                        ? TextColor.secondaryColor
-                                        : TextColor.primaryColor,
-                                  ),
-                                ),
-                              ),
-                              actions: [
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                  child: Text(
-                                    'OK',
-                                    style: GoogleFonts.jetBrainsMono(
-                                      textStyle: TextStyle(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.bold,
-                                        color: notifier.isDark
-                                            ? TextColor.secondaryColor
-                                            : TextColor.primaryColor,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            );
-                          },
-                        );
-                      },
-                    );
+                    await _saveCarInfo(context);
                   },
                 ),
                 Text(
@@ -199,7 +206,7 @@ class _MyCarPageState extends State<MyCarPage> {
                 IconButton(
                   icon: const Icon(Icons.delete),
                   onPressed: () async {
-                    await _deleteCarInfo();
+                    await _deleteCarInfo(context);
                   },
                 ),
               ],

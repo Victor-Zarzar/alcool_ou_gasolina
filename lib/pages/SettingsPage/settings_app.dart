@@ -17,30 +17,18 @@ class SettingsPage extends StatefulWidget {
 class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
+    double myHeight = MediaQuery.of(context).size.height;
+    double myWidth = MediaQuery.of(context).size.width;
     return Consumer<UiProvider>(
       builder: (context, notifier, child) {
-        return SizedBox(
-          child: Drawer(
-            backgroundColor: notifier.isDark
-                ? AppTheme.thirdColor
-                : AppTheme.primaryColor,
+        return GFDrawer(
+          color: notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
+          child: SizedBox(
+            height: myHeight,
+            width: myWidth,
             child: ListView(
               padding: EdgeInsets.zero,
               children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    GFAvatar(
-                      backgroundColor: notifier.isDark
-                          ? AppTheme.secondaryColor
-                          : AppTheme.primaryColor,
-                      radius: 80.0,
-                      backgroundImage: const AssetImage(
-                        "assets/gasoline.png",
-                      ),
-                    ),
-                  ],
-                ),
                 Padding(
                   padding: const EdgeInsets.only(top: 40),
                   child: ListTile(
@@ -50,8 +38,9 @@ class _SettingsPageState extends State<SettingsPage> {
                       value: notifier.isDark,
                       onChanged: (value) => notifier.changeTheme(),
                     ),
-                    leading: const Icon(Icons.dark_mode,
-                    size: 20,
+                    leading: const Icon(
+                      Icons.dark_mode,
+                      size: 20,
                     ),
                     title: Text(
                       'darkmode'.tr(),
@@ -68,8 +57,9 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                 ),
                 ListTile(
-                  leading: const Icon(Icons.info,
-                  size: 20,
+                  leading: const Icon(
+                    Icons.info,
+                    size: 20,
                   ),
                   title: Text(
                     'about'.tr(),

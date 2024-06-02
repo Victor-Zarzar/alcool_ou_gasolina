@@ -95,48 +95,85 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
 
   @override
   Widget build(BuildContext context) {
+    double myHeight = MediaQuery.of(context).size.height;
+    double myWidth = MediaQuery.of(context).size.width;
     return Consumer<UiProvider>(
       builder: (context, notifier, child) {
         return Scaffold(
           backgroundColor:
               notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
-          body: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const SizedBox(height: 20),
-                Image.asset(
-                  "assets/fuel.png",
-                  height: 140,
-                  width: 190,
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  'calculateconsumption'.tr(),
-                  style: GoogleFonts.jetBrainsMono(
-                    textStyle: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
-                      color: notifier.isDark
-                          ? TextColor.secondaryColor
-                          : TextColor.primaryColor,
+          body: SizedBox(
+            height: myHeight,
+            width: myWidth,
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const SizedBox(height: 20),
+                  Image.asset(
+                    "assets/fuel.png",
+                    height: 140,
+                    width: 190,
+                  ),
+                  const SizedBox(height: 10),
+                  Text(
+                    'calculateconsumption'.tr(),
+                    style: GoogleFonts.jetBrainsMono(
+                      textStyle: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                        color: notifier.isDark
+                            ? TextColor.secondaryColor
+                            : TextColor.primaryColor,
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(height: 20),
-                Center(
-                  child: SizedBox(
+                  const SizedBox(height: 20),
+                  Center(
+                    child: SizedBox(
+                      height: 50,
+                      width: 180,
+                      child: TextField(
+                        cursorColor: notifier.isDark
+                            ? FormColor.secondaryColor
+                            : FormColor.primaryColor,
+                        controller: distanceController,
+                        keyboardType: const TextInputType.numberWithOptions(
+                            decimal: true),
+                        decoration: InputDecoration(
+                          labelText: 'kmsdriven'.tr(),
+                          labelStyle: TextStyle(
+                            fontSize: 10,
+                            color: notifier.isDark
+                                ? TextColor.secondaryColor
+                                : TextColor.primaryColor,
+                          ),
+                          border: const OutlineInputBorder(),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: notifier.isDark
+                                  ? FormColor.secondaryColor
+                                  : FormColor.primaryColor,
+                              width: 2,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 15),
+                  SizedBox(
                     height: 50,
                     width: 180,
                     child: TextField(
                       cursorColor: notifier.isDark
                           ? FormColor.secondaryColor
                           : FormColor.primaryColor,
-                      controller: distanceController,
+                      controller: fuelController,
                       keyboardType:
                           const TextInputType.numberWithOptions(decimal: true),
                       decoration: InputDecoration(
-                        labelText: 'kmsdriven'.tr(),
+                        labelText: 'liters'.tr(),
                         labelStyle: TextStyle(
                           fontSize: 10,
                           color: notifier.isDark
@@ -155,75 +192,44 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(height: 15),
-                SizedBox(
-                  height: 50,
-                  width: 180,
-                  child: TextField(
-                    cursorColor: notifier.isDark
-                        ? FormColor.secondaryColor
-                        : FormColor.primaryColor,
-                    controller: fuelController,
-                    keyboardType:
-                        const TextInputType.numberWithOptions(decimal: true),
-                    decoration: InputDecoration(
-                      labelText: 'liters'.tr(),
-                      labelStyle: TextStyle(
-                        fontSize: 10,
-                        color: notifier.isDark
-                            ? TextColor.secondaryColor
-                            : TextColor.primaryColor,
-                      ),
-                      border: const OutlineInputBorder(),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: notifier.isDark
-                              ? FormColor.secondaryColor
-                              : FormColor.primaryColor,
-                          width: 2,
-                        ),
-                      ),
-                    ),
+                  const SizedBox(height: 10),
+                  GFButton(
+                    color: notifier.isDark
+                        ? ButtonColor.primaryColor
+                        : ButtonColor.secondaryColor,
+                    shape: GFButtonShape.pills,
+                    onPressed: loading ? null : handleCalc,
+                    child: Text('calculate'.tr(),
+                        style: GoogleFonts.jetBrainsMono(
+                          textStyle: TextStyle(
+                            fontSize: 10,
+                            fontWeight: FontWeight.bold,
+                            color: TextColor.secondaryColor,
+                          ),
+                        )),
                   ),
-                ),
-                const SizedBox(height: 10),
-                GFButton(
-                  color: notifier.isDark
-                      ? ButtonColor.primaryColor
-                      : ButtonColor.secondaryColor,
-                  shape: GFButtonShape.pills,
-                  onPressed: loading ? null : handleCalc,
-                  child: Text('calculate'.tr(),
+                  const SizedBox(height: 10),
+                  GFButton(
+                    color: notifier.isDark
+                        ? ButtonColor.primaryColor
+                        : ButtonColor.secondaryColor,
+                    shape: GFButtonShape.pills,
+                    onPressed: clearResult,
+                    child: Text(
+                      'clearresult'.tr(),
                       style: GoogleFonts.jetBrainsMono(
                         textStyle: TextStyle(
                           fontSize: 10,
                           fontWeight: FontWeight.bold,
                           color: TextColor.secondaryColor,
                         ),
-                      )),
-                ),
-                const SizedBox(height: 10),
-                GFButton(
-                  color: notifier.isDark
-                      ? ButtonColor.primaryColor
-                      : ButtonColor.secondaryColor,
-                  shape: GFButtonShape.pills,
-                  onPressed: clearResult,
-                  child: Text(
-                    'clearresult'.tr(),
-                    style: GoogleFonts.jetBrainsMono(
-                      textStyle: TextStyle(
-                        fontSize: 10,
-                        fontWeight: FontWeight.bold,
-                        color: TextColor.secondaryColor,
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(height: 10),
-                Text(resultText),
-              ],
+                  const SizedBox(height: 10),
+                  Text(resultText),
+                ],
+              ),
             ),
           ),
         );

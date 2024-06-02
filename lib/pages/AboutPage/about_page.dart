@@ -89,15 +89,18 @@ class _AboutPageState extends State<AboutPage> {
                 ),
                 const SizedBox(height: 10),
                 Center(
-                  child: Text(
-                    "victorzarzar".tr(),
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.jetBrainsMono(
-                      textStyle: TextStyle(
-                        fontSize: 10,
-                        color: notifier.isDark
-                            ? TextColor.secondaryColor
-                            : TextColor.primaryColor,
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 20),
+                    child: Text(
+                      "victorzarzar".tr(),
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.jetBrainsMono(
+                        textStyle: TextStyle(
+                          fontSize: 10,
+                          color: notifier.isDark
+                              ? TextColor.secondaryColor
+                              : TextColor.primaryColor,
+                        ),
                       ),
                     ),
                   ),

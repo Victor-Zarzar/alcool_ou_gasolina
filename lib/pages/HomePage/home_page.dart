@@ -110,60 +110,97 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    double myHeight = MediaQuery.of(context).size.height;
+    double myWidth = MediaQuery.of(context).size.width;
     return Consumer<UiProvider>(builder: (context, notifier, child) {
       return Scaffold(
         backgroundColor:
             notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
-        body: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const SizedBox(height: 20),
-              Image.asset(
-                "assets/imageone.png",
-                height: 140,
-                width: 190,
-              ),
-              const SizedBox(height: 10),
-              Text(
-                'whichonepaysmore'.tr(),
-                style: GoogleFonts.jetBrainsMono(
-                  textStyle: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
-                    color: notifier.isDark
-                        ? TextColor.secondaryColor
-                        : TextColor.primaryColor,
+        body: SizedBox(
+          height: myHeight,
+          width: myWidth,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(height: 20),
+                Image.asset(
+                  "assets/imageone.png",
+                  height: 140,
+                  width: 190,
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  'whichonepaysmore'.tr(),
+                  style: GoogleFonts.jetBrainsMono(
+                    textStyle: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                      color: notifier.isDark
+                          ? TextColor.secondaryColor
+                          : TextColor.primaryColor,
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 14),
-              Text(
-                "priceforlitre".tr(),
-                style: GoogleFonts.jetBrainsMono(
-                  textStyle: TextStyle(
-                    fontSize: 10,
-                    fontWeight: FontWeight.bold,
-                    color: notifier.isDark
-                        ? TextColor.secondaryColor
-                        : TextColor.primaryColor,
+                const SizedBox(height: 14),
+                Text(
+                  "priceforlitre".tr(),
+                  style: GoogleFonts.jetBrainsMono(
+                    textStyle: TextStyle(
+                      fontSize: 10,
+                      fontWeight: FontWeight.bold,
+                      color: notifier.isDark
+                          ? TextColor.secondaryColor
+                          : TextColor.primaryColor,
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 20),
-              Center(
-                child: SizedBox(
+                const SizedBox(height: 20),
+                Center(
+                  child: SizedBox(
+                    height: 50,
+                    width: 180,
+                    child: TextField(
+                      cursorColor: notifier.isDark
+                          ? FormColor.secondaryColor
+                          : FormColor.primaryColor,
+                      controller: gasolineController,
+                      keyboardType:
+                          const TextInputType.numberWithOptions(decimal: true),
+                      decoration: InputDecoration(
+                        labelText: 'gasoline'.tr(),
+                        labelStyle: TextStyle(
+                          fontSize: 10,
+                          color: notifier.isDark
+                              ? TextColor.secondaryColor
+                              : TextColor.primaryColor,
+                        ),
+                        border: const OutlineInputBorder(),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: notifier.isDark
+                                ? FormColor.secondaryColor
+                                : FormColor.primaryColor,
+                            width: 2,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 15),
+                SizedBox(
                   height: 50,
                   width: 180,
                   child: TextField(
                     cursorColor: notifier.isDark
                         ? FormColor.secondaryColor
                         : FormColor.primaryColor,
-                    controller: gasolineController,
+                    controller: alcoholController,
                     keyboardType:
                         const TextInputType.numberWithOptions(decimal: true),
                     decoration: InputDecoration(
-                      labelText: 'gasoline'.tr(),
+                      labelText: 'alcohol'.tr(),
                       labelStyle: TextStyle(
                         fontSize: 10,
                         color: notifier.isDark
@@ -182,78 +219,46 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 15),
-              SizedBox(
-                height: 50,
-                width: 180,
-                child: TextField(
-                  cursorColor: notifier.isDark
-                      ? FormColor.secondaryColor
-                      : FormColor.primaryColor,
-                  controller: alcoholController,
-                  keyboardType:
-                      const TextInputType.numberWithOptions(decimal: true),
-                  decoration: InputDecoration(
-                    labelText: 'alcohol'.tr(),
-                    labelStyle: TextStyle(
-                      fontSize: 10,
-                      color: notifier.isDark
-                          ? TextColor.secondaryColor
-                          : TextColor.primaryColor,
-                    ),
-                    border: const OutlineInputBorder(),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: notifier.isDark
-                            ? FormColor.secondaryColor
-                            : FormColor.primaryColor,
-                        width: 2,
+                const SizedBox(height: 10),
+                GFButton(
+                  color: notifier.isDark
+                      ? ButtonColor.primaryColor
+                      : ButtonColor.secondaryColor,
+                  shape: GFButtonShape.pills,
+                  onPressed: loading ? null : handleCalc,
+                  child: Text(
+                    'calculate'.tr(),
+                    style: GoogleFonts.jetBrainsMono(
+                      textStyle: TextStyle(
+                        fontSize: 10,
+                        fontWeight: FontWeight.bold,
+                        color: TextColor.secondaryColor,
                       ),
                     ),
-                    
                   ),
                 ),
-              ),
-              const SizedBox(height: 10),
-              GFButton(
-                color: notifier.isDark
-                    ? ButtonColor.primaryColor
-                    : ButtonColor.secondaryColor,
-                shape: GFButtonShape.pills,
-                onPressed: loading ? null : handleCalc,
-                child: Text(
-                  'calculate'.tr(),
-                  style: GoogleFonts.jetBrainsMono(
-                    textStyle: TextStyle(
-                      fontSize: 10,
-                      fontWeight: FontWeight.bold,
-                      color: TextColor.secondaryColor,
+                const SizedBox(height: 10),
+                GFButton(
+                  color: notifier.isDark
+                      ? ButtonColor.primaryColor
+                      : ButtonColor.secondaryColor,
+                  shape: GFButtonShape.pills,
+                  onPressed: clearResult,
+                  child: Text(
+                    'clearresult'.tr(),
+                    style: GoogleFonts.jetBrainsMono(
+                      textStyle: TextStyle(
+                        fontSize: 10,
+                        fontWeight: FontWeight.bold,
+                        color: TextColor.secondaryColor,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 10),
-              GFButton(
-                color: notifier.isDark
-                    ? ButtonColor.primaryColor
-                    : ButtonColor.secondaryColor,
-                shape: GFButtonShape.pills,
-                onPressed: clearResult,
-                child: Text(
-                  'clearresult'.tr(),
-                  style: GoogleFonts.jetBrainsMono(
-                    textStyle: TextStyle(
-                      fontSize: 10,
-                      fontWeight: FontWeight.bold,
-                      color: TextColor.secondaryColor,
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 10),
-              Text(resultText),
-            ],
+                const SizedBox(height: 10),
+                Text(resultText),
+              ],
+            ),
           ),
         ),
       );

@@ -80,9 +80,10 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
     }
 
     double consumption = distance / fuel;
-
+    
     setState(() {
-      resultText = 'Consumo: ${consumption.toStringAsFixed(2)} Km/l';
+      resultText =
+          '${'consumption'.tr()}: ${consumption.toStringAsFixed(2)} Km/l';
       loading = false;
     });
   }
@@ -199,14 +200,16 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
                         : ButtonColor.secondaryColor,
                     shape: GFButtonShape.pills,
                     onPressed: loading ? null : handleCalc,
-                    child: Text('calculate'.tr(),
-                        style: GoogleFonts.jetBrainsMono(
-                          textStyle: TextStyle(
-                            fontSize: 10,
-                            fontWeight: FontWeight.bold,
-                            color: TextColor.secondaryColor,
-                          ),
-                        )),
+                    child: Text(
+                      'calculate'.tr(),
+                      style: GoogleFonts.jetBrainsMono(
+                        textStyle: TextStyle(
+                          fontSize: 10,
+                          fontWeight: FontWeight.bold,
+                          color: TextColor.secondaryColor,
+                        ),
+                      ),
+                    ),
                   ),
                   const SizedBox(height: 10),
                   GFButton(

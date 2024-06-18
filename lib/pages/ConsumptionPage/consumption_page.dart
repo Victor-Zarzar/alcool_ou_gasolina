@@ -24,8 +24,10 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
       loading = true;
     });
 
-    double distance = double.tryParse(distanceController.text) ?? 0;
-    double fuel = double.tryParse(fuelController.text) ?? 0;
+    double distance =
+        double.tryParse(distanceController.text.replaceAll(',', '.')) ?? 0;
+    double fuel =
+        double.tryParse(fuelController.text.replaceAll(',', '.')) ?? 0;
 
     if (distance == 0 || fuel == 0) {
       setState(() {
@@ -41,7 +43,7 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
                     ? AppTheme.thirdColor
                     : AppTheme.primaryColor,
                 content: Text(
-                  'fillinbothdetails'.tr(),
+                  'pleasefillinallfields'.tr(),
                   style: GoogleFonts.jetBrainsMono(
                     textStyle: TextStyle(
                       fontSize: 12,
@@ -130,7 +132,7 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
                 children: [
                   const SizedBox(height: 20),
                   Image.asset(
-                    "assets/fuel.png",
+                    "assets/gas.png",
                     height: 140,
                     width: 190,
                   ),

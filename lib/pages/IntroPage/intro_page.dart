@@ -171,11 +171,11 @@ class _IntroPageState extends State<IntroPage> {
               Expanded(
                 child: Container(
                   height: 300,
-                  width: 280,
+                  width: 350,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(0),
                     image: const DecorationImage(
-                      image: AssetImage('assets/fuel.png'),
+                      image: AssetImage('assets/gas.png'),
                       fit: BoxFit.contain,
                     ),
                   ),

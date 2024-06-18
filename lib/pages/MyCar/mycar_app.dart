@@ -38,12 +38,67 @@ class _MyCarPageState extends State<MyCarPage> {
   }
 
   Future<void> _saveCarInfo(BuildContext context) async {
+    if (_plateController.text.isEmpty ||
+        _modelController.text.isEmpty ||
+        _yearController.text.isEmpty ||
+        _consumptionController.text.isEmpty) {
+      _showValidationErrorDialog();
+      return;
+    }
+
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString('plate', _plateController.text);
     await prefs.setString('model', _modelController.text);
     await prefs.setInt('year', int.tryParse(_yearController.text) ?? 0);
     await prefs.setString('consumption', _consumptionController.text);
     await _showSaveConfirmationDialog();
+  }
+
+  Future<void> _showValidationErrorDialog() async {
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Consumer<UiProvider>(
+          builder: (context, notifier, child) {
+            return AlertDialog(
+              backgroundColor:
+                  notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
+              content: Text(
+                'pleasefillinallfields'.tr(),
+                style: GoogleFonts.jetBrainsMono(
+                  textStyle: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    color: notifier.isDark
+                        ? TextColor.secondaryColor
+                        : TextColor.primaryColor,
+                  ),
+                ),
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text(
+                    'OK',
+                    style: GoogleFonts.jetBrainsMono(
+                      textStyle: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                        color: notifier.isDark
+                            ? TextColor.secondaryColor
+                            : TextColor.primaryColor,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            );
+          },
+        );
+      },
+    );
   }
 
   Future<void> _showSaveConfirmationDialog() async {
@@ -94,6 +149,14 @@ class _MyCarPageState extends State<MyCarPage> {
   }
 
   Future<void> _deleteCarInfo(BuildContext context) async {
+    if (_plateController.text.isEmpty &&
+        _modelController.text.isEmpty &&
+        _yearController.text.isEmpty &&
+        _consumptionController.text.isEmpty) {
+      _showNoDataToDeleteDialog();
+      return;
+    }
+
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.remove('plate');
     await prefs.remove('model');
@@ -106,6 +169,53 @@ class _MyCarPageState extends State<MyCarPage> {
       _consumptionController.clear();
     });
     await _showDeleteConfirmationDialog();
+  }
+
+  Future<void> _showNoDataToDeleteDialog() async {
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Consumer<UiProvider>(
+          builder: (context, notifier, child) {
+            return AlertDialog(
+              backgroundColor:
+                  notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
+              content: Text(
+                'nodatatodelete'.tr(),
+                style: GoogleFonts.jetBrainsMono(
+                  textStyle: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    color: notifier.isDark
+                        ? TextColor.secondaryColor
+                        : TextColor.primaryColor,
+                  ),
+                ),
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text(
+                    'OK',
+                    style: GoogleFonts.jetBrainsMono(
+                      textStyle: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                        color: notifier.isDark
+                            ? TextColor.secondaryColor
+                            : TextColor.primaryColor,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            );
+          },
+        );
+      },
+    );
   }
 
   Future<void> _showDeleteConfirmationDialog() async {

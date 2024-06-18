@@ -21,29 +21,68 @@ class _SettingsPageState extends State<SettingsPage> {
     double myWidth = MediaQuery.of(context).size.width;
     return Consumer<UiProvider>(
       builder: (context, notifier, child) {
-        return GFDrawer(
-          color: notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
-          child: SizedBox(
-            height: myHeight,
-            width: myWidth,
-            child: ListView(
-              padding: EdgeInsets.zero,
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(top: 40),
-                  child: ListTile(
-                    trailing: Switch(
-                      activeColor: SwitchColor.primaryColor,
-                      inactiveTrackColor: SwitchColor.secondaryColor,
-                      value: notifier.isDark,
-                      onChanged: (value) => notifier.changeTheme(),
+        return Scaffold(
+          appBar: GFAppBar(
+            backgroundColor:
+                notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
+            automaticallyImplyLeading: false,
+            centerTitle: true,
+            title: Text(
+              'settings'.tr(),
+              style: GoogleFonts.jetBrainsMono(
+                textStyle: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  color: notifier.isDark
+                      ? TextColor.secondaryColor
+                      : TextColor.primaryColor,
+                ),
+              ),
+            ),
+          ),
+          body: Container(
+            color:
+                notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
+            child: SizedBox(
+              height: myHeight,
+              width: myWidth,
+              child: ListView(
+                padding: EdgeInsets.zero,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(top: 40),
+                    child: ListTile(
+                      trailing: Switch(
+                        activeColor: SwitchColor.primaryColor,
+                        inactiveTrackColor: SwitchColor.secondaryColor,
+                        value: notifier.isDark,
+                        onChanged: (value) => notifier.changeTheme(),
+                      ),
+                      leading: const Icon(
+                        Icons.dark_mode,
+                        size: 20,
+                      ),
+                      title: Text(
+                        'darkmode'.tr(),
+                        style: GoogleFonts.jetBrainsMono(
+                          textStyle: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                            color: notifier.isDark
+                                ? TextColor.secondaryColor
+                                : TextColor.primaryColor,
+                          ),
+                        ),
+                      ),
                     ),
+                  ),
+                  ListTile(
                     leading: const Icon(
-                      Icons.dark_mode,
+                      Icons.info,
                       size: 20,
                     ),
                     title: Text(
-                      'darkmode'.tr(),
+                      'about'.tr(),
                       style: GoogleFonts.jetBrainsMono(
                         textStyle: TextStyle(
                           fontSize: 12,
@@ -54,35 +93,17 @@ class _SettingsPageState extends State<SettingsPage> {
                         ),
                       ),
                     ),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const AboutPage(),
+                        ),
+                      );
+                    },
                   ),
-                ),
-                ListTile(
-                  leading: const Icon(
-                    Icons.info,
-                    size: 20,
-                  ),
-                  title: Text(
-                    'about'.tr(),
-                    style: GoogleFonts.jetBrainsMono(
-                      textStyle: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                        color: notifier.isDark
-                            ? TextColor.secondaryColor
-                            : TextColor.primaryColor,
-                      ),
-                    ),
-                  ),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const AboutPage(),
-                      ),
-                    );
-                  },
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         );

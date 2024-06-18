@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
                     ? AppTheme.thirdColor
                     : AppTheme.primaryColor,
                 content: Text(
-                  'fillinbothdetails'.tr(),
+                  'pleasefillinallfields'.tr(),
                   style: GoogleFonts.jetBrainsMono(
                     textStyle: TextStyle(
                       fontSize: 12,

@@ -39,7 +39,7 @@ class _LitersPageState extends State<LitersPage> {
                     ? AppTheme.thirdColor
                     : AppTheme.primaryColor,
                 content: Text(
-                  'fillinbothdetails'.tr(),
+                  'pleasefillinallfields'.tr(),
                   style: GoogleFonts.jetBrainsMono(
                     textStyle: TextStyle(
                       fontSize: 12,
@@ -131,7 +131,7 @@ class _LitersPageState extends State<LitersPage> {
                 children: [
                   const SizedBox(height: 20),
                   Image.asset(
-                    "assets/gas.png",
+                    "assets/fuel.png",
                     height: 140,
                     width: 190,
                   ),

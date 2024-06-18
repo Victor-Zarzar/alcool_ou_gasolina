@@ -88,11 +88,11 @@ class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
                   Icons.home,
                   size: 18,
                 ),
-                child: FittedBox(
-                  fit: BoxFit.fitWidth,
-                  child: Text(
-                    'home'.tr(),
-                  ),
+                child: Text(
+                  'home'.tr(),
+                  style: GoogleFonts.jetBrainsMono(),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
                 ),
               ),
               Tab(
@@ -100,11 +100,11 @@ class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
                   Icons.car_repair,
                   size: 18,
                 ),
-                child: FittedBox(
-                  fit: BoxFit.fitWidth,
-                  child: Text(
-                    'consumption'.tr(),
-                  ),
+                child: Text(
+                  'consumption'.tr(),
+                  style: GoogleFonts.jetBrainsMono(),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
                 ),
               ),
               Tab(
@@ -112,11 +112,11 @@ class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
                   Icons.local_gas_station_outlined,
                   size: 18,
                 ),
-                child: FittedBox(
-                  fit: BoxFit.fitWidth,
-                  child: Text(
-                    'liters'.tr(),
-                  ),
+                child: Text(
+                  'liters'.tr(),
+                  style: GoogleFonts.jetBrainsMono(),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
                 ),
               ),
               Tab(
@@ -124,11 +124,11 @@ class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
                   Icons.car_rental,
                   size: 18,
                 ),
-                child: FittedBox(
-                  fit: BoxFit.fitWidth,
-                  child: Text(
-                    'mycar'.tr(),
-                  ),
+                child: Text(
+                  'mycar'.tr(),
+                  style: GoogleFonts.jetBrainsMono(),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
                 ),
               ),
               Tab(
@@ -136,11 +136,11 @@ class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
                   Icons.settings,
                   size: 18,
                 ),
-                child: FittedBox(
-                  fit: BoxFit.fitWidth,
-                  child: Text(
-                    'settings'.tr(),
-                  ),
+                child: Text(
+                  'settings'.tr(),
+                  style: GoogleFonts.jetBrainsMono(),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
                 ),
               ),
             ],

@@ -82,7 +82,7 @@ class _LitersPageState extends State<LitersPage> {
     double totalLiters = gas / price;
 
     setState(() {
-      resultText = 'totalliters'.tr(args: [totalLiters.toStringAsFixed(2)]);
+      resultText = '${'totalliters'.tr()} ${totalLiters.toStringAsFixed(2)}';
       loading = false;
     });
   }
@@ -189,7 +189,7 @@ class _LitersPageState extends State<LitersPage> {
                         keyboardType: const TextInputType.numberWithOptions(
                             decimal: true),
                         decoration: InputDecoration(
-                          labelText: 'priceperliter'.tr(),
+                          labelText: 'priceperlitre'.tr(),
                           labelStyle: TextStyle(
                             fontSize: 10,
                             color: notifier.isDark

@@ -113,6 +113,24 @@ class _HomePageState extends State<HomePage> {
     return Consumer<UiProvider>(
       builder: (context, notifier, child) {
         return Scaffold(
+          appBar: GFAppBar(
+            backgroundColor:
+                notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
+            automaticallyImplyLeading: false,
+            centerTitle: true,
+            title: Text(
+              'titleappbar'.tr(),
+              style: GoogleFonts.jetBrainsMono(
+                textStyle: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  color: notifier.isDark
+                      ? TextColor.secondaryColor
+                      : TextColor.primaryColor,
+                ),
+              ),
+            ),
+          ),
           backgroundColor:
               notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
           body: SizedBox(

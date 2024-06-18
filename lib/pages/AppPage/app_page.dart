@@ -34,24 +34,6 @@ class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
     return Consumer<UiProvider>(
       builder: (context, notifier, child) {
         return Scaffold(
-          appBar: GFAppBar(
-            backgroundColor:
-                notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
-            automaticallyImplyLeading: false,
-            centerTitle: true,
-            title: Text(
-              'titleappbar'.tr(),
-              style: GoogleFonts.jetBrainsMono(
-                textStyle: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                  color: notifier.isDark
-                      ? TextColor.secondaryColor
-                      : TextColor.primaryColor,
-                ),
-              ),
-            ),
-          ),
           body: SizedBox(
             height: myHeight,
             width: myWidth,
@@ -80,7 +62,7 @@ class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
                 ? TextColor.secondaryColor
                 : TextColor.primaryColor,
             labelStyle: GoogleFonts.jetBrainsMono(
-              textStyle: const TextStyle(fontSize: 10),
+              textStyle: const TextStyle(fontSize: 9),
             ),
             tabs: [
               Tab(

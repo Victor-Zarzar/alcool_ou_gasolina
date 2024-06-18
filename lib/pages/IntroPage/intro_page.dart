@@ -33,9 +33,8 @@ class _IntroPageState extends State<IntroPage> {
     return Consumer<UiProvider>(
       builder: (context, notifier, child) {
         return Scaffold(
-          backgroundColor: notifier.isDark
-                        ? AppTheme.thirdColor
-                        : AppTheme.primaryColor,
+          backgroundColor:
+              notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
           body: SingleChildScrollView(
             child: SizedBox(
               height: myHeight,

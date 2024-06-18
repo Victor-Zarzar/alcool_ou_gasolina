@@ -1,6 +1,7 @@
 import 'package:alcool_ou_gasolina/components/AppTheme/app_theme.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:getwidget/getwidget.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -17,7 +18,8 @@ class _MyCarPageState extends State<MyCarPage> {
   late final TextEditingController _plateController = TextEditingController();
   late final TextEditingController _modelController = TextEditingController();
   late final TextEditingController _yearController = TextEditingController();
-  late final TextEditingController _consumptionController = TextEditingController();
+  late final TextEditingController _consumptionController =
+      TextEditingController();
 
   @override
   void initState() {
@@ -165,77 +167,80 @@ class _MyCarPageState extends State<MyCarPage> {
           child: Scaffold(
             backgroundColor:
                 notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
-            appBar: AppBar(
-              backgroundColor: notifier.isDark
-                  ? AppTheme.secondaryColor
-                  : AppTheme.primaryColor,
+            appBar: GFAppBar(
+              backgroundColor:
+                  notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
               automaticallyImplyLeading: false,
-              actions: [
-                Text(
-                  "save".tr(),
-                  style: GoogleFonts.jetBrainsMono(
-                    textStyle: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
-                      color: notifier.isDark
-                          ? TextColor.secondaryColor
-                          : TextColor.primaryColor,
-                    ),
+              centerTitle: true,
+              title: Text(
+                'mycar'.tr(),
+                style: GoogleFonts.jetBrainsMono(
+                  textStyle: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: notifier.isDark
+                        ? TextColor.secondaryColor
+                        : TextColor.primaryColor,
                   ),
                 ),
-                IconButton(
-                  icon: const Icon(
-                  Icons.save,
-                  size: 22,
-                  ),
-                  onPressed: () async {
-                    await _saveCarInfo(context);
-                  },
-                ),
-                Text(
-                  "delete".tr(),
-                  style: GoogleFonts.jetBrainsMono(
-                    textStyle: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
-                      color: notifier.isDark
-                          ? TextColor.secondaryColor
-                          : TextColor.primaryColor,
-                    ),
-                  ),
-                ),
-                IconButton(
-                  icon: const Icon(
-                  Icons.delete,
-                  size: 22,
-                  ),
-                  onPressed: () async {
-                    await _deleteCarInfo(context);
-                  },
-                ),
-              ],
+              ),
             ),
             body: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const SizedBox(height: 4),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        "save".tr(),
+                        style: GoogleFonts.jetBrainsMono(
+                          textStyle: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                            color: notifier.isDark
+                                ? TextColor.secondaryColor
+                                : TextColor.primaryColor,
+                          ),
+                        ),
+                      ),
+                      IconButton(
+                        icon: const Icon(
+                          Icons.save,
+                          size: 22,
+                        ),
+                        onPressed: () async {
+                          await _saveCarInfo(context);
+                        },
+                      ),
+                      Text(
+                        "delete".tr(),
+                        style: GoogleFonts.jetBrainsMono(
+                          textStyle: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                            color: notifier.isDark
+                                ? TextColor.secondaryColor
+                                : TextColor.primaryColor,
+                          ),
+                        ),
+                      ),
+                      IconButton(
+                        icon: const Icon(
+                          Icons.delete,
+                          size: 22,
+                        ),
+                        onPressed: () async {
+                          await _deleteCarInfo(context);
+                        },
+                      ),
+                      const SizedBox(height: 4),
+                    ],
+                  ),
                   Image.asset(
                     "assets/car.png",
                     height: 140,
                     width: 190,
-                  ),
-                  Text(
-                    'mycar'.tr(),
-                    style: GoogleFonts.jetBrainsMono(
-                      textStyle: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: notifier.isDark
-                            ? TextColor.secondaryColor
-                            : TextColor.primaryColor,
-                      ),
-                    ),
                   ),
                   const SizedBox(height: 20),
                   Center(

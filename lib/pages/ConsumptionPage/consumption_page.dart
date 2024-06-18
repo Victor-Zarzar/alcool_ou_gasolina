@@ -101,6 +101,24 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
     return Consumer<UiProvider>(
       builder: (context, notifier, child) {
         return Scaffold(
+          appBar: GFAppBar(
+            backgroundColor:
+                notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
+            automaticallyImplyLeading: false,
+            centerTitle: true,
+            title: Text(
+              'calculateconsumption'.tr(),
+              style: GoogleFonts.jetBrainsMono(
+                textStyle: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  color: notifier.isDark
+                      ? TextColor.secondaryColor
+                      : TextColor.primaryColor,
+                ),
+              ),
+            ),
+          ),
           backgroundColor:
               notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
           body: SizedBox(
@@ -118,7 +136,7 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    'calculateconsumption'.tr(),
+                    'averageconsumption'.tr(),
                     style: GoogleFonts.jetBrainsMono(
                       textStyle: TextStyle(
                         fontSize: 12,

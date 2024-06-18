@@ -2,6 +2,7 @@ import 'package:alcool_ou_gasolina/components/AppTheme/app_theme.dart';
 import 'package:alcool_ou_gasolina/components/DarkTheme/darktheme_provider_app.dart';
 import 'package:alcool_ou_gasolina/pages/ConsumptionPage/consumption_page.dart';
 import 'package:alcool_ou_gasolina/pages/HomePage/home_page.dart';
+import 'package:alcool_ou_gasolina/pages/LitersPage/liters_page.dart';
 import 'package:alcool_ou_gasolina/pages/MyCar/mycar_app.dart';
 import 'package:alcool_ou_gasolina/pages/SettingsPage/settings_app.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -23,7 +24,7 @@ class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    tabController = TabController(length: 4, vsync: this);
+    tabController = TabController(length: 5, vsync: this);
   }
 
   @override
@@ -34,7 +35,8 @@ class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
       builder: (context, notifier, child) {
         return Scaffold(
           appBar: GFAppBar(
-            backgroundColor: notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
+            backgroundColor:
+                notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
             automaticallyImplyLeading: false,
             centerTitle: true,
             title: Text(
@@ -43,9 +45,9 @@ class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
                 textStyle: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
-                   color: notifier.isDark
-                                ? TextColor.secondaryColor
-                                : TextColor.primaryColor,
+                  color: notifier.isDark
+                      ? TextColor.secondaryColor
+                      : TextColor.primaryColor,
                 ),
               ),
             ),
@@ -58,6 +60,7 @@ class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
               children: const <Widget>[
                 HomePage(),
                 ConsumptionPage(),
+                LitersPage(),
                 MyCarPage(),
                 SettingsPage(),
               ],
@@ -65,12 +68,11 @@ class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
           ),
           bottomNavigationBar: GFTabBar(
             labelPadding: EdgeInsets.zero,
-            length: 4,
+            length: 5,
             tabBarHeight: 60,
             controller: tabController,
-            tabBarColor: notifier.isDark
-                ? AppTheme.thirdColor
-                : AppTheme.primaryColor,
+            tabBarColor:
+                notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
             labelColor: notifier.isDark
                 ? TextColor.secondaryColor
                 : TextColor.primaryColor,
@@ -86,22 +88,34 @@ class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
                   Icons.home,
                   size: 18,
                 ),
-               child: FittedBox(
+                child: FittedBox(
                   fit: BoxFit.fitWidth,
                   child: Text(
                     'home'.tr(),
                   ),
                 ),
               ),
-               Tab(
+              Tab(
                 icon: const Icon(
-                  Icons.gas_meter_outlined,
+                  Icons.car_repair,
                   size: 18,
                 ),
                 child: FittedBox(
                   fit: BoxFit.fitWidth,
                   child: Text(
                     'consumption'.tr(),
+                  ),
+                ),
+              ),
+              Tab(
+                icon: const Icon(
+                  Icons.local_gas_station_outlined,
+                  size: 18,
+                ),
+                child: FittedBox(
+                  fit: BoxFit.fitWidth,
+                  child: Text(
+                    'liters'.tr(),
                   ),
                 ),
               ),
@@ -122,7 +136,7 @@ class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
                   Icons.settings,
                   size: 18,
                 ),
-                 child: FittedBox(
+                child: FittedBox(
                   fit: BoxFit.fitWidth,
                   child: Text(
                     'settings'.tr(),

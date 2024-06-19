@@ -51,7 +51,7 @@ class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
           bottomNavigationBar: GFTabBar(
             labelPadding: EdgeInsets.zero,
             length: 5,
-            tabBarHeight: 60,
+            tabBarHeight: 70,
             controller: tabController,
             tabBarColor:
                 notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,

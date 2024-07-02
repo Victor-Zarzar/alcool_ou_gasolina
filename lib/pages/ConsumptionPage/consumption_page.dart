@@ -40,8 +40,8 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
             builder: (context, notifier, child) {
               return AlertDialog(
                 backgroundColor: notifier.isDark
-                    ? AppTheme.thirdColor
-                    : AppTheme.primaryColor,
+                    ? ButtonColor.primaryColor
+                    : ButtonColor.secondaryColor,
                 content: Text(
                   'pleasefillinallfields'.tr(),
                   style: GoogleFonts.jetBrainsMono(
@@ -50,7 +50,7 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
                       fontWeight: FontWeight.bold,
                       color: notifier.isDark
                           ? TextColor.secondaryColor
-                          : TextColor.primaryColor,
+                          : TextColor.secondaryColor,
                     ),
                   ),
                 ),
@@ -67,7 +67,7 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
                           fontWeight: FontWeight.bold,
                           color: notifier.isDark
                               ? TextColor.secondaryColor
-                              : TextColor.primaryColor,
+                              : TextColor.secondaryColor,
                         ),
                       ),
                     ),
@@ -92,8 +92,60 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
 
   void clearResult() {
     setState(() {
-      resultText = '';
+      if (resultText.isEmpty) {
+        _showNoDataToDeleteDialog();
+      } else {
+        resultText = '';
+      }
     });
+  }
+
+  Future<void> _showNoDataToDeleteDialog() async {
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Consumer<UiProvider>(
+          builder: (context, notifier, child) {
+            return AlertDialog(
+              backgroundColor: notifier.isDark
+                  ? ButtonColor.primaryColor
+                  : ButtonColor.secondaryColor,
+              content: Text(
+                'nodatatodelete'.tr(),
+                style: GoogleFonts.jetBrainsMono(
+                  textStyle: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    color: notifier.isDark
+                        ? TextColor.secondaryColor
+                        : TextColor.secondaryColor,
+                  ),
+                ),
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text(
+                    'OK',
+                    style: GoogleFonts.jetBrainsMono(
+                      textStyle: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                        color: notifier.isDark
+                            ? TextColor.secondaryColor
+                            : TextColor.secondaryColor,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            );
+          },
+        );
+      },
+    );
   }
 
   @override
@@ -221,7 +273,7 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
                       color: notifier.isDark
                           ? ButtonColor.primaryColor
                           : ButtonColor.secondaryColor,
-                      shape: GFButtonShape.pills,
+                      shape: GFButtonShape.square,
                       onPressed: loading ? null : handleCalc,
                       child: Text(
                         'calculate'.tr(),
@@ -243,7 +295,7 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
                       color: notifier.isDark
                           ? ButtonColor.primaryColor
                           : ButtonColor.secondaryColor,
-                      shape: GFButtonShape.pills,
+                      shape: GFButtonShape.square,
                       onPressed: clearResult,
                       child: Text(
                         'clearresult'.tr(),

@@ -61,8 +61,9 @@ class _MyCarPageState extends State<MyCarPage> {
         return Consumer<UiProvider>(
           builder: (context, notifier, child) {
             return AlertDialog(
-              backgroundColor:
-                  notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
+              backgroundColor: notifier.isDark
+                  ? ButtonColor.primaryColor
+                  : ButtonColor.secondaryColor,
               content: Text(
                 'pleasefillinallfields'.tr(),
                 style: GoogleFonts.jetBrainsMono(
@@ -71,7 +72,7 @@ class _MyCarPageState extends State<MyCarPage> {
                     fontWeight: FontWeight.bold,
                     color: notifier.isDark
                         ? TextColor.secondaryColor
-                        : TextColor.primaryColor,
+                        : TextColor.secondaryColor,
                   ),
                 ),
               ),
@@ -88,7 +89,7 @@ class _MyCarPageState extends State<MyCarPage> {
                         fontWeight: FontWeight.bold,
                         color: notifier.isDark
                             ? TextColor.secondaryColor
-                            : TextColor.primaryColor,
+                            : TextColor.secondaryColor,
                       ),
                     ),
                   ),
@@ -108,8 +109,9 @@ class _MyCarPageState extends State<MyCarPage> {
         return Consumer<UiProvider>(
           builder: (context, notifier, child) {
             return AlertDialog(
-              backgroundColor:
-                  notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
+              backgroundColor: notifier.isDark
+                  ? ButtonColor.primaryColor
+                  : ButtonColor.secondaryColor,
               content: Text(
                 'datasavedsuccessfully'.tr(),
                 style: GoogleFonts.jetBrainsMono(
@@ -118,7 +120,7 @@ class _MyCarPageState extends State<MyCarPage> {
                     fontWeight: FontWeight.bold,
                     color: notifier.isDark
                         ? TextColor.secondaryColor
-                        : TextColor.primaryColor,
+                        : TextColor.secondaryColor,
                   ),
                 ),
               ),
@@ -135,7 +137,7 @@ class _MyCarPageState extends State<MyCarPage> {
                         fontWeight: FontWeight.bold,
                         color: notifier.isDark
                             ? TextColor.secondaryColor
-                            : TextColor.primaryColor,
+                            : TextColor.secondaryColor,
                       ),
                     ),
                   ),
@@ -178,8 +180,9 @@ class _MyCarPageState extends State<MyCarPage> {
         return Consumer<UiProvider>(
           builder: (context, notifier, child) {
             return AlertDialog(
-              backgroundColor:
-                  notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
+              backgroundColor: notifier.isDark
+                  ? ButtonColor.primaryColor
+                  : ButtonColor.secondaryColor,
               content: Text(
                 'nodatatodelete'.tr(),
                 style: GoogleFonts.jetBrainsMono(
@@ -188,7 +191,7 @@ class _MyCarPageState extends State<MyCarPage> {
                     fontWeight: FontWeight.bold,
                     color: notifier.isDark
                         ? TextColor.secondaryColor
-                        : TextColor.primaryColor,
+                        : TextColor.secondaryColor,
                   ),
                 ),
               ),
@@ -205,7 +208,7 @@ class _MyCarPageState extends State<MyCarPage> {
                         fontWeight: FontWeight.bold,
                         color: notifier.isDark
                             ? TextColor.secondaryColor
-                            : TextColor.primaryColor,
+                            : TextColor.secondaryColor,
                       ),
                     ),
                   ),
@@ -225,8 +228,9 @@ class _MyCarPageState extends State<MyCarPage> {
         return Consumer<UiProvider>(
           builder: (context, notifier, child) {
             return AlertDialog(
-              backgroundColor:
-                  notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
+              backgroundColor: notifier.isDark
+                  ? ButtonColor.primaryColor
+                  : ButtonColor.secondaryColor,
               content: Text(
                 'successfullydeleted'.tr(),
                 style: GoogleFonts.jetBrainsMono(
@@ -235,7 +239,7 @@ class _MyCarPageState extends State<MyCarPage> {
                     fontWeight: FontWeight.bold,
                     color: notifier.isDark
                         ? TextColor.secondaryColor
-                        : TextColor.primaryColor,
+                        : TextColor.secondaryColor,
                   ),
                 ),
               ),
@@ -252,7 +256,7 @@ class _MyCarPageState extends State<MyCarPage> {
                         fontWeight: FontWeight.bold,
                         color: notifier.isDark
                             ? TextColor.secondaryColor
-                            : TextColor.primaryColor,
+                            : TextColor.secondaryColor,
                       ),
                     ),
                   ),
@@ -299,53 +303,66 @@ class _MyCarPageState extends State<MyCarPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text(
-                        "save".tr(),
-                        style: GoogleFonts.jetBrainsMono(
-                          textStyle: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold,
+                  Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        GFButton(
+                          color: notifier.isDark
+                              ? ButtonColor.primaryColor
+                              : ButtonColor.secondaryColor,
+                          onPressed: () async {
+                            await _saveCarInfo(context);
+                          },
+                          text: "save".tr(),
+                          textStyle: GoogleFonts.jetBrainsMono(
+                            textStyle: TextStyle(
+                              fontSize: 10,
+                              fontWeight: FontWeight.bold,
+                              color: notifier.isDark
+                                  ? TextColor.secondaryColor
+                                  : TextColor.secondaryColor,
+                            ),
+                          ),
+                          icon: Icon(
+                            Icons.save,
                             color: notifier.isDark
                                 ? TextColor.secondaryColor
-                                : TextColor.primaryColor,
+                                : TextColor.secondaryColor,
+                            size: 18,
                           ),
+                          shape: GFButtonShape.square,
                         ),
-                      ),
-                      IconButton(
-                        icon: const Icon(
-                          Icons.save,
-                          size: 22,
-                        ),
-                        onPressed: () async {
-                          await _saveCarInfo(context);
-                        },
-                      ),
-                      Text(
-                        "delete".tr(),
-                        style: GoogleFonts.jetBrainsMono(
-                          textStyle: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold,
+                        const SizedBox(width: 10),
+                        GFButton(
+                          color: notifier.isDark
+                              ? ButtonColor.primaryColor
+                              : ButtonColor.secondaryColor,
+                          onPressed: () async {
+                            await _deleteCarInfo(context);
+                          },
+                          text: "delete".tr(),
+                          textStyle: GoogleFonts.jetBrainsMono(
+                            textStyle: TextStyle(
+                              fontSize: 10,
+                              fontWeight: FontWeight.bold,
+                              color: notifier.isDark
+                                  ? TextColor.secondaryColor
+                                  : TextColor.secondaryColor,
+                            ),
+                          ),
+                          icon: Icon(
+                            Icons.delete,
                             color: notifier.isDark
                                 ? TextColor.secondaryColor
-                                : TextColor.primaryColor,
+                                : TextColor.secondaryColor,
+                            size: 18,
                           ),
+                          shape: GFButtonShape.square,
                         ),
-                      ),
-                      IconButton(
-                        icon: const Icon(
-                          Icons.delete,
-                          size: 22,
-                        ),
-                        onPressed: () async {
-                          await _deleteCarInfo(context);
-                        },
-                      ),
-                      const SizedBox(height: 4),
-                    ],
+                      ],
+                    ),
                   ),
                   Image.asset(
                     "assets/car.png",

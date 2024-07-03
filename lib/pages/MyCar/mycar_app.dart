@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:keyboard_actions/keyboard_actions.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../components/DarkTheme/darktheme_provider_app.dart';
@@ -20,6 +21,19 @@ class _MyCarPageState extends State<MyCarPage> {
   late final TextEditingController _yearController = TextEditingController();
   late final TextEditingController _consumptionController =
       TextEditingController();
+  final _yearFocus = FocusNode();
+
+  KeyboardActionsConfig _buildKeyboardActionsConfig(
+      BuildContext context, bool isDark) {
+    return KeyboardActionsConfig(
+      keyboardBarColor: isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
+      actions: [
+        KeyboardActionsItem(
+          focusNode: _yearFocus,
+        ),
+      ],
+    );
+  }
 
   @override
   void initState() {
@@ -299,88 +313,120 @@ class _MyCarPageState extends State<MyCarPage> {
                 ),
               ),
             ),
-            body: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        GFButton(
-                          color: notifier.isDark
-                              ? ButtonColor.primaryColor
-                              : ButtonColor.secondaryColor,
-                          onPressed: () async {
-                            await _saveCarInfo(context);
-                          },
-                          text: "save".tr(),
-                          textStyle: GoogleFonts.jetBrainsMono(
-                            textStyle: TextStyle(
-                              fontSize: 10,
-                              fontWeight: FontWeight.bold,
+            body: KeyboardActions(
+              config: _buildKeyboardActionsConfig(context, notifier.isDark),
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          GFButton(
+                            color: notifier.isDark
+                                ? ButtonColor.primaryColor
+                                : ButtonColor.secondaryColor,
+                            onPressed: () async {
+                              await _saveCarInfo(context);
+                            },
+                            text: "save".tr(),
+                            textStyle: GoogleFonts.jetBrainsMono(
+                              textStyle: TextStyle(
+                                fontSize: 10,
+                                fontWeight: FontWeight.bold,
+                                color: notifier.isDark
+                                    ? TextColor.secondaryColor
+                                    : TextColor.secondaryColor,
+                              ),
+                            ),
+                            icon: Icon(
+                              Icons.save,
                               color: notifier.isDark
                                   ? TextColor.secondaryColor
                                   : TextColor.secondaryColor,
+                              size: 18,
                             ),
+                            shape: GFButtonShape.square,
                           ),
-                          icon: Icon(
-                            Icons.save,
+                          const SizedBox(width: 10),
+                          GFButton(
                             color: notifier.isDark
-                                ? TextColor.secondaryColor
-                                : TextColor.secondaryColor,
-                            size: 18,
-                          ),
-                          shape: GFButtonShape.square,
-                        ),
-                        const SizedBox(width: 10),
-                        GFButton(
-                          color: notifier.isDark
-                              ? ButtonColor.primaryColor
-                              : ButtonColor.secondaryColor,
-                          onPressed: () async {
-                            await _deleteCarInfo(context);
-                          },
-                          text: "delete".tr(),
-                          textStyle: GoogleFonts.jetBrainsMono(
-                            textStyle: TextStyle(
-                              fontSize: 10,
-                              fontWeight: FontWeight.bold,
+                                ? ButtonColor.primaryColor
+                                : ButtonColor.secondaryColor,
+                            onPressed: () async {
+                              await _deleteCarInfo(context);
+                            },
+                            text: "delete".tr(),
+                            textStyle: GoogleFonts.jetBrainsMono(
+                              textStyle: TextStyle(
+                                fontSize: 10,
+                                fontWeight: FontWeight.bold,
+                                color: notifier.isDark
+                                    ? TextColor.secondaryColor
+                                    : TextColor.secondaryColor,
+                              ),
+                            ),
+                            icon: Icon(
+                              Icons.delete,
                               color: notifier.isDark
                                   ? TextColor.secondaryColor
                                   : TextColor.secondaryColor,
+                              size: 18,
                             ),
+                            shape: GFButtonShape.square,
                           ),
-                          icon: Icon(
-                            Icons.delete,
-                            color: notifier.isDark
-                                ? TextColor.secondaryColor
-                                : TextColor.secondaryColor,
-                            size: 18,
-                          ),
-                          shape: GFButtonShape.square,
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                  Image.asset(
-                    "assets/car.png",
-                    height: 140,
-                    width: 190,
-                  ),
-                  const SizedBox(height: 20),
-                  Center(
-                    child: SizedBox(
+                    Image.asset(
+                      "assets/car.png",
+                      height: 140,
+                      width: 190,
+                    ),
+                    const SizedBox(height: 20),
+                    Center(
+                      child: SizedBox(
+                        height: 50,
+                        width: 180,
+                        child: TextField(
+                          cursorColor: notifier.isDark
+                              ? FormColor.secondaryColor
+                              : FormColor.primaryColor,
+                          controller: _plateController,
+                          decoration: InputDecoration(
+                            labelText: 'plate'.tr(),
+                            labelStyle: TextStyle(
+                              fontSize: 10,
+                              color: notifier.isDark
+                                  ? TextColor.secondaryColor
+                                  : TextColor.primaryColor,
+                            ),
+                            border: const OutlineInputBorder(),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: notifier.isDark
+                                    ? FormColor.secondaryColor
+                                    : FormColor.primaryColor,
+                                width: 2,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 15),
+                    SizedBox(
                       height: 50,
                       width: 180,
                       child: TextField(
                         cursorColor: notifier.isDark
                             ? FormColor.secondaryColor
                             : FormColor.primaryColor,
-                        controller: _plateController,
+                        controller: _modelController,
                         decoration: InputDecoration(
-                          labelText: 'plate'.tr(),
+                          labelText: 'carmodel'.tr(),
                           labelStyle: TextStyle(
                             fontSize: 10,
                             color: notifier.isDark
@@ -399,93 +445,66 @@ class _MyCarPageState extends State<MyCarPage> {
                         ),
                       ),
                     ),
-                  ),
-                  const SizedBox(height: 15),
-                  SizedBox(
-                    height: 50,
-                    width: 180,
-                    child: TextField(
-                      cursorColor: notifier.isDark
-                          ? FormColor.secondaryColor
-                          : FormColor.primaryColor,
-                      controller: _modelController,
-                      decoration: InputDecoration(
-                        labelText: 'carmodel'.tr(),
-                        labelStyle: TextStyle(
-                          fontSize: 10,
-                          color: notifier.isDark
-                              ? TextColor.secondaryColor
-                              : TextColor.primaryColor,
-                        ),
-                        border: const OutlineInputBorder(),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
+                    const SizedBox(height: 15),
+                    SizedBox(
+                      height: 50,
+                      width: 180,
+                      child: TextField(
+                        cursorColor: notifier.isDark
+                            ? FormColor.secondaryColor
+                            : FormColor.primaryColor,
+                        controller: _yearController,
+                        keyboardType: TextInputType.number,
+                        textInputAction: TextInputAction.done,
+                        focusNode: _yearFocus,
+                        decoration: InputDecoration(
+                          labelText: 'year'.tr(),
+                          labelStyle: TextStyle(
+                            fontSize: 10,
                             color: notifier.isDark
-                                ? FormColor.secondaryColor
-                                : FormColor.primaryColor,
-                            width: 2,
+                                ? TextColor.secondaryColor
+                                : TextColor.primaryColor,
+                          ),
+                          border: const OutlineInputBorder(),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: notifier.isDark
+                                  ? FormColor.secondaryColor
+                                  : FormColor.primaryColor,
+                              width: 2,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  const SizedBox(height: 15),
-                  SizedBox(
-                    height: 50,
-                    width: 180,
-                    child: TextField(
-                      cursorColor: notifier.isDark
-                          ? FormColor.secondaryColor
-                          : FormColor.primaryColor,
-                      controller: _yearController,
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                        labelText: 'year'.tr(),
-                        labelStyle: TextStyle(
-                          fontSize: 10,
-                          color: notifier.isDark
-                              ? TextColor.secondaryColor
-                              : TextColor.primaryColor,
-                        ),
-                        border: const OutlineInputBorder(),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
+                    const SizedBox(height: 15),
+                    SizedBox(
+                      height: 50,
+                      width: 180,
+                      child: TextField(
+                        controller: _consumptionController,
+                        decoration: InputDecoration(
+                          labelText: 'lastconsumption'.tr(),
+                          labelStyle: TextStyle(
+                            fontSize: 10,
                             color: notifier.isDark
-                                ? FormColor.secondaryColor
-                                : FormColor.primaryColor,
-                            width: 2,
+                                ? TextColor.secondaryColor
+                                : TextColor.primaryColor,
+                          ),
+                          border: const OutlineInputBorder(),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: notifier.isDark
+                                  ? FormColor.secondaryColor
+                                  : FormColor.primaryColor,
+                              width: 2,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  const SizedBox(height: 15),
-                  SizedBox(
-                    height: 50,
-                    width: 180,
-                    child: TextField(
-                      controller: _consumptionController,
-                      decoration: InputDecoration(
-                        labelText: 'lastconsumption'.tr(),
-                        labelStyle: TextStyle(
-                          fontSize: 10,
-                          color: notifier.isDark
-                              ? TextColor.secondaryColor
-                              : TextColor.primaryColor,
-                        ),
-                        border: const OutlineInputBorder(),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: notifier.isDark
-                                ? FormColor.secondaryColor
-                                : FormColor.primaryColor,
-                            width: 2,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),

@@ -320,63 +320,64 @@ class _MyCarPageState extends State<MyCarPage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(10),
+                      padding: const EdgeInsets.only(top: 16),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          GFButton(
+                          Text(
+                            'Salvar',
+                            style: TextStyle(
+                              fontSize: 10,
+                              color: notifier.isDark
+                                  ? TextColor.secondaryColor
+                                  : TextColor.primaryColor,
+                            ),
+                          ),
+                          const SizedBox(width: 6),
+                          GFIconButton(
+                            size: 30,
                             color: notifier.isDark
                                 ? ButtonColor.primaryColor
                                 : ButtonColor.secondaryColor,
                             onPressed: () async {
                               await _saveCarInfo(context);
                             },
-                            text: "save".tr(),
-                            textStyle: GoogleFonts.jetBrainsMono(
-                              textStyle: TextStyle(
-                                fontSize: 10,
-                                fontWeight: FontWeight.bold,
-                                color: notifier.isDark
-                                    ? TextColor.secondaryColor
-                                    : TextColor.secondaryColor,
-                              ),
-                            ),
                             icon: Icon(
                               Icons.save,
                               color: notifier.isDark
                                   ? TextColor.secondaryColor
                                   : TextColor.secondaryColor,
-                              size: 18,
+                              size: 16,
                             ),
-                            shape: GFButtonShape.square,
                           ),
                           const SizedBox(width: 10),
-                          GFButton(
+                          GFIconButton(
+                            size: 30,
                             color: notifier.isDark
                                 ? ButtonColor.primaryColor
                                 : ButtonColor.secondaryColor,
                             onPressed: () async {
                               await _deleteCarInfo(context);
                             },
-                            text: "delete".tr(),
-                            textStyle: GoogleFonts.jetBrainsMono(
-                              textStyle: TextStyle(
-                                fontSize: 10,
-                                fontWeight: FontWeight.bold,
-                                color: notifier.isDark
-                                    ? TextColor.secondaryColor
-                                    : TextColor.secondaryColor,
-                              ),
-                            ),
                             icon: Icon(
                               Icons.delete,
                               color: notifier.isDark
                                   ? TextColor.secondaryColor
                                   : TextColor.secondaryColor,
-                              size: 18,
+                              size: 16,
                             ),
-                            shape: GFButtonShape.square,
                           ),
+                          const SizedBox(width: 6),
+                          Text(
+                            'Deletar',
+                            style: TextStyle(
+                              fontSize: 10,
+                              color: notifier.isDark
+                                  ? TextColor.secondaryColor
+                                  : TextColor.primaryColor,
+                            ),
+                          ),
+                          const SizedBox(width: 8),
                         ],
                       ),
                     ),
@@ -384,6 +385,18 @@ class _MyCarPageState extends State<MyCarPage> {
                       "assets/car.png",
                       height: 140,
                       width: 190,
+                    ),
+                    Text(
+                      "savecar".tr(),
+                      style: GoogleFonts.jetBrainsMono(
+                        textStyle: TextStyle(
+                          fontSize: 10,
+                          fontWeight: FontWeight.bold,
+                          color: notifier.isDark
+                              ? TextColor.secondaryColor
+                              : TextColor.primaryColor,
+                        ),
+                      ),
                     ),
                     const SizedBox(height: 20),
                     Center(

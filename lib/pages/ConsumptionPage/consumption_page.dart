@@ -108,64 +108,6 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
     });
   }
 
-  void clearResult() {
-    setState(() {
-      if (resultText.isEmpty) {
-        _showNoDataToDeleteDialog();
-      } else {
-        resultText = '';
-      }
-    });
-  }
-
-  Future<void> _showNoDataToDeleteDialog() async {
-    return showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return Consumer<UiProvider>(
-          builder: (context, notifier, child) {
-            return AlertDialog(
-              backgroundColor: notifier.isDark
-                  ? ButtonColor.primaryColor
-                  : ButtonColor.secondaryColor,
-              content: Text(
-                'nodatatodelete'.tr(),
-                style: GoogleFonts.jetBrainsMono(
-                  textStyle: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
-                    color: notifier.isDark
-                        ? TextColor.secondaryColor
-                        : TextColor.secondaryColor,
-                  ),
-                ),
-              ),
-              actions: [
-                TextButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: Text(
-                    'OK',
-                    style: GoogleFonts.jetBrainsMono(
-                      textStyle: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                        color: notifier.isDark
-                            ? TextColor.secondaryColor
-                            : TextColor.secondaryColor,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            );
-          },
-        );
-      },
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     double myHeight = MediaQuery.of(context).size.height;
@@ -301,28 +243,6 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
                         onPressed: loading ? null : handleCalc,
                         child: Text(
                           'calculate'.tr(),
-                          style: GoogleFonts.jetBrainsMono(
-                            textStyle: TextStyle(
-                              fontSize: 10,
-                              fontWeight: FontWeight.bold,
-                              color: TextColor.secondaryColor,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    SizedBox(
-                      height: 40,
-                      width: 180,
-                      child: GFButton(
-                        color: notifier.isDark
-                            ? ButtonColor.primaryColor
-                            : ButtonColor.secondaryColor,
-                        shape: GFButtonShape.square,
-                        onPressed: clearResult,
-                        child: Text(
-                          'clearresult'.tr(),
                           style: GoogleFonts.jetBrainsMono(
                             textStyle: TextStyle(
                               fontSize: 10,

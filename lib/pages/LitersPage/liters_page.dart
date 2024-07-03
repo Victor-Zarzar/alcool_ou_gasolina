@@ -202,7 +202,7 @@ class _LitersPageState extends State<LitersPage> {
                   ),
                   const SizedBox(height: 14),
                   Text(
-                    "quantityofliters".tr(),
+                    "priceforlitre".tr(),
                     style: GoogleFonts.jetBrainsMono(
                       textStyle: TextStyle(
                         fontSize: 10,

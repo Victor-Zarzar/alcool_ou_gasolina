@@ -325,7 +325,7 @@ class _MyCarPageState extends State<MyCarPage> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Text(
-                            'Salvar',
+                            'save'.tr(),
                             style: TextStyle(
                               fontSize: 10,
                               color: notifier.isDark
@@ -369,7 +369,7 @@ class _MyCarPageState extends State<MyCarPage> {
                           ),
                           const SizedBox(width: 6),
                           Text(
-                            'Deletar',
+                            'delete'.tr(),
                             style: TextStyle(
                               fontSize: 10,
                               color: notifier.isDark

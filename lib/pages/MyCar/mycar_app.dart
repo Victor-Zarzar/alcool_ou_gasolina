@@ -327,11 +327,14 @@ class _MyCarPageState extends State<MyCarPage> {
                         children: [
                           Text(
                             'save'.tr(),
-                            style: TextStyle(
-                              fontSize: 10,
-                              color: notifier.isDark
-                                  ? TextColor.secondaryColor
-                                  : TextColor.primaryColor,
+                            style: GoogleFonts.jetBrainsMono(
+                              textStyle: TextStyle(
+                                fontSize: 9,
+                                fontWeight: FontWeight.bold,
+                                color: notifier.isDark
+                                    ? TextColor.secondaryColor
+                                    : TextColor.primaryColor,
+                              ),
                             ),
                           ),
                           const SizedBox(width: 6),
@@ -353,7 +356,7 @@ class _MyCarPageState extends State<MyCarPage> {
                               semanticLabel: 'save'.tr(),
                             ),
                           ),
-                          const SizedBox(width: 10),
+                          const SizedBox(width: 15),
                           GFIconButton(
                             tooltip: 'delete'.tr(),
                             size: 30,
@@ -375,11 +378,14 @@ class _MyCarPageState extends State<MyCarPage> {
                           const SizedBox(width: 6),
                           Text(
                             'delete'.tr(),
-                            style: TextStyle(
-                              fontSize: 10,
-                              color: notifier.isDark
-                                  ? TextColor.secondaryColor
-                                  : TextColor.primaryColor,
+                            style: GoogleFonts.jetBrainsMono(
+                              textStyle: TextStyle(
+                                fontSize: 9,
+                                fontWeight: FontWeight.bold,
+                                color: notifier.isDark
+                                    ? TextColor.secondaryColor
+                                    : TextColor.primaryColor,
+                              ),
                             ),
                           ),
                           const SizedBox(width: 8),

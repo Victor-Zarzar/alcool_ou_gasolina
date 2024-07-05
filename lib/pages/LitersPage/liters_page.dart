@@ -146,6 +146,7 @@ class _LitersPageState extends State<LitersPage> {
                       "assets/fuel.png",
                       height: 140,
                       width: 190,
+                      semanticLabel: 'fuelmarker'.tr(),
                     ),
                     const SizedBox(height: 10),
                     Text(

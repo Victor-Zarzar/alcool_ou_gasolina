@@ -159,6 +159,7 @@ class _HomePageState extends State<HomePage> {
                       "assets/imageone.png",
                       height: 140,
                       width: 190,
+                      semanticLabel: 'fuelimage'.tr(),
                     ),
                     const SizedBox(height: 10),
                     Text(

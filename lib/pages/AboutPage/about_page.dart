@@ -53,6 +53,7 @@ class _AboutPageState extends State<AboutPage> {
                         color: notifier.isDark
                             ? TextColor.secondaryColor
                             : TextColor.primaryColor,
+                        semanticLabel: 'backtopage'.tr(),
                       ),
                       onPressed: () {
                         Navigator.pop(context);
@@ -65,8 +66,9 @@ class _AboutPageState extends State<AboutPage> {
                     padding: const EdgeInsets.all(10.0),
                     child: Row(
                       children: [
-                        const Icon(
+                        Icon(
                           Icons.info,
+                          semanticLabel: 'informationicon'.tr(),
                         ),
                         const SizedBox(width: 10),
                         Expanded(

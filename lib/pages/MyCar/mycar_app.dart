@@ -335,6 +335,7 @@ class _MyCarPageState extends State<MyCarPage> {
                           ),
                           const SizedBox(width: 6),
                           GFIconButton(
+                            tooltip: 'save'.tr(),
                             size: 30,
                             color: notifier.isDark
                                 ? ButtonColor.primaryColor
@@ -348,10 +349,12 @@ class _MyCarPageState extends State<MyCarPage> {
                                   ? TextColor.secondaryColor
                                   : TextColor.secondaryColor,
                               size: 16,
+                              semanticLabel: 'save'.tr(),
                             ),
                           ),
                           const SizedBox(width: 10),
                           GFIconButton(
+                            tooltip: 'delete'.tr(),
                             size: 30,
                             color: notifier.isDark
                                 ? ButtonColor.primaryColor
@@ -365,6 +368,7 @@ class _MyCarPageState extends State<MyCarPage> {
                                   ? TextColor.secondaryColor
                                   : TextColor.secondaryColor,
                               size: 16,
+                              semanticLabel: 'delete'.tr(),
                             ),
                           ),
                           const SizedBox(width: 6),
@@ -385,6 +389,7 @@ class _MyCarPageState extends State<MyCarPage> {
                       "assets/car.png",
                       height: 140,
                       width: 190,
+                      semanticLabel: 'imageofacar'.tr(),
                     ),
                     Text(
                       "savecar".tr(),

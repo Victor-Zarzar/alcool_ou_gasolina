@@ -105,85 +105,91 @@ class _IntroPageState extends State<IntroPage> {
 
   List<Widget> slides() {
     slideList = [
-      SizedBox(
-        height: 250,
-        width: 250,
-        child: Consumer<UiProvider>(
-          builder: (context, notifier, child) {
-            return GFImageOverlay(
-              padding: const EdgeInsets.all(10),
-              image: const AssetImage('assets/gasoline.png'),
-              boxFit: BoxFit.contain,
-              colorFilter: ColorFilter.mode(
-                  ColorFilterIntro.primaryColor.withOpacity(0.01),
-                  BlendMode.darken),
-              borderRadius: BorderRadius.circular(5),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(top: 30.0, left: 30),
-                    child: Text(
-                      'introtext'.tr(),
-                      style: GoogleFonts.jetBrainsMono(
-                        textStyle: TextStyle(
+      Semantics(
+        label: 'introimage'.tr(),
+        child: SizedBox(
+          height: 250,
+          width: 250,
+          child: Consumer<UiProvider>(
+            builder: (context, notifier, child) {
+              return GFImageOverlay(
+                padding: const EdgeInsets.all(10),
+                image: const AssetImage('assets/gasoline.png'),
+                boxFit: BoxFit.contain,
+                colorFilter: ColorFilter.mode(
+                    ColorFilterIntro.primaryColor.withOpacity(0.01),
+                    BlendMode.darken),
+                borderRadius: BorderRadius.circular(5),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(top: 30.0, left: 30),
+                      child: Text(
+                        'introtext'.tr(),
+                        style: GoogleFonts.jetBrainsMono(
+                          textStyle: TextStyle(
+                              color: notifier.isDark
+                                  ? TextColor.secondaryColor
+                                  : TextColor.primaryColor,
+                              fontWeight: FontWeight.bold,
+                              decoration: TextDecoration.underline,
+                              fontSize: 16),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
+        ),
+      ),
+      Semantics(
+        label: 'intromagetwo'.tr(),
+        child: Row(
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 50.0, left: 30),
+                  child: Consumer<UiProvider>(
+                    builder: (context, notifier, child) {
+                      return Text(
+                        'introtexttwo'.tr(),
+                        style: GoogleFonts.jetBrainsMono(
+                          textStyle: TextStyle(
                             color: notifier.isDark
                                 ? TextColor.secondaryColor
                                 : TextColor.primaryColor,
                             fontWeight: FontWeight.bold,
                             decoration: TextDecoration.underline,
-                            fontSize: 16),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            );
-          },
-        ),
-      ),
-      Row(
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 50.0, left: 30),
-                child: Consumer<UiProvider>(
-                  builder: (context, notifier, child) {
-                    return Text(
-                      'introtexttwo'.tr(),
-                      style: GoogleFonts.jetBrainsMono(
-                        textStyle: TextStyle(
-                          color: notifier.isDark
-                              ? TextColor.secondaryColor
-                              : TextColor.primaryColor,
-                          fontWeight: FontWeight.bold,
-                          decoration: TextDecoration.underline,
-                          fontSize: 16,
+                            fontSize: 16,
+                          ),
                         ),
-                      ),
-                    );
-                  },
+                      );
+                    },
+                  ),
                 ),
-              ),
-              const SizedBox(height: 5),
-              Expanded(
-                child: Container(
-                  height: 300,
-                  width: 350,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(0),
-                    image: const DecorationImage(
-                      image: AssetImage('assets/gas.png'),
-                      fit: BoxFit.contain,
+                const SizedBox(height: 5),
+                Expanded(
+                  child: Container(
+                    height: 300,
+                    width: 350,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(0),
+                      image: const DecorationImage(
+                        image: AssetImage('assets/gas.png'),
+                        fit: BoxFit.contain,
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     ];
     return slideList;

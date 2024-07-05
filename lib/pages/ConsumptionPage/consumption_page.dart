@@ -149,6 +149,7 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
                       "assets/gas.png",
                       height: 140,
                       width: 190,
+                      semanticLabel: 'dashboard'.tr(),
                     ),
                     const SizedBox(height: 10),
                     Text(

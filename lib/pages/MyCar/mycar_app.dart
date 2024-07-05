@@ -1,6 +1,7 @@
 import 'package:alcool_ou_gasolina/components/AppTheme/app_theme.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:keyboard_actions/keyboard_actions.dart';
@@ -413,6 +414,11 @@ class _MyCarPageState extends State<MyCarPage> {
                               ? FormColor.secondaryColor
                               : FormColor.primaryColor,
                           controller: _plateController,
+                          inputFormatters: [
+                            FilteringTextInputFormatter.allow(
+                              RegExp(r'[A-Za-z0-9]'),
+                            ),
+                          ],
                           decoration: InputDecoration(
                             labelText: 'plate'.tr(),
                             labelStyle: TextStyle(
@@ -443,6 +449,11 @@ class _MyCarPageState extends State<MyCarPage> {
                             ? FormColor.secondaryColor
                             : FormColor.primaryColor,
                         controller: _modelController,
+                        inputFormatters: [
+                          FilteringTextInputFormatter.allow(
+                            RegExp(r'[A-Za-z0-9]'),
+                          ),
+                        ],
                         decoration: InputDecoration(
                           labelText: 'carmodel'.tr(),
                           labelStyle: TextStyle(
@@ -501,6 +512,11 @@ class _MyCarPageState extends State<MyCarPage> {
                       width: 180,
                       child: TextField(
                         controller: _consumptionController,
+                        inputFormatters: [
+                          FilteringTextInputFormatter.allow(
+                            RegExp(r'[A-Za-z0-9]'),
+                          ),
+                        ],
                         decoration: InputDecoration(
                           labelText: 'lastconsumption'.tr(),
                           labelStyle: TextStyle(

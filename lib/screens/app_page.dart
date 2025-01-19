@@ -1,10 +1,11 @@
-import 'package:alcool_ou_gasolina/components/AppTheme/app_theme.dart';
-import 'package:alcool_ou_gasolina/components/DarkTheme/darktheme_provider_app.dart';
-import 'package:alcool_ou_gasolina/pages/ConsumptionPage/consumption_page.dart';
-import 'package:alcool_ou_gasolina/pages/HomePage/home_page.dart';
-import 'package:alcool_ou_gasolina/pages/LitersPage/liters_page.dart';
-import 'package:alcool_ou_gasolina/pages/MyCar/mycar_app.dart';
-import 'package:alcool_ou_gasolina/pages/SettingsPage/settings_app.dart';
+import 'package:alcool_ou_gasolina/features/app_theme.dart';
+import 'package:alcool_ou_gasolina/features/darktheme_provider_app.dart';
+import 'package:alcool_ou_gasolina/screens/consumption_page.dart';
+import 'package:alcool_ou_gasolina/screens/fipe_page.dart';
+import 'package:alcool_ou_gasolina/screens/home_page.dart';
+import 'package:alcool_ou_gasolina/screens/liters_page.dart';
+import 'package:alcool_ou_gasolina/screens/mycar_app.dart';
+import 'package:alcool_ou_gasolina/screens/settings_app.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
@@ -24,7 +25,7 @@ class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    tabController = TabController(length: 5, vsync: this);
+    tabController = TabController(length: 6, vsync: this);
   }
 
   @override
@@ -44,13 +45,14 @@ class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
                 ConsumptionPage(),
                 LitersPage(),
                 MyCarPage(),
+                FipePage(),
                 SettingsPage(),
               ],
             ),
           ),
           bottomNavigationBar: GFTabBar(
             labelPadding: EdgeInsets.zero,
-            length: 5,
+            length: 6,
             tabBarHeight: 70,
             controller: tabController,
             tabBarColor:
@@ -108,6 +110,18 @@ class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
                 ),
                 child: Text(
                   'mycar'.tr(),
+                  style: GoogleFonts.jetBrainsMono(),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                ),
+              ),
+              Tab(
+                icon: const Icon(
+                  Icons.car_crash,
+                  size: 18,
+                ),
+                child: Text(
+                  'fipe'.tr(),
                   style: GoogleFonts.jetBrainsMono(),
                   overflow: TextOverflow.ellipsis,
                   maxLines: 1,

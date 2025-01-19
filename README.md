@@ -6,10 +6,14 @@
 
 - Dart
 - Flutter
+- Http dart
 - Get Widget UI
 - Google Fonts
-- Locale Language EN / PT-BR
+- Locale Language EN / PT-BR / ES
 - Dark Mode Provider
+- Flutter local notifications
+- Url Launcher
+- Timezone
 
 <br />
 

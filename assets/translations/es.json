@@ -1,0 +1,26 @@
+{
+    "introtext": "¡Bienvenido a la aplicación!",
+    "introimage": "Imagen de un surtidor de gasolina con texto introductorio",
+    "introtexttwo": "Calcular el consumo Km/l",
+    "intromagetwo": "Imagen de una gasolinera con más texto introductorio",
+    "titleappbar": "¿Alcohol o gasolina?",
+    "title_notification": "¿Te gusta nuestra aplicación?",
+    "body_notification": "¡Califícanos en la tienda!",
+    "infoconsumption": "Complete los campos a continuación para calcular su consumo promedio de combustible.",
+    "infoliters": "Ingrese la cantidad gastada y el precio por litro de combustible, para saber cuántos litros se llenaron.",
+    "suppliedvalue": "Valor suministrado x precio por litro:",
+    "fipe": "Fipe",
+    "fipetable": "Tabla Fipe",
+
+    "whichonepaysmore": "¿Cuál paga más? Complete el valor actual de Gasolina y Alcohol para calcular.",
+
+    "developed": "Desarrollado por: www.victorzarzar.com.br",
+    "notifications_icon": "Ícono de notificaciones",
+    "notifications": "Notificaciones"
+
+
+
+
+
+
+}

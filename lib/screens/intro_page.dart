@@ -1,6 +1,6 @@
-import 'package:alcool_ou_gasolina/components/AppTheme/app_theme.dart';
-import 'package:alcool_ou_gasolina/components/DarkTheme/darktheme_provider_app.dart';
-import 'package:alcool_ou_gasolina/pages/AppPage/app_page.dart';
+import 'package:alcool_ou_gasolina/features/app_theme.dart';
+import 'package:alcool_ou_gasolina/features/darktheme_provider_app.dart';
+import 'package:alcool_ou_gasolina/screens/app_page.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
@@ -117,7 +117,7 @@ class _IntroPageState extends State<IntroPage> {
                 image: const AssetImage('assets/gasoline.png'),
                 boxFit: BoxFit.contain,
                 colorFilter: ColorFilter.mode(
-                    ColorFilterIntro.primaryColor.withOpacity(0.01),
+                    ColorFilterIntro.primaryColor.withValues(alpha: 0.01),
                     BlendMode.darken),
                 borderRadius: BorderRadius.circular(5),
                 child: Row(

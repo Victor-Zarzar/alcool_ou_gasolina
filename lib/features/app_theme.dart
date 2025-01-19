@@ -82,6 +82,12 @@ class SwitchColor {
   static Color get primaryColor => const Color(0xFFECEFF1);
 
   static Color get secondaryColor => const Color(0xFFCFD8DC);
+
+  static Color get thirdColor => const Color(0xFF000000);
+
+  static const Color darkActiveColor = Color(0xFFECEFF1);
+
+  static const Color darkInactiveTrackColor = Color(0xFFCFD8DC);
 }
 
 class ButtonColor {

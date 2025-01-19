@@ -1,13 +1,12 @@
-import 'package:alcool_ou_gasolina/components/AppTheme/app_theme.dart';
+import 'package:alcool_ou_gasolina/features/app_theme.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:keyboard_actions/keyboard_actions.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../components/DarkTheme/darktheme_provider_app.dart';
+import '../features/darktheme_provider_app.dart';
 
 class MyCarPage extends StatefulWidget {
   const MyCarPage({super.key});
@@ -23,18 +22,6 @@ class _MyCarPageState extends State<MyCarPage> {
   late final TextEditingController _consumptionController =
       TextEditingController();
   final _yearFocus = FocusNode();
-
-  KeyboardActionsConfig _buildKeyboardActionsConfig(
-      BuildContext context, bool isDark) {
-    return KeyboardActionsConfig(
-      keyboardBarColor: isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
-      actions: [
-        KeyboardActionsItem(
-          focusNode: _yearFocus,
-        ),
-      ],
-    );
-  }
 
   @override
   void initState() {
@@ -305,7 +292,7 @@ class _MyCarPageState extends State<MyCarPage> {
                 'mycar'.tr(),
                 style: GoogleFonts.jetBrainsMono(
                   textStyle: TextStyle(
-                    fontSize: 14,
+                    fontSize: 15,
                     fontWeight: FontWeight.bold,
                     color: notifier.isDark
                         ? TextColor.secondaryColor
@@ -314,14 +301,14 @@ class _MyCarPageState extends State<MyCarPage> {
                 ),
               ),
             ),
-            body: KeyboardActions(
-              config: _buildKeyboardActionsConfig(context, notifier.isDark),
+            body: GestureDetector(
+              onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(top: 16),
+                      padding: const EdgeInsets.only(top: 40),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
@@ -402,7 +389,7 @@ class _MyCarPageState extends State<MyCarPage> {
                       "savecar".tr(),
                       style: GoogleFonts.jetBrainsMono(
                         textStyle: TextStyle(
-                          fontSize: 10,
+                          fontSize: 12,
                           fontWeight: FontWeight.bold,
                           color: notifier.isDark
                               ? TextColor.secondaryColor

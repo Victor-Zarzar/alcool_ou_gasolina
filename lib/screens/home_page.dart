@@ -1,10 +1,9 @@
-import 'package:alcool_ou_gasolina/components/AppTheme/app_theme.dart';
-import 'package:alcool_ou_gasolina/components/DarkTheme/darktheme_provider_app.dart';
+import 'package:alcool_ou_gasolina/features/app_theme.dart';
+import 'package:alcool_ou_gasolina/features/darktheme_provider_app.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:keyboard_actions/keyboard_actions.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -22,21 +21,6 @@ class _HomePageState extends State<HomePage> {
   bool loading = false;
   String resultText = '';
   bool visible = false;
-
-  KeyboardActionsConfig _buildKeyboardActionsConfig(
-      BuildContext context, bool isDark) {
-    return KeyboardActionsConfig(
-      keyboardBarColor: isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
-      actions: [
-        KeyboardActionsItem(
-          focusNode: _gasolineFocus,
-        ),
-        KeyboardActionsItem(
-          focusNode: _alcoholFocus,
-        ),
-      ],
-    );
-  }
 
   void handleCalc() async {
     setState(() {
@@ -134,7 +118,7 @@ class _HomePageState extends State<HomePage> {
               'titleappbar'.tr(),
               style: GoogleFonts.jetBrainsMono(
                 textStyle: TextStyle(
-                  fontSize: 14,
+                  fontSize: 15,
                   fontWeight: FontWeight.bold,
                   color: notifier.isDark
                       ? TextColor.secondaryColor
@@ -145,8 +129,8 @@ class _HomePageState extends State<HomePage> {
           ),
           backgroundColor:
               notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
-          body: KeyboardActions(
-            config: _buildKeyboardActionsConfig(context, notifier.isDark),
+          body: GestureDetector(
+            onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
             child: SizedBox(
               height: myHeight,
               width: myWidth,
@@ -154,7 +138,26 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 60),
+                    SizedBox(
+                      width: 300,
+                      child: Text(
+                        'whichonepaysmore'.tr(),
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.jetBrainsMono(
+                          textStyle: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 12,
+                            color: notifier.isDark
+                                ? TextColor.secondaryColor
+                                : TextColor.primaryColor,
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 50,
+                    ),
                     Image.asset(
                       "assets/imageone.png",
                       height: 140,
@@ -163,23 +166,10 @@ class _HomePageState extends State<HomePage> {
                     ),
                     const SizedBox(height: 10),
                     Text(
-                      'whichonepaysmore'.tr(),
-                      style: GoogleFonts.jetBrainsMono(
-                        textStyle: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                          color: notifier.isDark
-                              ? TextColor.secondaryColor
-                              : TextColor.primaryColor,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 14),
-                    Text(
                       "priceforlitre".tr(),
                       style: GoogleFonts.jetBrainsMono(
                         textStyle: TextStyle(
-                          fontSize: 10,
+                          fontSize: 12,
                           fontWeight: FontWeight.bold,
                           color: notifier.isDark
                               ? TextColor.secondaryColor

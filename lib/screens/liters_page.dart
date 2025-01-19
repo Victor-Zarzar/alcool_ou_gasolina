@@ -1,10 +1,9 @@
-import 'package:alcool_ou_gasolina/components/AppTheme/app_theme.dart';
-import 'package:alcool_ou_gasolina/components/DarkTheme/darktheme_provider_app.dart';
+import 'package:alcool_ou_gasolina/features/app_theme.dart';
+import 'package:alcool_ou_gasolina/features/darktheme_provider_app.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:keyboard_actions/keyboard_actions.dart';
 import 'package:provider/provider.dart';
 
 class LitersPage extends StatefulWidget {
@@ -19,21 +18,6 @@ class _LitersPageState extends State<LitersPage> {
   final _litreFocus = FocusNode();
   TextEditingController gasolineController = TextEditingController();
   TextEditingController priceController = TextEditingController();
-
-  KeyboardActionsConfig _buildKeyboardActionsConfig(
-      BuildContext context, bool isDark) {
-    return KeyboardActionsConfig(
-      keyboardBarColor: isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
-      actions: [
-        KeyboardActionsItem(
-          focusNode: _suppliedFocus,
-        ),
-        KeyboardActionsItem(
-          focusNode: _litreFocus,
-        ),
-      ],
-    );
-  }
 
   bool loading = false;
   String resultText = '';
@@ -121,7 +105,7 @@ class _LitersPageState extends State<LitersPage> {
               'howmanylitersdidifill?'.tr(),
               style: GoogleFonts.jetBrainsMono(
                 textStyle: TextStyle(
-                  fontSize: 14,
+                  fontSize: 15,
                   fontWeight: FontWeight.bold,
                   color: notifier.isDark
                       ? TextColor.secondaryColor
@@ -132,8 +116,8 @@ class _LitersPageState extends State<LitersPage> {
           ),
           backgroundColor:
               notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
-          body: KeyboardActions(
-            config: _buildKeyboardActionsConfig(context, notifier.isDark),
+          body: GestureDetector(
+            onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
             child: SizedBox(
               height: myHeight,
               width: myWidth,
@@ -141,7 +125,26 @@ class _LitersPageState extends State<LitersPage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 60),
+                    SizedBox(
+                      width: 300,
+                      child: Text(
+                        'infoliters'.tr(),
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.jetBrainsMono(
+                          textStyle: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 12,
+                            color: notifier.isDark
+                                ? TextColor.secondaryColor
+                                : TextColor.primaryColor,
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 50,
+                    ),
                     Image.asset(
                       "assets/fuel.png",
                       height: 140,
@@ -149,28 +152,19 @@ class _LitersPageState extends State<LitersPage> {
                       semanticLabel: 'fuelmarker'.tr(),
                     ),
                     const SizedBox(height: 10),
-                    Text(
-                      'suppliedvalue'.tr(),
-                      style: GoogleFonts.jetBrainsMono(
-                        textStyle: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                          color: notifier.isDark
-                              ? TextColor.secondaryColor
-                              : TextColor.primaryColor,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 14),
-                    Text(
-                      "priceforlitre".tr(),
-                      style: GoogleFonts.jetBrainsMono(
-                        textStyle: TextStyle(
-                          fontSize: 10,
-                          fontWeight: FontWeight.bold,
-                          color: notifier.isDark
-                              ? TextColor.secondaryColor
-                              : TextColor.primaryColor,
+                    SizedBox(
+                      width: 150,
+                      child: Text(
+                        'suppliedvalue'.tr(),
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.jetBrainsMono(
+                          textStyle: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                            color: notifier.isDark
+                                ? TextColor.secondaryColor
+                                : TextColor.primaryColor,
+                          ),
                         ),
                       ),
                     ),

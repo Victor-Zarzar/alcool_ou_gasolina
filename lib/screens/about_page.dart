@@ -1,10 +1,11 @@
-import 'package:alcool_ou_gasolina/components/AppTheme/app_theme.dart';
-import 'package:alcool_ou_gasolina/components/DarkTheme/darktheme_provider_app.dart';
+import 'package:alcool_ou_gasolina/features/app_theme.dart';
+import 'package:alcool_ou_gasolina/features/darktheme_provider_app.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AboutPage extends StatefulWidget {
   const AboutPage({super.key});
@@ -14,6 +15,13 @@ class AboutPage extends StatefulWidget {
 }
 
 class _AboutPageState extends State<AboutPage> {
+  Future<void> _launchUrl(String url) async {
+    final Uri uri = Uri.parse(url);
+    if (!await launchUrl(uri)) {
+      throw Exception('${'launch_error'.tr()} $url');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     double myHeight = MediaQuery.of(context).size.height;
@@ -92,16 +100,21 @@ class _AboutPageState extends State<AboutPage> {
                 const SizedBox(height: 10),
                 Center(
                   child: Padding(
-                    padding: const EdgeInsets.only(bottom: 20),
-                    child: Text(
-                      "victorzarzar".tr(),
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.jetBrainsMono(
-                        textStyle: TextStyle(
-                          fontSize: 10,
-                          color: notifier.isDark
-                              ? TextColor.secondaryColor
-                              : TextColor.primaryColor,
+                    padding: const EdgeInsets.only(bottom: 40),
+                    child: GestureDetector(
+                      onTap: () {
+                        _launchUrl('https://www.victorzarzar.com.br');
+                      },
+                      child: Text(
+                        "developed".tr(),
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.jetBrainsMono(
+                          textStyle: TextStyle(
+                            fontSize: 10,
+                            color: notifier.isDark
+                                ? TextColor.secondaryColor
+                                : TextColor.primaryColor,
+                          ),
                         ),
                       ),
                     ),

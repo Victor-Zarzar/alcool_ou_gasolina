@@ -129,12 +129,12 @@ class _IntroPageState extends State<IntroPage> {
                         'introtext'.tr(),
                         style: GoogleFonts.jetBrainsMono(
                           textStyle: TextStyle(
-                              color: notifier.isDark
-                                  ? TextColor.secondaryColor
-                                  : TextColor.primaryColor,
-                              fontWeight: FontWeight.bold,
-                              decoration: TextDecoration.underline,
-                              fontSize: 16),
+                            color: notifier.isDark
+                                ? TextColor.secondaryColor
+                                : TextColor.primaryColor,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
                         ),
                       ),
                     ),
@@ -164,7 +164,6 @@ class _IntroPageState extends State<IntroPage> {
                                 ? TextColor.secondaryColor
                                 : TextColor.primaryColor,
                             fontWeight: FontWeight.bold,
-                            decoration: TextDecoration.underline,
                             fontSize: 16,
                           ),
                         ),
@@ -180,7 +179,7 @@ class _IntroPageState extends State<IntroPage> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(0),
                       image: const DecorationImage(
-                        image: AssetImage('assets/gas.png'),
+                        image: AssetImage('assets/carfipe.png'),
                         fit: BoxFit.contain,
                       ),
                     ),

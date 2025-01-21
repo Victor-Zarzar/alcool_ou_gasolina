@@ -100,8 +100,9 @@ class _SettingsPageState extends State<SettingsPage> {
                         value: notifier.isDark,
                         onChanged: (value) => notifier.changeTheme(),
                       ),
-                      leading: const Icon(
+                      leading: Icon(
                         Icons.dark_mode,
+                        semanticLabel: 'notifications_icon'.tr(),
                         size: 20,
                       ),
                       title: Text(
@@ -121,7 +122,8 @@ class _SettingsPageState extends State<SettingsPage> {
                   ListTile(
                     leading: Icon(
                       Icons.notification_important,
-                      semanticLabel: 'notifications_icon'.tr(),
+                      semanticLabel: 'about_icon'.tr(),
+                      size: 20,
                     ),
                     title: Text(
                       'notifications'.tr(),
@@ -147,8 +149,9 @@ class _SettingsPageState extends State<SettingsPage> {
                     ),
                   ),
                   ListTile(
-                    leading: const Icon(
+                    leading: Icon(
                       Icons.info,
+                      semanticLabel: 'darkmode_icon'.tr(),
                       size: 20,
                     ),
                     title: Text(

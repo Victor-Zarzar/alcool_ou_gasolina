@@ -110,7 +110,8 @@ class _AboutPageState extends State<AboutPage> {
                         textAlign: TextAlign.center,
                         style: GoogleFonts.jetBrainsMono(
                           textStyle: TextStyle(
-                            fontSize: 10,
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
                             color: notifier.isDark
                                 ? TextColor.secondaryColor
                                 : TextColor.primaryColor,

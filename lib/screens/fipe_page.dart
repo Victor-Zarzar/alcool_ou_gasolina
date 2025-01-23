@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:getwidget/components/appbar/gf_appbar.dart';
+import 'package:getwidget/getwidget.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:alcool_ou_gasolina/features/app_theme.dart';
@@ -215,7 +215,7 @@ class _FipePageState extends State<FipePage> {
                       ),
                     ),
                     const SizedBox(
-                      height: 50,
+                      height: 30,
                     ),
                     Image.asset(
                       "assets/carfipe.png",
@@ -223,169 +223,21 @@ class _FipePageState extends State<FipePage> {
                       width: 230,
                       semanticLabel: 'dashboard'.tr(),
                     ),
-                    DropdownButton<String>(
-                      hint: Text(
-                        'select_type'.tr(),
-                        style: GoogleFonts.jetBrainsMono(
-                          textStyle: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold,
-                            color: notifier.isDark
-                                ? TextColor.secondaryColor
-                                : TextColor.primaryColor,
-                          ),
-                        ),
-                      ),
-                      dropdownColor: notifier.isDark
-                          ? ButtonColor.primaryColor
-                          : ButtonColor.secondaryColor,
-                      value: _selectedType,
-                      items: _vehicleTypes.map(
-                        (type) {
-                          IconData icon;
-                          Color iconColor = notifier.isDark
-                              ? IconColor.thirdColor
-                              : IconColor.thirdColor;
-                          switch (type) {
-                            case 'carros':
-                              icon = Icons.directions_car;
-                              break;
-                            case 'motos':
-                              icon = Icons.motorcycle;
-                              break;
-                            case 'caminhoes':
-                              icon = Icons.local_shipping;
-                              break;
-                            default:
-                              icon = Icons.device_unknown;
-                          }
-                          return DropdownMenuItem(
-                            value: type,
-                            child: Row(
-                              children: [
-                                Icon(icon, color: iconColor),
-                                const SizedBox(
-                                  width: 8,
-                                ),
-                                Text(
-                                  type.toUpperCase(),
-                                  style: GoogleFonts.jetBrainsMono(
-                                    textStyle: TextStyle(
-                                      fontSize: 11,
-                                      fontWeight: FontWeight.bold,
-                                      color: notifier.isDark
-                                          ? TextColor.secondaryColor
-                                          : TextColor.secondaryColor,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          );
-                        },
-                      ).toList(),
-                      onChanged: (value) {
-                        if (value != null) {
-                          setState(() => _selectedType = value);
-                          _fetchBrands(value);
-                        }
-                      },
-                    ),
-                    if (_brands.isNotEmpty)
-                      DropdownButton<String>(
+                    Container(
+                      width: 170,
+                      margin: const EdgeInsets.all(20),
+                      child: GFDropdown<String>(
+                        borderRadius: BorderRadius.circular(5),
+                        border:
+                            const BorderSide(color: Colors.black12, width: 1),
+                        dropdownButtonColor: notifier.isDark
+                            ? ButtonColor.primaryColor
+                            : ButtonColor.secondaryColor,
                         hint: Text(
-                          'select_brand'.tr(),
+                          'select_type'.tr(),
                           style: GoogleFonts.jetBrainsMono(
                             textStyle: TextStyle(
                               fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                              color: notifier.isDark
-                                  ? TextColor.secondaryColor
-                                  : TextColor.primaryColor,
-                            ),
-                          ),
-                        ),
-                        dropdownColor: notifier.isDark
-                            ? ButtonColor.primaryColor
-                            : ButtonColor.secondaryColor,
-                        value: _selectedBrand,
-                        items: _brands.map<DropdownMenuItem<String>>(
-                          (brand) {
-                            return DropdownMenuItem<String>(
-                              value: brand['codigo'] as String,
-                              child: Text(
-                                brand['nome'] as String,
-                                style: GoogleFonts.jetBrainsMono(
-                                  textStyle: TextStyle(
-                                    fontSize: 11,
-                                    fontWeight: FontWeight.bold,
-                                    color: notifier.isDark
-                                        ? TextColor.secondaryColor
-                                        : TextColor.secondaryColor,
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                        ).toList(),
-                        onChanged: (value) {
-                          if (value != null) {
-                            setState(() => _selectedBrand = value);
-                            _fetchModels(_selectedType!, value);
-                          }
-                        },
-                      ),
-                    if (_models.isNotEmpty)
-                      DropdownButton<String>(
-                        hint: Text(
-                          'select_model'.tr(),
-                          style: GoogleFonts.jetBrainsMono(
-                            textStyle: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                              color: notifier.isDark
-                                  ? TextColor.secondaryColor
-                                  : TextColor.primaryColor,
-                            ),
-                          ),
-                        ),
-                        dropdownColor: notifier.isDark
-                            ? ButtonColor.primaryColor
-                            : ButtonColor.secondaryColor,
-                        value: _selectedModel,
-                        items: _models.map<DropdownMenuItem<String>>(
-                          (model) {
-                            return DropdownMenuItem<String>(
-                              value: model['codigo'].toString(),
-                              child: Text(
-                                model['nome'] as String,
-                                style: GoogleFonts.jetBrainsMono(
-                                  textStyle: TextStyle(
-                                    fontSize: 11,
-                                    fontWeight: FontWeight.bold,
-                                    color: notifier.isDark
-                                        ? TextColor.secondaryColor
-                                        : TextColor.secondaryColor,
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                        ).toList(),
-                        onChanged: (value) {
-                          if (value != null) {
-                            setState(() => _selectedModel = value);
-                            _fetchYears(_selectedType!, _selectedBrand!, value);
-                          }
-                        },
-                      ),
-                    if (_years.isNotEmpty)
-                      DropdownButton<String>(
-                        hint: Text(
-                          'select_the_year'.tr(),
-                          style: GoogleFonts.jetBrainsMono(
-                            textStyle: TextStyle(
-                              fontSize: 11,
                               fontWeight: FontWeight.bold,
                               color: notifier.isDark
                                   ? TextColor.secondaryColor
@@ -396,33 +248,219 @@ class _FipePageState extends State<FipePage> {
                         dropdownColor: notifier.isDark
                             ? ButtonColor.primaryColor
                             : ButtonColor.secondaryColor,
-                        value: _selectedYear,
-                        items: _years.map<DropdownMenuItem<String>>(
-                          (year) {
-                            return DropdownMenuItem<String>(
-                              value: year['codigo'] as String,
-                              child: Text(
-                                year['nome'] as String,
-                                style: GoogleFonts.jetBrainsMono(
-                                  textStyle: TextStyle(
-                                    fontSize: 11,
-                                    fontWeight: FontWeight.bold,
-                                    color: notifier.isDark
-                                        ? TextColor.secondaryColor
-                                        : TextColor.secondaryColor,
+                        value: _selectedType,
+                        items: _vehicleTypes.map(
+                          (type) {
+                            IconData icon;
+                            Color iconColor = notifier.isDark
+                                ? IconColor.thirdColor
+                                : IconColor.thirdColor;
+                            switch (type) {
+                              case 'carros':
+                                icon = Icons.directions_car;
+                                break;
+                              case 'motos':
+                                icon = Icons.motorcycle;
+                                break;
+                              case 'caminhoes':
+                                icon = Icons.local_shipping;
+                                break;
+                              default:
+                                icon = Icons.device_unknown;
+                            }
+                            return DropdownMenuItem(
+                              value: type,
+                              child: Row(
+                                children: [
+                                  Icon(icon, color: iconColor),
+                                  const SizedBox(
+                                    width: 8,
                                   ),
-                                ),
+                                  Text(
+                                    type.toUpperCase(),
+                                    style: GoogleFonts.jetBrainsMono(
+                                      textStyle: TextStyle(
+                                        fontSize: 11,
+                                        fontWeight: FontWeight.bold,
+                                        color: notifier.isDark
+                                            ? TextColor.secondaryColor
+                                            : TextColor.secondaryColor,
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             );
                           },
                         ).toList(),
                         onChanged: (value) {
                           if (value != null) {
-                            setState(() => _selectedYear = value);
-                            _fetchDetails(_selectedType!, _selectedBrand!,
-                                _selectedModel!, value);
+                            setState(() => _selectedType = value);
+                            _fetchBrands(value);
                           }
                         },
+                      ),
+                    ),
+                    if (_brands.isNotEmpty)
+                      Container(
+                        width: 170,
+                        margin: const EdgeInsets.all(20),
+                        child: GFDropdown<String>(
+                          borderRadius: BorderRadius.circular(5),
+                          border:
+                              const BorderSide(color: Colors.black12, width: 1),
+                          dropdownButtonColor: notifier.isDark
+                              ? ButtonColor.primaryColor
+                              : ButtonColor.secondaryColor,
+                          hint: Text(
+                            'select_brand'.tr(),
+                            style: GoogleFonts.jetBrainsMono(
+                              textStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: notifier.isDark
+                                    ? TextColor.secondaryColor
+                                    : TextColor.secondaryColor,
+                              ),
+                            ),
+                          ),
+                          dropdownColor: notifier.isDark
+                              ? ButtonColor.primaryColor
+                              : ButtonColor.secondaryColor,
+                          value: _selectedBrand,
+                          items: _brands.map<DropdownMenuItem<String>>(
+                            (brand) {
+                              return DropdownMenuItem<String>(
+                                value: brand['codigo'] as String,
+                                child: Text(
+                                  brand['nome'] as String,
+                                  style: GoogleFonts.jetBrainsMono(
+                                    textStyle: TextStyle(
+                                      fontSize: 11,
+                                      fontWeight: FontWeight.bold,
+                                      color: notifier.isDark
+                                          ? TextColor.secondaryColor
+                                          : TextColor.secondaryColor,
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                          ).toList(),
+                          onChanged: (value) {
+                            if (value != null) {
+                              setState(() => _selectedBrand = value);
+                              _fetchModels(_selectedType!, value);
+                            }
+                          },
+                        ),
+                      ),
+                    if (_models.isNotEmpty)
+                      Container(
+                        width: 350,
+                        margin: const EdgeInsets.all(20),
+                        child: GFDropdown<String>(
+                          borderRadius: BorderRadius.circular(5),
+                          border:
+                              const BorderSide(color: Colors.black12, width: 1),
+                          dropdownButtonColor: notifier.isDark
+                              ? ButtonColor.primaryColor
+                              : ButtonColor.secondaryColor,
+                          hint: Text(
+                            'select_model'.tr(),
+                            style: GoogleFonts.jetBrainsMono(
+                              textStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: notifier.isDark
+                                    ? TextColor.secondaryColor
+                                    : TextColor.secondaryColor,
+                              ),
+                            ),
+                          ),
+                          dropdownColor: notifier.isDark
+                              ? ButtonColor.primaryColor
+                              : ButtonColor.secondaryColor,
+                          value: _selectedModel,
+                          items: _models.map<DropdownMenuItem<String>>(
+                            (model) {
+                              return DropdownMenuItem<String>(
+                                value: model['codigo'].toString(),
+                                child: Text(
+                                  model['nome'] as String,
+                                  style: GoogleFonts.jetBrainsMono(
+                                    textStyle: TextStyle(
+                                      fontSize: 11,
+                                      fontWeight: FontWeight.bold,
+                                      color: notifier.isDark
+                                          ? TextColor.secondaryColor
+                                          : TextColor.secondaryColor,
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                          ).toList(),
+                          onChanged: (value) {
+                            if (value != null) {
+                              setState(() => _selectedModel = value);
+                              _fetchYears(
+                                  _selectedType!, _selectedBrand!, value);
+                            }
+                          },
+                        ),
+                      ),
+                    if (_years.isNotEmpty)
+                      Container(
+                        width: 170,
+                        margin: const EdgeInsets.all(20),
+                        child: GFDropdown<String>(
+                          borderRadius: BorderRadius.circular(5),
+                          border:
+                              const BorderSide(color: Colors.black12, width: 1),
+                          hint: Text(
+                            'select_the_year'.tr(),
+                            style: GoogleFonts.jetBrainsMono(
+                              textStyle: TextStyle(
+                                fontSize: 11,
+                                fontWeight: FontWeight.bold,
+                                color: notifier.isDark
+                                    ? TextColor.secondaryColor
+                                    : TextColor.secondaryColor,
+                              ),
+                            ),
+                          ),
+                          dropdownButtonColor: notifier.isDark
+                              ? ButtonColor.primaryColor
+                              : ButtonColor.secondaryColor,
+                          value: _selectedYear,
+                          items: _years.map<DropdownMenuItem<String>>(
+                            (year) {
+                              return DropdownMenuItem<String>(
+                                value: year['codigo'] as String,
+                                child: Text(
+                                  year['nome'] as String,
+                                  style: GoogleFonts.jetBrainsMono(
+                                    textStyle: TextStyle(
+                                      fontSize: 11,
+                                      fontWeight: FontWeight.bold,
+                                      color: notifier.isDark
+                                          ? TextColor.secondaryColor
+                                          : TextColor.secondaryColor,
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                          ).toList(),
+                          onChanged: (value) {
+                            if (value != null) {
+                              setState(() => _selectedYear = value);
+                              _fetchDetails(_selectedType!, _selectedBrand!,
+                                  _selectedModel!, value);
+                            }
+                          },
+                        ),
                       ),
                     if (_isLoading)
                       const CircularProgressIndicator()

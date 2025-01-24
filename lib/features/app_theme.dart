@@ -3,11 +3,11 @@ import 'dart:ui';
 class AppTheme {
   AppTheme._();
 
-  static Color get primaryColor => const Color(0xFFCFD8DC);
+  static Color get primaryColor => const Color(0xFFFFFFFF);
 
   static Color get secondaryColor => const Color(0x00000000);
 
-  static Color get thirdColor => const Color(0xFF212121);
+  static Color get thirdColor => const Color(0xFF000000);
 }
 
 class TextColor {
@@ -29,7 +29,7 @@ class FormColor {
 
   static Color get primaryColor => const Color(0xFF000000);
 
-  static Color get secondaryColor => const Color(0XFFBDBDBD);
+  static Color get secondaryColor => const Color(0xFFFFFFFF);
 }
 
 class IconColor {
@@ -81,7 +81,7 @@ class SwitchColor {
 
   static Color get primaryColor => const Color(0xFFECEFF1);
 
-  static Color get secondaryColor => const Color(0xFFCFD8DC);
+  static Color get secondaryColor => const Color(0xFFFFFFFF);
 
   static Color get thirdColor => const Color(0xFF000000);
 
@@ -93,7 +93,15 @@ class SwitchColor {
 class ButtonColor {
   ButtonColor._();
 
-  static Color get primaryColor => const Color(0xFF9E9E9E);
+  static Color get primaryColor => const Color(0xFFFFFFFF);
 
   static Color get secondaryColor => const Color(0xFF000000);
+}
+
+class AlertDialogColor {
+  AlertDialogColor._();
+
+  static Color get primaryColor => const Color(0xFF212121);
+
+  static Color get secondaryColor => const Color(0xFFFFFFFF);
 }

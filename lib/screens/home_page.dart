@@ -37,9 +37,18 @@ class _HomePageState extends State<HomePage> {
           return Consumer<UiProvider>(
             builder: (context, notifier, child) {
               return AlertDialog(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5),
+                  side: BorderSide(
+                    color: notifier.isDark
+                        ? AppTheme.primaryColor
+                        : AppTheme.thirdColor,
+                    width: 2,
+                  ),
+                ),
                 backgroundColor: notifier.isDark
-                    ? ButtonColor.primaryColor
-                    : ButtonColor.secondaryColor,
+                    ? AlertDialogColor.primaryColor
+                    : AlertDialogColor.secondaryColor,
                 content: Text(
                   'pleasefillinallfields'.tr(),
                   style: GoogleFonts.jetBrainsMono(
@@ -48,7 +57,7 @@ class _HomePageState extends State<HomePage> {
                       fontWeight: FontWeight.bold,
                       color: notifier.isDark
                           ? TextColor.secondaryColor
-                          : TextColor.secondaryColor,
+                          : TextColor.primaryColor,
                     ),
                   ),
                 ),
@@ -65,7 +74,7 @@ class _HomePageState extends State<HomePage> {
                           fontWeight: FontWeight.bold,
                           color: notifier.isDark
                               ? TextColor.secondaryColor
-                              : TextColor.secondaryColor,
+                              : TextColor.primaryColor,
                         ),
                       ),
                     ),
@@ -254,6 +263,7 @@ class _HomePageState extends State<HomePage> {
                             ? ButtonColor.primaryColor
                             : ButtonColor.secondaryColor,
                         shape: GFButtonShape.square,
+                        type: GFButtonType.outline2x,
                         onPressed: loading ? null : handleCalc,
                         child: Text(
                           'calculate'.tr(),
@@ -261,7 +271,9 @@ class _HomePageState extends State<HomePage> {
                             textStyle: TextStyle(
                               fontSize: 10,
                               fontWeight: FontWeight.bold,
-                              color: TextColor.secondaryColor,
+                              color: notifier.isDark
+                                  ? TextColor.secondaryColor
+                                  : TextColor.primaryColor,
                             ),
                           ),
                         ),

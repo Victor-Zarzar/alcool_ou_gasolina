@@ -122,9 +122,18 @@ class _FipePageState extends State<FipePage> {
         return Consumer<UiProvider>(
           builder: (context, notifier, child) {
             return AlertDialog(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5),
+                side: BorderSide(
+                  color: notifier.isDark
+                      ? AppTheme.primaryColor
+                      : AppTheme.thirdColor,
+                  width: 2,
+                ),
+              ),
               backgroundColor: notifier.isDark
-                  ? ButtonColor.primaryColor
-                  : ButtonColor.secondaryColor,
+                  ? AlertDialogColor.primaryColor
+                  : AlertDialogColor.secondaryColor,
               content: Text(
                 message,
                 style: GoogleFonts.jetBrainsMono(
@@ -133,7 +142,7 @@ class _FipePageState extends State<FipePage> {
                     fontWeight: FontWeight.bold,
                     color: notifier.isDark
                         ? TextColor.secondaryColor
-                        : TextColor.secondaryColor,
+                        : TextColor.primaryColor,
                   ),
                 ),
               ),
@@ -150,7 +159,7 @@ class _FipePageState extends State<FipePage> {
                         fontWeight: FontWeight.bold,
                         color: notifier.isDark
                             ? TextColor.secondaryColor
-                            : TextColor.secondaryColor,
+                            : TextColor.primaryColor,
                       ),
                     ),
                   ),
@@ -226,13 +235,8 @@ class _FipePageState extends State<FipePage> {
                     Container(
                       width: 170,
                       margin: const EdgeInsets.all(20),
-                      child: GFDropdown<String>(
+                      child: DropdownButton<String>(
                         borderRadius: BorderRadius.circular(5),
-                        border:
-                            const BorderSide(color: Colors.black12, width: 1),
-                        dropdownButtonColor: notifier.isDark
-                            ? ButtonColor.primaryColor
-                            : ButtonColor.secondaryColor,
                         hint: Text(
                           'select_type'.tr(),
                           style: GoogleFonts.jetBrainsMono(
@@ -241,7 +245,7 @@ class _FipePageState extends State<FipePage> {
                               fontWeight: FontWeight.bold,
                               color: notifier.isDark
                                   ? TextColor.secondaryColor
-                                  : TextColor.secondaryColor,
+                                  : TextColor.primaryColor,
                             ),
                           ),
                         ),
@@ -284,7 +288,7 @@ class _FipePageState extends State<FipePage> {
                                         fontWeight: FontWeight.bold,
                                         color: notifier.isDark
                                             ? TextColor.secondaryColor
-                                            : TextColor.secondaryColor,
+                                            : TextColor.primaryColor,
                                       ),
                                     ),
                                   ),
@@ -305,13 +309,8 @@ class _FipePageState extends State<FipePage> {
                       Container(
                         width: 170,
                         margin: const EdgeInsets.all(20),
-                        child: GFDropdown<String>(
+                        child: DropdownButton<String>(
                           borderRadius: BorderRadius.circular(5),
-                          border:
-                              const BorderSide(color: Colors.black12, width: 1),
-                          dropdownButtonColor: notifier.isDark
-                              ? ButtonColor.primaryColor
-                              : ButtonColor.secondaryColor,
                           hint: Text(
                             'select_brand'.tr(),
                             style: GoogleFonts.jetBrainsMono(
@@ -320,7 +319,7 @@ class _FipePageState extends State<FipePage> {
                                 fontWeight: FontWeight.bold,
                                 color: notifier.isDark
                                     ? TextColor.secondaryColor
-                                    : TextColor.secondaryColor,
+                                    : TextColor.primaryColor,
                               ),
                             ),
                           ),
@@ -359,13 +358,8 @@ class _FipePageState extends State<FipePage> {
                       Container(
                         width: 350,
                         margin: const EdgeInsets.all(20),
-                        child: GFDropdown<String>(
+                        child: DropdownButton<String>(
                           borderRadius: BorderRadius.circular(5),
-                          border:
-                              const BorderSide(color: Colors.black12, width: 1),
-                          dropdownButtonColor: notifier.isDark
-                              ? ButtonColor.primaryColor
-                              : ButtonColor.secondaryColor,
                           hint: Text(
                             'select_model'.tr(),
                             style: GoogleFonts.jetBrainsMono(
@@ -374,7 +368,7 @@ class _FipePageState extends State<FipePage> {
                                 fontWeight: FontWeight.bold,
                                 color: notifier.isDark
                                     ? TextColor.secondaryColor
-                                    : TextColor.secondaryColor,
+                                    : TextColor.primaryColor,
                               ),
                             ),
                           ),
@@ -414,10 +408,8 @@ class _FipePageState extends State<FipePage> {
                       Container(
                         width: 170,
                         margin: const EdgeInsets.all(20),
-                        child: GFDropdown<String>(
+                        child: DropdownButton<String>(
                           borderRadius: BorderRadius.circular(5),
-                          border:
-                              const BorderSide(color: Colors.black12, width: 1),
                           hint: Text(
                             'select_the_year'.tr(),
                             style: GoogleFonts.jetBrainsMono(
@@ -426,13 +418,10 @@ class _FipePageState extends State<FipePage> {
                                 fontWeight: FontWeight.bold,
                                 color: notifier.isDark
                                     ? TextColor.secondaryColor
-                                    : TextColor.secondaryColor,
+                                    : TextColor.primaryColor,
                               ),
                             ),
                           ),
-                          dropdownButtonColor: notifier.isDark
-                              ? ButtonColor.primaryColor
-                              : ButtonColor.secondaryColor,
                           value: _selectedYear,
                           items: _years.map<DropdownMenuItem<String>>(
                             (year) {
@@ -446,7 +435,7 @@ class _FipePageState extends State<FipePage> {
                                       fontWeight: FontWeight.bold,
                                       color: notifier.isDark
                                           ? TextColor.secondaryColor
-                                          : TextColor.secondaryColor,
+                                          : TextColor.primaryColor,
                                     ),
                                   ),
                                 ),

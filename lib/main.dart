@@ -1,6 +1,6 @@
 import 'package:alcool_ou_gasolina/controller/notification_controller.dart';
 import 'package:alcool_ou_gasolina/features/darktheme_provider_app.dart';
-import 'package:alcool_ou_gasolina/screens/intro_page.dart';
+import 'package:alcool_ou_gasolina/screens/app_page.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -48,7 +48,7 @@ class _MyAppState extends State<MyApp> {
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,
             locale: context.locale,
-            home: const IntroPage(),
+            home: const AppPage(),
             themeMode: notifier.isDark ? ThemeMode.dark : ThemeMode.light,
             darkTheme:
                 notifier.isDark ? notifier.darkTheme : notifier.lightTheme,

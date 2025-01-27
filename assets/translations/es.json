@@ -23,7 +23,10 @@
     "suppliedvalue": "Valor suministrado x precio por litro:",
     "fipe": "Fipe",
     "fipetable": "Consultar Tabla Fipe",
-
+    "value_label": "Valor",
+    "brand_label": "Marca",
+    "model_label": "Modelo",
+    "year_label": "Año",
     "whichonepaysmore": "¿Cuál paga más? Complete el valor actual de Gasolina y Alcohol para calcular.",
     "darkmode_icon": "Icono de modo oscuro",
     "about_icon": "Acerca del icono",

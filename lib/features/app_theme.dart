@@ -96,6 +96,8 @@ class ButtonColor {
   static Color get primaryColor => const Color(0xFFFFFFFF);
 
   static Color get secondaryColor => const Color(0xFF000000);
+
+  static Color get thirdColor => const Color(0xFF212121);
 }
 
 class AlertDialogColor {

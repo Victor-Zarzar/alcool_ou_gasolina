@@ -1,9 +1,10 @@
 import 'dart:convert';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
 class FipeService {
-  static const _baseUrl = 'https://parallelum.com.br/fipe/api/v1';
+  final String _baseUrl = dotenv.env['FIPE_API_URL'] ?? 'default_url';
 
   Future<List<dynamic>> fetchBrands(String type) async {
     final url = Uri.parse('$_baseUrl/$type/marcas');
@@ -28,9 +29,13 @@ class FipeService {
   }
 
   Future<List<dynamic>> fetchYears(
-      String type, String brandCode, String modelCode) async {
-    final url =
-        Uri.parse('$_baseUrl/$type/marcas/$brandCode/modelos/$modelCode/anos');
+    String type,
+    String brandCode,
+    String modelCode,
+  ) async {
+    final url = Uri.parse(
+      '$_baseUrl/$type/marcas/$brandCode/modelos/$modelCode/anos',
+    );
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
@@ -41,9 +46,14 @@ class FipeService {
   }
 
   Future<Map<String, dynamic>> fetchDetails(
-      String type, String brandCode, String modelCode, String yearCode) async {
+    String type,
+    String brandCode,
+    String modelCode,
+    String yearCode,
+  ) async {
     final url = Uri.parse(
-        '$_baseUrl/$type/marcas/$brandCode/modelos/$modelCode/anos/$yearCode');
+      '$_baseUrl/$type/marcas/$brandCode/modelos/$modelCode/anos/$yearCode',
+    );
     final response = await http.get(url);
 
     if (response.statusCode == 200) {

@@ -3,7 +3,7 @@ import 'package:getwidget/getwidget.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:alcool_ou_gasolina/features/app_theme.dart';
-import 'package:alcool_ou_gasolina/features/darktheme_provider_app.dart';
+import 'package:alcool_ou_gasolina/features/theme_provider.dart';
 import 'package:alcool_ou_gasolina/services/fipe_service.dart';
 import 'package:provider/provider.dart';
 
@@ -18,11 +18,7 @@ class _FipePageState extends State<FipePage> {
   final _fipeService = FipeService();
   String resultText = '';
 
-  final _vehicleTypes = [
-    'carros',
-    'motos',
-    'caminhoes',
-  ];
+  final _vehicleTypes = ['carros', 'motos', 'caminhoes'];
 
   String? _selectedType;
   String? _selectedBrand;
@@ -69,7 +65,10 @@ class _FipePageState extends State<FipePage> {
   }
 
   Future<void> _fetchYears(
-      String type, String brandCode, String modelCode) async {
+    String type,
+    String brandCode,
+    String modelCode,
+  ) async {
     try {
       setState(() {
         _years = [];
@@ -86,14 +85,22 @@ class _FipePageState extends State<FipePage> {
   }
 
   Future<void> _fetchDetails(
-      String type, String brandCode, String modelCode, String yearCode) async {
+    String type,
+    String brandCode,
+    String modelCode,
+    String yearCode,
+  ) async {
     try {
       setState(() {
         _isLoading = true;
         _fipeResult = null;
       });
-      final details =
-          await _fipeService.fetchDetails(type, brandCode, modelCode, yearCode);
+      final details = await _fipeService.fetchDetails(
+        type,
+        brandCode,
+        modelCode,
+        yearCode,
+      );
       setState(() {
         _fipeResult = details;
         resultText =
@@ -128,24 +135,27 @@ class _FipePageState extends State<FipePage> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(5),
                 side: BorderSide(
-                  color: notifier.isDark
-                      ? AppTheme.primaryColor
-                      : AppTheme.thirdColor,
+                  color:
+                      notifier.isDark
+                          ? AppTheme.primaryColor
+                          : AppTheme.thirdColor,
                   width: 2,
                 ),
               ),
-              backgroundColor: notifier.isDark
-                  ? AlertDialogColor.primaryColor
-                  : AlertDialogColor.secondaryColor,
+              backgroundColor:
+                  notifier.isDark
+                      ? AlertDialogColor.primaryColor
+                      : AlertDialogColor.secondaryColor,
               content: Text(
                 message,
                 style: GoogleFonts.jetBrainsMono(
                   textStyle: TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.bold,
-                    color: notifier.isDark
-                        ? TextColor.secondaryColor
-                        : TextColor.primaryColor,
+                    color:
+                        notifier.isDark
+                            ? TextColor.secondaryColor
+                            : TextColor.primaryColor,
                   ),
                 ),
               ),
@@ -160,9 +170,10 @@ class _FipePageState extends State<FipePage> {
                       textStyle: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
-                        color: notifier.isDark
-                            ? TextColor.secondaryColor
-                            : TextColor.primaryColor,
+                        color:
+                            notifier.isDark
+                                ? TextColor.secondaryColor
+                                : TextColor.primaryColor,
                       ),
                     ),
                   ),
@@ -192,9 +203,10 @@ class _FipePageState extends State<FipePage> {
                 textStyle: TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.bold,
-                  color: notifier.isDark
-                      ? TextColor.secondaryColor
-                      : TextColor.primaryColor,
+                  color:
+                      notifier.isDark
+                          ? TextColor.secondaryColor
+                          : TextColor.primaryColor,
                 ),
               ),
             ),
@@ -219,16 +231,15 @@ class _FipePageState extends State<FipePage> {
                           textStyle: TextStyle(
                             fontWeight: FontWeight.w500,
                             fontSize: 12,
-                            color: notifier.isDark
-                                ? TextColor.secondaryColor
-                                : TextColor.primaryColor,
+                            color:
+                                notifier.isDark
+                                    ? TextColor.secondaryColor
+                                    : TextColor.primaryColor,
                           ),
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      height: 30,
-                    ),
+                    const SizedBox(height: 30),
                     Image.asset(
                       "assets/carfipe.png",
                       height: 180,
@@ -240,9 +251,10 @@ class _FipePageState extends State<FipePage> {
                       margin: const EdgeInsets.all(15),
                       decoration: BoxDecoration(
                         border: Border.all(
-                          color: notifier.isDark
-                              ? FormColor.secondaryColor
-                              : FormColor.primaryColor,
+                          color:
+                              notifier.isDark
+                                  ? FormColor.secondaryColor
+                                  : FormColor.primaryColor,
                           width: 1.0,
                         ),
                         borderRadius: BorderRadius.circular(8),
@@ -258,63 +270,66 @@ class _FipePageState extends State<FipePage> {
                               fontSize:
                                   MediaQuery.of(context).size.width * 0.03,
                               fontWeight: FontWeight.bold,
-                              color: notifier.isDark
-                                  ? TextColor.secondaryColor
-                                  : TextColor.primaryColor,
+                              color:
+                                  notifier.isDark
+                                      ? TextColor.secondaryColor
+                                      : TextColor.primaryColor,
                             ),
                           ),
                         ),
-                        dropdownColor: notifier.isDark
-                            ? ButtonColor.thirdColor
-                            : ButtonColor.primaryColor,
+                        dropdownColor:
+                            notifier.isDark
+                                ? ButtonColor.thirdColor
+                                : ButtonColor.primaryColor,
                         value: _selectedType,
                         underline: const SizedBox.shrink(),
-                        items: _vehicleTypes.map(
-                          (type) {
-                            IconData icon;
-                            Color iconColor = notifier.isDark
-                                ? IconColor.thirdColor
-                                : IconColor.primaryColor;
-                            switch (type) {
-                              case 'carros':
-                                icon = Icons.directions_car;
-                                break;
-                              case 'motos':
-                                icon = Icons.motorcycle;
-                                break;
-                              case 'caminhoes':
-                                icon = Icons.local_shipping;
-                                break;
-                              default:
-                                icon = Icons.device_unknown;
-                            }
-                            return DropdownMenuItem(
-                              value: type,
-                              child: Row(
-                                children: [
-                                  Icon(icon, color: iconColor),
-                                  const SizedBox(
-                                    width: 8,
-                                  ),
-                                  Text(
-                                    type.toUpperCase(),
-                                    style: GoogleFonts.jetBrainsMono(
-                                      textStyle: TextStyle(
-                                        fontSize:
-                                            MediaQuery.of(context).size.width *
-                                                0.03,
-                                        fontWeight: FontWeight.bold,
-                                        color: notifier.isDark
-                                            ? TextColor.secondaryColor
-                                            : TextColor.primaryColor,
+                        items:
+                            _vehicleTypes.map((type) {
+                              IconData icon;
+                              Color iconColor =
+                                  notifier.isDark
+                                      ? IconColor.thirdColor
+                                      : IconColor.primaryColor;
+                              switch (type) {
+                                case 'carros':
+                                  icon = Icons.directions_car;
+                                  break;
+                                case 'motos':
+                                  icon = Icons.motorcycle;
+                                  break;
+                                case 'caminhoes':
+                                  icon = Icons.local_shipping;
+                                  break;
+                                default:
+                                  icon = Icons.device_unknown;
+                              }
+                              return DropdownMenuItem(
+                                value: type,
+                                child: Row(
+                                  children: [
+                                    Icon(icon, color: iconColor),
+                                    const SizedBox(width: 8),
+                                    Text(
+                                      type.toUpperCase(),
+                                      style: GoogleFonts.jetBrainsMono(
+                                        textStyle: TextStyle(
+                                          fontSize:
+                                              MediaQuery.of(
+                                                context,
+                                              ).size.width *
+                                              0.03,
+                                          fontWeight: FontWeight.bold,
+                                          color:
+                                              notifier.isDark
+                                                  ? TextColor.secondaryColor
+                                                  : TextColor.primaryColor,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            );
-                          },
-                        ).toList(),
+                                  ],
+                                ),
+                              );
+                            }).toList(),
                         onChanged: (value) {
                           if (value != null) {
                             setState(() => _selectedType = value);
@@ -329,9 +344,10 @@ class _FipePageState extends State<FipePage> {
                         margin: const EdgeInsets.all(15),
                         decoration: BoxDecoration(
                           border: Border.all(
-                            color: notifier.isDark
-                                ? FormColor.secondaryColor
-                                : FormColor.primaryColor,
+                            color:
+                                notifier.isDark
+                                    ? FormColor.secondaryColor
+                                    : FormColor.primaryColor,
                             width: 1.0,
                           ),
                           borderRadius: BorderRadius.circular(8),
@@ -347,38 +363,40 @@ class _FipePageState extends State<FipePage> {
                                 fontSize:
                                     MediaQuery.of(context).size.width * 0.03,
                                 fontWeight: FontWeight.bold,
-                                color: notifier.isDark
-                                    ? TextColor.secondaryColor
-                                    : TextColor.primaryColor,
+                                color:
+                                    notifier.isDark
+                                        ? TextColor.secondaryColor
+                                        : TextColor.primaryColor,
                               ),
                             ),
                           ),
-                          dropdownColor: notifier.isDark
-                              ? ButtonColor.thirdColor
-                              : ButtonColor.primaryColor,
+                          dropdownColor:
+                              notifier.isDark
+                                  ? ButtonColor.thirdColor
+                                  : ButtonColor.primaryColor,
                           value: _selectedBrand,
                           underline: const SizedBox.shrink(),
-                          items: _brands.map<DropdownMenuItem<String>>(
-                            (brand) {
-                              return DropdownMenuItem<String>(
-                                value: brand['codigo'] as String,
-                                child: Text(
-                                  brand['nome'] as String,
-                                  style: GoogleFonts.jetBrainsMono(
-                                    textStyle: TextStyle(
-                                      fontSize:
-                                          MediaQuery.of(context).size.width *
-                                              0.03,
-                                      fontWeight: FontWeight.bold,
-                                      color: notifier.isDark
-                                          ? TextColor.secondaryColor
-                                          : TextColor.primaryColor,
+                          items:
+                              _brands.map<DropdownMenuItem<String>>((brand) {
+                                return DropdownMenuItem<String>(
+                                  value: brand['codigo'] as String,
+                                  child: Text(
+                                    brand['nome'] as String,
+                                    style: GoogleFonts.jetBrainsMono(
+                                      textStyle: TextStyle(
+                                        fontSize:
+                                            MediaQuery.of(context).size.width *
+                                            0.03,
+                                        fontWeight: FontWeight.bold,
+                                        color:
+                                            notifier.isDark
+                                                ? TextColor.secondaryColor
+                                                : TextColor.primaryColor,
+                                      ),
                                     ),
                                   ),
-                                ),
-                              );
-                            },
-                          ).toList(),
+                                );
+                              }).toList(),
                           onChanged: (value) {
                             if (value != null) {
                               setState(() => _selectedBrand = value);
@@ -393,9 +411,10 @@ class _FipePageState extends State<FipePage> {
                         margin: const EdgeInsets.all(15),
                         decoration: BoxDecoration(
                           border: Border.all(
-                            color: notifier.isDark
-                                ? FormColor.secondaryColor
-                                : FormColor.primaryColor,
+                            color:
+                                notifier.isDark
+                                    ? FormColor.secondaryColor
+                                    : FormColor.primaryColor,
                             width: 1.0,
                           ),
                           borderRadius: BorderRadius.circular(8),
@@ -411,43 +430,48 @@ class _FipePageState extends State<FipePage> {
                                 fontSize:
                                     MediaQuery.of(context).size.width * 0.03,
                                 fontWeight: FontWeight.bold,
-                                color: notifier.isDark
-                                    ? TextColor.secondaryColor
-                                    : TextColor.primaryColor,
+                                color:
+                                    notifier.isDark
+                                        ? TextColor.secondaryColor
+                                        : TextColor.primaryColor,
                               ),
                             ),
                           ),
-                          dropdownColor: notifier.isDark
-                              ? ButtonColor.thirdColor
-                              : ButtonColor.primaryColor,
+                          dropdownColor:
+                              notifier.isDark
+                                  ? ButtonColor.thirdColor
+                                  : ButtonColor.primaryColor,
                           value: _selectedModel,
                           underline: const SizedBox.shrink(),
-                          items: _models.map<DropdownMenuItem<String>>(
-                            (model) {
-                              return DropdownMenuItem<String>(
-                                value: model['codigo'].toString(),
-                                child: Text(
-                                  model['nome'] as String,
-                                  style: GoogleFonts.jetBrainsMono(
-                                    textStyle: TextStyle(
-                                      fontSize:
-                                          MediaQuery.of(context).size.width *
-                                              0.03,
-                                      fontWeight: FontWeight.bold,
-                                      color: notifier.isDark
-                                          ? TextColor.secondaryColor
-                                          : TextColor.primaryColor,
+                          items:
+                              _models.map<DropdownMenuItem<String>>((model) {
+                                return DropdownMenuItem<String>(
+                                  value: model['codigo'].toString(),
+                                  child: Text(
+                                    model['nome'] as String,
+                                    style: GoogleFonts.jetBrainsMono(
+                                      textStyle: TextStyle(
+                                        fontSize:
+                                            MediaQuery.of(context).size.width *
+                                            0.03,
+                                        fontWeight: FontWeight.bold,
+                                        color:
+                                            notifier.isDark
+                                                ? TextColor.secondaryColor
+                                                : TextColor.primaryColor,
+                                      ),
                                     ),
                                   ),
-                                ),
-                              );
-                            },
-                          ).toList(),
+                                );
+                              }).toList(),
                           onChanged: (value) {
                             if (value != null) {
                               setState(() => _selectedModel = value);
                               _fetchYears(
-                                  _selectedType!, _selectedBrand!, value);
+                                _selectedType!,
+                                _selectedBrand!,
+                                value,
+                              );
                             }
                           },
                         ),
@@ -458,9 +482,10 @@ class _FipePageState extends State<FipePage> {
                         margin: const EdgeInsets.all(15),
                         decoration: BoxDecoration(
                           border: Border.all(
-                            color: notifier.isDark
-                                ? FormColor.secondaryColor
-                                : FormColor.primaryColor,
+                            color:
+                                notifier.isDark
+                                    ? FormColor.secondaryColor
+                                    : FormColor.primaryColor,
                             width: 1.0,
                           ),
                           borderRadius: BorderRadius.circular(8),
@@ -476,43 +501,49 @@ class _FipePageState extends State<FipePage> {
                                 fontSize:
                                     MediaQuery.of(context).size.width * 0.03,
                                 fontWeight: FontWeight.bold,
-                                color: notifier.isDark
-                                    ? TextColor.secondaryColor
-                                    : TextColor.primaryColor,
+                                color:
+                                    notifier.isDark
+                                        ? TextColor.secondaryColor
+                                        : TextColor.primaryColor,
                               ),
                             ),
                           ),
-                          dropdownColor: notifier.isDark
-                              ? ButtonColor.thirdColor
-                              : ButtonColor.primaryColor,
+                          dropdownColor:
+                              notifier.isDark
+                                  ? ButtonColor.thirdColor
+                                  : ButtonColor.primaryColor,
                           value: _selectedYear,
                           underline: const SizedBox.shrink(),
-                          items: _years.map<DropdownMenuItem<String>>(
-                            (year) {
-                              return DropdownMenuItem<String>(
-                                value: year['codigo'] as String,
-                                child: Text(
-                                  year['nome'] as String,
-                                  style: GoogleFonts.jetBrainsMono(
-                                    textStyle: TextStyle(
-                                      fontSize:
-                                          MediaQuery.of(context).size.width *
-                                              0.03,
-                                      fontWeight: FontWeight.bold,
-                                      color: notifier.isDark
-                                          ? TextColor.secondaryColor
-                                          : TextColor.primaryColor,
+                          items:
+                              _years.map<DropdownMenuItem<String>>((year) {
+                                return DropdownMenuItem<String>(
+                                  value: year['codigo'] as String,
+                                  child: Text(
+                                    year['nome'] as String,
+                                    style: GoogleFonts.jetBrainsMono(
+                                      textStyle: TextStyle(
+                                        fontSize:
+                                            MediaQuery.of(context).size.width *
+                                            0.03,
+                                        fontWeight: FontWeight.bold,
+                                        color:
+                                            notifier.isDark
+                                                ? TextColor.secondaryColor
+                                                : TextColor.primaryColor,
+                                      ),
                                     ),
                                   ),
-                                ),
-                              );
-                            },
-                          ).toList(),
+                                );
+                              }).toList(),
                           onChanged: (value) {
                             if (value != null) {
                               setState(() => _selectedYear = value);
-                              _fetchDetails(_selectedType!, _selectedBrand!,
-                                  _selectedModel!, value);
+                              _fetchDetails(
+                                _selectedType!,
+                                _selectedBrand!,
+                                _selectedModel!,
+                                value,
+                              );
                             }
                           },
                         ),
@@ -530,9 +561,10 @@ class _FipePageState extends State<FipePage> {
                               fontSize:
                                   MediaQuery.of(context).size.width * 0.03,
                               fontWeight: FontWeight.bold,
-                              color: notifier.isDark
-                                  ? TextColor.secondaryColor
-                                  : TextColor.primaryColor,
+                              color:
+                                  notifier.isDark
+                                      ? TextColor.secondaryColor
+                                      : TextColor.primaryColor,
                             ),
                           ),
                         ),

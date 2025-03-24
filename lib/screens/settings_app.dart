@@ -1,13 +1,12 @@
-import 'package:alcool_ou_gasolina/controller/notification_controller.dart';
+import 'package:alcool_ou_gasolina/controllers/notification_controller.dart';
 import 'package:alcool_ou_gasolina/features/app_theme.dart';
-import 'package:alcool_ou_gasolina/features/darktheme_provider_app.dart';
+import 'package:alcool_ou_gasolina/features/theme_provider.dart';
 import 'package:alcool_ou_gasolina/screens/about_page.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -17,48 +16,9 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  bool _notificationsEnabled = true;
-
-  @override
-  void initState() {
-    super.initState();
-    _loadNotificationPreference();
-  }
-
-  Future<void> _loadNotificationPreference() async {
-    final prefs = await SharedPreferences.getInstance();
-    if (prefs.containsKey('notifications_enabled')) {
-      setState(() {
-        _notificationsEnabled = prefs.getBool('notifications_enabled') ?? true;
-      });
-    } else {
-      NotificationService.showWeeklyNotification(
-        title: 'title_notification'.tr(),
-        body: 'body_notification'.tr(),
-        payload: 'rate_app',
-      );
-    }
-  }
-
-  Future<void> _toggleNotifications(bool value) async {
-    final prefs = await SharedPreferences.getInstance();
-    setState(() {
-      _notificationsEnabled = value;
-    });
-    await prefs.setBool('notifications_enabled', value);
-    if (value) {
-      NotificationService.showWeeklyNotification(
-        title: 'title_notification'.tr(),
-        body: 'body_notification'.tr(),
-        payload: 'rate_app',
-      );
-    } else {
-      NotificationService.cancelWeeklyNotification();
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
+    final notificationController = Provider.of<NotificationController>(context);
     double myHeight = MediaQuery.of(context).size.height;
     double myWidth = MediaQuery.of(context).size.width;
     return Consumer<UiProvider>(
@@ -75,9 +35,10 @@ class _SettingsPageState extends State<SettingsPage> {
                 textStyle: TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.bold,
-                  color: notifier.isDark
-                      ? TextColor.secondaryColor
-                      : TextColor.primaryColor,
+                  color:
+                      notifier.isDark
+                          ? TextColor.secondaryColor
+                          : TextColor.primaryColor,
                 ),
               ),
             ),
@@ -111,9 +72,10 @@ class _SettingsPageState extends State<SettingsPage> {
                           textStyle: TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.bold,
-                            color: notifier.isDark
-                                ? TextColor.secondaryColor
-                                : TextColor.primaryColor,
+                            color:
+                                notifier.isDark
+                                    ? TextColor.secondaryColor
+                                    : TextColor.primaryColor,
                           ),
                         ),
                       ),
@@ -131,21 +93,24 @@ class _SettingsPageState extends State<SettingsPage> {
                         textStyle: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
-                          color: notifier.isDark
-                              ? TextColor.secondaryColor
-                              : TextColor.primaryColor,
+                          color:
+                              notifier.isDark
+                                  ? TextColor.secondaryColor
+                                  : TextColor.primaryColor,
                         ),
                       ),
                     ),
                     trailing: Switch(
-                      value: _notificationsEnabled,
-                      onChanged: _toggleNotifications,
-                      activeColor: notifier.isDark
-                          ? SwitchColor.darkActiveColor
-                          : SwitchColor.thirdColor,
-                      inactiveTrackColor: notifier.isDark
-                          ? SwitchColor.darkInactiveTrackColor
-                          : SwitchColor.secondaryColor,
+                      value: notificationController.notificationsEnabled,
+                      onChanged: notificationController.toggleNotifications,
+                      activeColor:
+                          notifier.isDark
+                              ? SwitchColor.darkActiveColor
+                              : SwitchColor.thirdColor,
+                      inactiveTrackColor:
+                          notifier.isDark
+                              ? SwitchColor.darkInactiveTrackColor
+                              : SwitchColor.secondaryColor,
                     ),
                   ),
                   ListTile(
@@ -160,9 +125,10 @@ class _SettingsPageState extends State<SettingsPage> {
                         textStyle: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.bold,
-                          color: notifier.isDark
-                              ? TextColor.secondaryColor
-                              : TextColor.primaryColor,
+                          color:
+                              notifier.isDark
+                                  ? TextColor.secondaryColor
+                                  : TextColor.primaryColor,
                         ),
                       ),
                     ),

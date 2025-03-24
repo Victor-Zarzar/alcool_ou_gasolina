@@ -1,5 +1,5 @@
 import 'package:alcool_ou_gasolina/features/app_theme.dart';
-import 'package:alcool_ou_gasolina/features/darktheme_provider_app.dart';
+import 'package:alcool_ou_gasolina/features/theme_provider.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
@@ -40,24 +40,27 @@ class _LitersPageState extends State<LitersPage> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(5),
                   side: BorderSide(
-                    color: notifier.isDark
-                        ? AppTheme.primaryColor
-                        : AppTheme.thirdColor,
+                    color:
+                        notifier.isDark
+                            ? AppTheme.primaryColor
+                            : AppTheme.thirdColor,
                     width: 2,
                   ),
                 ),
-                backgroundColor: notifier.isDark
-                    ? AlertDialogColor.primaryColor
-                    : AlertDialogColor.secondaryColor,
+                backgroundColor:
+                    notifier.isDark
+                        ? AlertDialogColor.primaryColor
+                        : AlertDialogColor.secondaryColor,
                 content: Text(
                   'pleasefillinallfields'.tr(),
                   style: GoogleFonts.jetBrainsMono(
                     textStyle: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
-                      color: notifier.isDark
-                          ? TextColor.secondaryColor
-                          : TextColor.primaryColor,
+                      color:
+                          notifier.isDark
+                              ? TextColor.secondaryColor
+                              : TextColor.primaryColor,
                     ),
                   ),
                 ),
@@ -72,9 +75,10 @@ class _LitersPageState extends State<LitersPage> {
                         textStyle: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.bold,
-                          color: notifier.isDark
-                              ? TextColor.secondaryColor
-                              : TextColor.primaryColor,
+                          color:
+                              notifier.isDark
+                                  ? TextColor.secondaryColor
+                                  : TextColor.primaryColor,
                         ),
                       ),
                     ),
@@ -116,9 +120,10 @@ class _LitersPageState extends State<LitersPage> {
                 textStyle: TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.bold,
-                  color: notifier.isDark
-                      ? TextColor.secondaryColor
-                      : TextColor.primaryColor,
+                  color:
+                      notifier.isDark
+                          ? TextColor.secondaryColor
+                          : TextColor.primaryColor,
                 ),
               ),
             ),
@@ -144,16 +149,15 @@ class _LitersPageState extends State<LitersPage> {
                           textStyle: TextStyle(
                             fontWeight: FontWeight.w500,
                             fontSize: 12,
-                            color: notifier.isDark
-                                ? TextColor.secondaryColor
-                                : TextColor.primaryColor,
+                            color:
+                                notifier.isDark
+                                    ? TextColor.secondaryColor
+                                    : TextColor.primaryColor,
                           ),
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      height: 50,
-                    ),
+                    const SizedBox(height: 50),
                     Image.asset(
                       "assets/fuel.png",
                       height: 140,
@@ -170,9 +174,10 @@ class _LitersPageState extends State<LitersPage> {
                           textStyle: TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.bold,
-                            color: notifier.isDark
-                                ? TextColor.secondaryColor
-                                : TextColor.primaryColor,
+                            color:
+                                notifier.isDark
+                                    ? TextColor.secondaryColor
+                                    : TextColor.primaryColor,
                           ),
                         ),
                       ),
@@ -186,25 +191,29 @@ class _LitersPageState extends State<LitersPage> {
                           controller: gasolineController,
                           textInputAction: TextInputAction.done,
                           focusNode: _suppliedFocus,
-                          cursorColor: notifier.isDark
-                              ? FormColor.secondaryColor
-                              : FormColor.primaryColor,
+                          cursorColor:
+                              notifier.isDark
+                                  ? FormColor.secondaryColor
+                                  : FormColor.primaryColor,
                           keyboardType: const TextInputType.numberWithOptions(
-                              decimal: true),
+                            decimal: true,
+                          ),
                           decoration: InputDecoration(
                             labelText: 'suppliedvaluers'.tr(),
                             labelStyle: TextStyle(
                               fontSize: 10,
-                              color: notifier.isDark
-                                  ? TextColor.secondaryColor
-                                  : TextColor.primaryColor,
+                              color:
+                                  notifier.isDark
+                                      ? TextColor.secondaryColor
+                                      : TextColor.primaryColor,
                             ),
                             border: const OutlineInputBorder(),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: notifier.isDark
-                                    ? FormColor.secondaryColor
-                                    : FormColor.primaryColor,
+                                color:
+                                    notifier.isDark
+                                        ? FormColor.secondaryColor
+                                        : FormColor.primaryColor,
                                 width: 2,
                               ),
                             ),
@@ -221,25 +230,29 @@ class _LitersPageState extends State<LitersPage> {
                           controller: priceController,
                           textInputAction: TextInputAction.done,
                           focusNode: _litreFocus,
-                          cursorColor: notifier.isDark
-                              ? FormColor.secondaryColor
-                              : FormColor.primaryColor,
+                          cursorColor:
+                              notifier.isDark
+                                  ? FormColor.secondaryColor
+                                  : FormColor.primaryColor,
                           keyboardType: const TextInputType.numberWithOptions(
-                              decimal: true),
+                            decimal: true,
+                          ),
                           decoration: InputDecoration(
                             labelText: 'priceperlitre'.tr(),
                             labelStyle: TextStyle(
                               fontSize: 10,
-                              color: notifier.isDark
-                                  ? TextColor.secondaryColor
-                                  : TextColor.primaryColor,
+                              color:
+                                  notifier.isDark
+                                      ? TextColor.secondaryColor
+                                      : TextColor.primaryColor,
                             ),
                             border: const OutlineInputBorder(),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: notifier.isDark
-                                    ? FormColor.secondaryColor
-                                    : FormColor.primaryColor,
+                                color:
+                                    notifier.isDark
+                                        ? FormColor.secondaryColor
+                                        : FormColor.primaryColor,
                                 width: 2,
                               ),
                             ),
@@ -252,9 +265,10 @@ class _LitersPageState extends State<LitersPage> {
                       height: 40,
                       width: 180,
                       child: GFButton(
-                        color: notifier.isDark
-                            ? ButtonColor.primaryColor
-                            : ButtonColor.secondaryColor,
+                        color:
+                            notifier.isDark
+                                ? ButtonColor.primaryColor
+                                : ButtonColor.secondaryColor,
                         shape: GFButtonShape.square,
                         type: GFButtonType.outline2x,
                         onPressed: loading ? null : handleCalc,
@@ -264,9 +278,10 @@ class _LitersPageState extends State<LitersPage> {
                             textStyle: TextStyle(
                               fontSize: 10,
                               fontWeight: FontWeight.bold,
-                              color: notifier.isDark
-                                  ? TextColor.secondaryColor
-                                  : TextColor.primaryColor,
+                              color:
+                                  notifier.isDark
+                                      ? TextColor.secondaryColor
+                                      : TextColor.primaryColor,
                             ),
                           ),
                         ),
@@ -279,9 +294,10 @@ class _LitersPageState extends State<LitersPage> {
                         textStyle: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.bold,
-                          color: notifier.isDark
-                              ? TextColor.secondaryColor
-                              : TextColor.primaryColor,
+                          color:
+                              notifier.isDark
+                                  ? TextColor.secondaryColor
+                                  : TextColor.primaryColor,
                         ),
                       ),
                     ),

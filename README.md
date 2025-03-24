@@ -14,6 +14,9 @@
 - Flutter local notifications
 - Url Launcher
 - Timezone
+- Provider (State Managment / Theme - Notifications)
+- Flutter Secure Storage
+- DontEnv
 
 <br />
 
@@ -31,6 +34,10 @@ Open in your favorite editor(e.g. VSCode):
 
     code .
 
+Create .env in project root directory:
+
+     FIPE_API_URL=example.com   
+
 For install dependencies:
 
     flutter pub get
@@ -39,11 +46,15 @@ Run the app:
 
     flutter run
 
+### Archictecture:
+
+<img src="assets/imgs/architecture.png" alt="intro page ios" width="250">
+
 ### Version iOS:
 
-<img src="assets/homepageios.png" alt="intro page ios" width="250"> &nbsp; &nbsp; &nbsp; <img src="assets/consumptionpage.png" alt="home page ios" width="250"> &nbsp; &nbsp; &nbsp; <img src="assets/literspage.png" alt="home page ios 2" width="250"> &nbsp; &nbsp; &nbsp; <img src="assets/carpage.png" alt="home page ios 2" width="250"> &nbsp; &nbsp; &nbsp; <img src="assets/fipepage.png" alt="home page ios 2" width="250">
-&nbsp; &nbsp; &nbsp; <img src="assets/settings.png" alt="home page ios 2" width="250">
+<img src="assets/imgs/homepageios.png" alt="intro page ios" width="250"> &nbsp; &nbsp; &nbsp; <img src="assets/imgs/consumptionpage.png" alt="home page ios" width="250"> &nbsp; &nbsp; &nbsp; <img src="assets/imgs/literspage.png" alt="home page ios 2" width="250"> &nbsp; &nbsp; &nbsp; <img src="assets/imgs/carpage.png" alt="home page ios 2" width="250"> &nbsp; &nbsp; &nbsp; <img src="assets/imgs/fipepage.png" alt="home page ios 2" width="250">
+&nbsp; &nbsp; &nbsp; <img src="assets/imgs/settings.png" alt="home page ios 2" width="250">
 
 ### Version Android:
 
-<img src="assets/intropageandroid.png" alt="intro page android" width="250"> &nbsp; &nbsp; &nbsp; <img src="assets/homepageandroid.png" alt="home page android" width="250"> &nbsp; &nbsp; &nbsp; <img src="assets/homepageandroid2.png" alt="home page android 2" width="250">
+<img src="assets/imgs/intropageandroid.png" alt="intro page android" width="250"> &nbsp; &nbsp; &nbsp; <img src="assets/imgs/homepageandroid.png" alt="home page android" width="250"> &nbsp; &nbsp; &nbsp; <img src="assets/imgs/homepageandroid2.png" alt="home page android 2" width="250">

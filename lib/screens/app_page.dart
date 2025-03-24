@@ -1,10 +1,10 @@
 import 'package:alcool_ou_gasolina/features/app_theme.dart';
-import 'package:alcool_ou_gasolina/features/darktheme_provider_app.dart';
+import 'package:alcool_ou_gasolina/features/theme_provider.dart';
 import 'package:alcool_ou_gasolina/screens/consumption_page.dart';
 import 'package:alcool_ou_gasolina/screens/fipe_page.dart';
 import 'package:alcool_ou_gasolina/screens/home_page.dart';
 import 'package:alcool_ou_gasolina/screens/liters_page.dart';
-import 'package:alcool_ou_gasolina/screens/mycar_app.dart';
+import 'package:alcool_ou_gasolina/screens/mycar_page.dart';
 import 'package:alcool_ou_gasolina/screens/settings_app.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -57,21 +57,20 @@ class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
             controller: tabController,
             tabBarColor:
                 notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
-            labelColor: notifier.isDark
-                ? TextColor.secondaryColor
-                : TextColor.primaryColor,
-            indicatorColor: notifier.isDark
-                ? TextColor.secondaryColor
-                : TextColor.primaryColor,
+            labelColor:
+                notifier.isDark
+                    ? TextColor.secondaryColor
+                    : TextColor.primaryColor,
+            indicatorColor:
+                notifier.isDark
+                    ? TextColor.secondaryColor
+                    : TextColor.primaryColor,
             labelStyle: GoogleFonts.jetBrainsMono(
               textStyle: const TextStyle(fontSize: 9),
             ),
             tabs: [
               Tab(
-                icon: const Icon(
-                  Icons.home,
-                  size: 18,
-                ),
+                icon: const Icon(Icons.home, size: 18),
                 child: Text(
                   'home'.tr(),
                   style: GoogleFonts.jetBrainsMono(),
@@ -80,10 +79,7 @@ class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
                 ),
               ),
               Tab(
-                icon: const Icon(
-                  Icons.car_repair,
-                  size: 18,
-                ),
+                icon: const Icon(Icons.car_repair, size: 18),
                 child: Text(
                   'consumption'.tr(),
                   style: GoogleFonts.jetBrainsMono(),
@@ -92,10 +88,7 @@ class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
                 ),
               ),
               Tab(
-                icon: const Icon(
-                  Icons.local_gas_station_outlined,
-                  size: 18,
-                ),
+                icon: const Icon(Icons.local_gas_station_outlined, size: 18),
                 child: Text(
                   'liters'.tr(),
                   style: GoogleFonts.jetBrainsMono(),
@@ -104,10 +97,7 @@ class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
                 ),
               ),
               Tab(
-                icon: const Icon(
-                  Icons.car_rental,
-                  size: 18,
-                ),
+                icon: const Icon(Icons.car_rental, size: 18),
                 child: Text(
                   'mycar'.tr(),
                   style: GoogleFonts.jetBrainsMono(),
@@ -116,10 +106,7 @@ class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
                 ),
               ),
               Tab(
-                icon: const Icon(
-                  Icons.car_crash,
-                  size: 18,
-                ),
+                icon: const Icon(Icons.car_crash, size: 18),
                 child: Text(
                   'fipe'.tr(),
                   style: GoogleFonts.jetBrainsMono(),
@@ -128,10 +115,7 @@ class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
                 ),
               ),
               Tab(
-                icon: const Icon(
-                  Icons.settings,
-                  size: 18,
-                ),
+                icon: const Icon(Icons.settings, size: 18),
                 child: Text(
                   'settings'.tr(),
                   style: GoogleFonts.jetBrainsMono(),

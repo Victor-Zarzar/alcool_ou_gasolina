@@ -1,5 +1,5 @@
 import 'package:alcool_ou_gasolina/features/app_theme.dart';
-import 'package:alcool_ou_gasolina/features/darktheme_provider_app.dart';
+import 'package:alcool_ou_gasolina/features/theme_provider.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
@@ -44,24 +44,27 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(5),
                   side: BorderSide(
-                    color: notifier.isDark
-                        ? AppTheme.primaryColor
-                        : AppTheme.thirdColor,
+                    color:
+                        notifier.isDark
+                            ? AppTheme.primaryColor
+                            : AppTheme.thirdColor,
                     width: 2,
                   ),
                 ),
-                backgroundColor: notifier.isDark
-                    ? AlertDialogColor.primaryColor
-                    : AlertDialogColor.secondaryColor,
+                backgroundColor:
+                    notifier.isDark
+                        ? AlertDialogColor.primaryColor
+                        : AlertDialogColor.secondaryColor,
                 content: Text(
                   'pleasefillinallfields'.tr(),
                   style: GoogleFonts.jetBrainsMono(
                     textStyle: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
-                      color: notifier.isDark
-                          ? TextColor.secondaryColor
-                          : TextColor.primaryColor,
+                      color:
+                          notifier.isDark
+                              ? TextColor.secondaryColor
+                              : TextColor.primaryColor,
                     ),
                   ),
                 ),
@@ -76,9 +79,10 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
                         textStyle: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.bold,
-                          color: notifier.isDark
-                              ? TextColor.secondaryColor
-                              : TextColor.primaryColor,
+                          color:
+                              notifier.isDark
+                                  ? TextColor.secondaryColor
+                                  : TextColor.primaryColor,
                         ),
                       ),
                     ),
@@ -119,9 +123,10 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
                 textStyle: TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.bold,
-                  color: notifier.isDark
-                      ? TextColor.secondaryColor
-                      : TextColor.primaryColor,
+                  color:
+                      notifier.isDark
+                          ? TextColor.secondaryColor
+                          : TextColor.primaryColor,
                 ),
               ),
             ),
@@ -147,16 +152,15 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
                           textStyle: TextStyle(
                             fontWeight: FontWeight.w500,
                             fontSize: 12,
-                            color: notifier.isDark
-                                ? TextColor.secondaryColor
-                                : TextColor.primaryColor,
+                            color:
+                                notifier.isDark
+                                    ? TextColor.secondaryColor
+                                    : TextColor.primaryColor,
                           ),
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      height: 50,
-                    ),
+                    const SizedBox(height: 50),
                     Image.asset(
                       "assets/gas.png",
                       height: 140,
@@ -170,9 +174,10 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
                         textStyle: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.bold,
-                          color: notifier.isDark
-                              ? TextColor.secondaryColor
-                              : TextColor.primaryColor,
+                          color:
+                              notifier.isDark
+                                  ? TextColor.secondaryColor
+                                  : TextColor.primaryColor,
                         ),
                       ),
                     ),
@@ -182,28 +187,32 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
                         height: 50,
                         width: 180,
                         child: TextField(
-                          cursorColor: notifier.isDark
-                              ? FormColor.secondaryColor
-                              : FormColor.primaryColor,
+                          cursorColor:
+                              notifier.isDark
+                                  ? FormColor.secondaryColor
+                                  : FormColor.primaryColor,
                           controller: distanceController,
                           textInputAction: TextInputAction.done,
                           focusNode: _kmsFocus,
                           keyboardType: const TextInputType.numberWithOptions(
-                              decimal: true),
+                            decimal: true,
+                          ),
                           decoration: InputDecoration(
                             labelText: 'kmsdriven'.tr(),
                             labelStyle: TextStyle(
                               fontSize: 10,
-                              color: notifier.isDark
-                                  ? TextColor.secondaryColor
-                                  : TextColor.primaryColor,
+                              color:
+                                  notifier.isDark
+                                      ? TextColor.secondaryColor
+                                      : TextColor.primaryColor,
                             ),
                             border: const OutlineInputBorder(),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: notifier.isDark
-                                    ? FormColor.secondaryColor
-                                    : FormColor.primaryColor,
+                                color:
+                                    notifier.isDark
+                                        ? FormColor.secondaryColor
+                                        : FormColor.primaryColor,
                                 width: 2,
                               ),
                             ),
@@ -216,28 +225,32 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
                       height: 50,
                       width: 180,
                       child: TextField(
-                        cursorColor: notifier.isDark
-                            ? FormColor.secondaryColor
-                            : FormColor.primaryColor,
+                        cursorColor:
+                            notifier.isDark
+                                ? FormColor.secondaryColor
+                                : FormColor.primaryColor,
                         controller: fuelController,
                         textInputAction: TextInputAction.done,
                         focusNode: _litersFocus,
                         keyboardType: const TextInputType.numberWithOptions(
-                            decimal: true),
+                          decimal: true,
+                        ),
                         decoration: InputDecoration(
                           labelText: 'liters'.tr(),
                           labelStyle: TextStyle(
                             fontSize: 10,
-                            color: notifier.isDark
-                                ? TextColor.secondaryColor
-                                : TextColor.primaryColor,
+                            color:
+                                notifier.isDark
+                                    ? TextColor.secondaryColor
+                                    : TextColor.primaryColor,
                           ),
                           border: const OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                              color: notifier.isDark
-                                  ? FormColor.secondaryColor
-                                  : FormColor.primaryColor,
+                              color:
+                                  notifier.isDark
+                                      ? FormColor.secondaryColor
+                                      : FormColor.primaryColor,
                               width: 2,
                             ),
                           ),
@@ -249,9 +262,10 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
                       height: 40,
                       width: 180,
                       child: GFButton(
-                        color: notifier.isDark
-                            ? ButtonColor.primaryColor
-                            : ButtonColor.secondaryColor,
+                        color:
+                            notifier.isDark
+                                ? ButtonColor.primaryColor
+                                : ButtonColor.secondaryColor,
                         shape: GFButtonShape.square,
                         type: GFButtonType.outline2x,
                         onPressed: loading ? null : handleCalc,
@@ -261,9 +275,10 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
                             textStyle: TextStyle(
                               fontSize: 10,
                               fontWeight: FontWeight.bold,
-                              color: notifier.isDark
-                                  ? TextColor.secondaryColor
-                                  : TextColor.primaryColor,
+                              color:
+                                  notifier.isDark
+                                      ? TextColor.secondaryColor
+                                      : TextColor.primaryColor,
                             ),
                           ),
                         ),

@@ -6,7 +6,7 @@ import 'package:getwidget/getwidget.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../features/darktheme_provider_app.dart';
+import '../features/theme_provider.dart';
 
 class MyCarPage extends StatefulWidget {
   const MyCarPage({super.key});
@@ -66,24 +66,27 @@ class _MyCarPageState extends State<MyCarPage> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(5),
                 side: BorderSide(
-                  color: notifier.isDark
-                      ? AppTheme.primaryColor
-                      : AppTheme.thirdColor,
+                  color:
+                      notifier.isDark
+                          ? AppTheme.primaryColor
+                          : AppTheme.thirdColor,
                   width: 2,
                 ),
               ),
-              backgroundColor: notifier.isDark
-                  ? AlertDialogColor.primaryColor
-                  : AlertDialogColor.secondaryColor,
+              backgroundColor:
+                  notifier.isDark
+                      ? AlertDialogColor.primaryColor
+                      : AlertDialogColor.secondaryColor,
               content: Text(
                 'pleasefillinallfields'.tr(),
                 style: GoogleFonts.jetBrainsMono(
                   textStyle: TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.bold,
-                    color: notifier.isDark
-                        ? TextColor.secondaryColor
-                        : TextColor.primaryColor,
+                    color:
+                        notifier.isDark
+                            ? TextColor.secondaryColor
+                            : TextColor.primaryColor,
                   ),
                 ),
               ),
@@ -98,9 +101,10 @@ class _MyCarPageState extends State<MyCarPage> {
                       textStyle: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
-                        color: notifier.isDark
-                            ? TextColor.secondaryColor
-                            : TextColor.primaryColor,
+                        color:
+                            notifier.isDark
+                                ? TextColor.secondaryColor
+                                : TextColor.primaryColor,
                       ),
                     ),
                   ),
@@ -123,24 +127,27 @@ class _MyCarPageState extends State<MyCarPage> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(5),
                 side: BorderSide(
-                  color: notifier.isDark
-                      ? AppTheme.primaryColor
-                      : AppTheme.thirdColor,
+                  color:
+                      notifier.isDark
+                          ? AppTheme.primaryColor
+                          : AppTheme.thirdColor,
                   width: 2,
                 ),
               ),
-              backgroundColor: notifier.isDark
-                  ? AlertDialogColor.primaryColor
-                  : AlertDialogColor.secondaryColor,
+              backgroundColor:
+                  notifier.isDark
+                      ? AlertDialogColor.primaryColor
+                      : AlertDialogColor.secondaryColor,
               content: Text(
                 'datasavedsuccessfully'.tr(),
                 style: GoogleFonts.jetBrainsMono(
                   textStyle: TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.bold,
-                    color: notifier.isDark
-                        ? TextColor.secondaryColor
-                        : TextColor.primaryColor,
+                    color:
+                        notifier.isDark
+                            ? TextColor.secondaryColor
+                            : TextColor.primaryColor,
                   ),
                 ),
               ),
@@ -155,9 +162,10 @@ class _MyCarPageState extends State<MyCarPage> {
                       textStyle: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
-                        color: notifier.isDark
-                            ? TextColor.secondaryColor
-                            : TextColor.primaryColor,
+                        color:
+                            notifier.isDark
+                                ? TextColor.secondaryColor
+                                : TextColor.primaryColor,
                       ),
                     ),
                   ),
@@ -203,24 +211,27 @@ class _MyCarPageState extends State<MyCarPage> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(5),
                 side: BorderSide(
-                  color: notifier.isDark
-                      ? AppTheme.primaryColor
-                      : AppTheme.thirdColor,
+                  color:
+                      notifier.isDark
+                          ? AppTheme.primaryColor
+                          : AppTheme.thirdColor,
                   width: 2,
                 ),
               ),
-              backgroundColor: notifier.isDark
-                  ? AlertDialogColor.primaryColor
-                  : AlertDialogColor.secondaryColor,
+              backgroundColor:
+                  notifier.isDark
+                      ? AlertDialogColor.primaryColor
+                      : AlertDialogColor.secondaryColor,
               content: Text(
                 'nodatatodelete'.tr(),
                 style: GoogleFonts.jetBrainsMono(
                   textStyle: TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.bold,
-                    color: notifier.isDark
-                        ? TextColor.secondaryColor
-                        : TextColor.primaryColor,
+                    color:
+                        notifier.isDark
+                            ? TextColor.secondaryColor
+                            : TextColor.primaryColor,
                   ),
                 ),
               ),
@@ -235,9 +246,10 @@ class _MyCarPageState extends State<MyCarPage> {
                       textStyle: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
-                        color: notifier.isDark
-                            ? TextColor.secondaryColor
-                            : TextColor.primaryColor,
+                        color:
+                            notifier.isDark
+                                ? TextColor.secondaryColor
+                                : TextColor.primaryColor,
                       ),
                     ),
                   ),
@@ -257,18 +269,20 @@ class _MyCarPageState extends State<MyCarPage> {
         return Consumer<UiProvider>(
           builder: (context, notifier, child) {
             return AlertDialog(
-              backgroundColor: notifier.isDark
-                  ? ButtonColor.primaryColor
-                  : ButtonColor.secondaryColor,
+              backgroundColor:
+                  notifier.isDark
+                      ? ButtonColor.primaryColor
+                      : ButtonColor.secondaryColor,
               content: Text(
                 'successfullydeleted'.tr(),
                 style: GoogleFonts.jetBrainsMono(
                   textStyle: TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.bold,
-                    color: notifier.isDark
-                        ? TextColor.secondaryColor
-                        : TextColor.secondaryColor,
+                    color:
+                        notifier.isDark
+                            ? TextColor.secondaryColor
+                            : TextColor.secondaryColor,
                   ),
                 ),
               ),
@@ -283,9 +297,10 @@ class _MyCarPageState extends State<MyCarPage> {
                       textStyle: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
-                        color: notifier.isDark
-                            ? TextColor.secondaryColor
-                            : TextColor.secondaryColor,
+                        color:
+                            notifier.isDark
+                                ? TextColor.secondaryColor
+                                : TextColor.secondaryColor,
                       ),
                     ),
                   ),
@@ -321,9 +336,10 @@ class _MyCarPageState extends State<MyCarPage> {
                   textStyle: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
-                    color: notifier.isDark
-                        ? TextColor.secondaryColor
-                        : TextColor.primaryColor,
+                    color:
+                        notifier.isDark
+                            ? TextColor.secondaryColor
+                            : TextColor.primaryColor,
                   ),
                 ),
               ),
@@ -345,9 +361,10 @@ class _MyCarPageState extends State<MyCarPage> {
                               textStyle: TextStyle(
                                 fontSize: 10,
                                 fontWeight: FontWeight.bold,
-                                color: notifier.isDark
-                                    ? TextColor.secondaryColor
-                                    : TextColor.primaryColor,
+                                color:
+                                    notifier.isDark
+                                        ? TextColor.secondaryColor
+                                        : TextColor.primaryColor,
                               ),
                             ),
                           ),
@@ -356,17 +373,19 @@ class _MyCarPageState extends State<MyCarPage> {
                             type: GFButtonType.outline2x,
                             tooltip: 'save'.tr(),
                             size: 30,
-                            color: notifier.isDark
-                                ? ButtonColor.primaryColor
-                                : ButtonColor.secondaryColor,
+                            color:
+                                notifier.isDark
+                                    ? ButtonColor.primaryColor
+                                    : ButtonColor.secondaryColor,
                             onPressed: () async {
                               await _saveCarInfo(context);
                             },
                             icon: Icon(
                               Icons.save,
-                              color: notifier.isDark
-                                  ? TextColor.secondaryColor
-                                  : TextColor.primaryColor,
+                              color:
+                                  notifier.isDark
+                                      ? TextColor.secondaryColor
+                                      : TextColor.primaryColor,
                               size: 18,
                               semanticLabel: 'save'.tr(),
                             ),
@@ -376,17 +395,19 @@ class _MyCarPageState extends State<MyCarPage> {
                             type: GFButtonType.outline2x,
                             tooltip: 'delete'.tr(),
                             size: 30,
-                            color: notifier.isDark
-                                ? ButtonColor.primaryColor
-                                : ButtonColor.secondaryColor,
+                            color:
+                                notifier.isDark
+                                    ? ButtonColor.primaryColor
+                                    : ButtonColor.secondaryColor,
                             onPressed: () async {
                               await _deleteCarInfo(context);
                             },
                             icon: Icon(
                               Icons.delete,
-                              color: notifier.isDark
-                                  ? TextColor.secondaryColor
-                                  : TextColor.primaryColor,
+                              color:
+                                  notifier.isDark
+                                      ? TextColor.secondaryColor
+                                      : TextColor.primaryColor,
                               size: 18,
                               semanticLabel: 'delete'.tr(),
                             ),
@@ -398,9 +419,10 @@ class _MyCarPageState extends State<MyCarPage> {
                               textStyle: TextStyle(
                                 fontSize: 10,
                                 fontWeight: FontWeight.bold,
-                                color: notifier.isDark
-                                    ? TextColor.secondaryColor
-                                    : TextColor.primaryColor,
+                                color:
+                                    notifier.isDark
+                                        ? TextColor.secondaryColor
+                                        : TextColor.primaryColor,
                               ),
                             ),
                           ),
@@ -420,9 +442,10 @@ class _MyCarPageState extends State<MyCarPage> {
                         textStyle: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.bold,
-                          color: notifier.isDark
-                              ? TextColor.secondaryColor
-                              : TextColor.primaryColor,
+                          color:
+                              notifier.isDark
+                                  ? TextColor.secondaryColor
+                                  : TextColor.primaryColor,
                         ),
                       ),
                     ),
@@ -432,9 +455,10 @@ class _MyCarPageState extends State<MyCarPage> {
                         height: 50,
                         width: 180,
                         child: TextField(
-                          cursorColor: notifier.isDark
-                              ? FormColor.secondaryColor
-                              : FormColor.primaryColor,
+                          cursorColor:
+                              notifier.isDark
+                                  ? FormColor.secondaryColor
+                                  : FormColor.primaryColor,
                           controller: _plateController,
                           inputFormatters: [
                             FilteringTextInputFormatter.allow(
@@ -445,16 +469,18 @@ class _MyCarPageState extends State<MyCarPage> {
                             labelText: 'plate'.tr(),
                             labelStyle: TextStyle(
                               fontSize: 10,
-                              color: notifier.isDark
-                                  ? TextColor.secondaryColor
-                                  : TextColor.primaryColor,
+                              color:
+                                  notifier.isDark
+                                      ? TextColor.secondaryColor
+                                      : TextColor.primaryColor,
                             ),
                             border: const OutlineInputBorder(),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: notifier.isDark
-                                    ? FormColor.secondaryColor
-                                    : FormColor.primaryColor,
+                                color:
+                                    notifier.isDark
+                                        ? FormColor.secondaryColor
+                                        : FormColor.primaryColor,
                                 width: 2,
                               ),
                             ),
@@ -467,9 +493,10 @@ class _MyCarPageState extends State<MyCarPage> {
                       height: 50,
                       width: 180,
                       child: TextField(
-                        cursorColor: notifier.isDark
-                            ? FormColor.secondaryColor
-                            : FormColor.primaryColor,
+                        cursorColor:
+                            notifier.isDark
+                                ? FormColor.secondaryColor
+                                : FormColor.primaryColor,
                         controller: _modelController,
                         inputFormatters: [
                           FilteringTextInputFormatter.allow(
@@ -480,16 +507,18 @@ class _MyCarPageState extends State<MyCarPage> {
                           labelText: 'carmodel'.tr(),
                           labelStyle: TextStyle(
                             fontSize: 10,
-                            color: notifier.isDark
-                                ? TextColor.secondaryColor
-                                : TextColor.primaryColor,
+                            color:
+                                notifier.isDark
+                                    ? TextColor.secondaryColor
+                                    : TextColor.primaryColor,
                           ),
                           border: const OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                              color: notifier.isDark
-                                  ? FormColor.secondaryColor
-                                  : FormColor.primaryColor,
+                              color:
+                                  notifier.isDark
+                                      ? FormColor.secondaryColor
+                                      : FormColor.primaryColor,
                               width: 2,
                             ),
                           ),
@@ -501,9 +530,10 @@ class _MyCarPageState extends State<MyCarPage> {
                       height: 50,
                       width: 180,
                       child: TextField(
-                        cursorColor: notifier.isDark
-                            ? FormColor.secondaryColor
-                            : FormColor.primaryColor,
+                        cursorColor:
+                            notifier.isDark
+                                ? FormColor.secondaryColor
+                                : FormColor.primaryColor,
                         controller: _yearController,
                         keyboardType: TextInputType.number,
                         textInputAction: TextInputAction.done,
@@ -512,16 +542,18 @@ class _MyCarPageState extends State<MyCarPage> {
                           labelText: 'year'.tr(),
                           labelStyle: TextStyle(
                             fontSize: 10,
-                            color: notifier.isDark
-                                ? TextColor.secondaryColor
-                                : TextColor.primaryColor,
+                            color:
+                                notifier.isDark
+                                    ? TextColor.secondaryColor
+                                    : TextColor.primaryColor,
                           ),
                           border: const OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                              color: notifier.isDark
-                                  ? FormColor.secondaryColor
-                                  : FormColor.primaryColor,
+                              color:
+                                  notifier.isDark
+                                      ? FormColor.secondaryColor
+                                      : FormColor.primaryColor,
                               width: 2,
                             ),
                           ),
@@ -543,16 +575,18 @@ class _MyCarPageState extends State<MyCarPage> {
                           labelText: 'lastconsumption'.tr(),
                           labelStyle: TextStyle(
                             fontSize: 10,
-                            color: notifier.isDark
-                                ? TextColor.secondaryColor
-                                : TextColor.primaryColor,
+                            color:
+                                notifier.isDark
+                                    ? TextColor.secondaryColor
+                                    : TextColor.primaryColor,
                           ),
                           border: const OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                              color: notifier.isDark
-                                  ? FormColor.secondaryColor
-                                  : FormColor.primaryColor,
+                              color:
+                                  notifier.isDark
+                                      ? FormColor.secondaryColor
+                                      : FormColor.primaryColor,
                               width: 2,
                             ),
                           ),

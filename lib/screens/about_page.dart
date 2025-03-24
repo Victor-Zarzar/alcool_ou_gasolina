@@ -1,5 +1,5 @@
 import 'package:alcool_ou_gasolina/features/app_theme.dart';
-import 'package:alcool_ou_gasolina/features/darktheme_provider_app.dart';
+import 'package:alcool_ou_gasolina/features/theme_provider.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
@@ -40,27 +40,30 @@ class _AboutPageState extends State<AboutPage> {
                   width: myWidth,
                   child: GFAppBar(
                     centerTitle: true,
-                    backgroundColor: notifier.isDark
-                        ? AppTheme.thirdColor
-                        : AppTheme.primaryColor,
+                    backgroundColor:
+                        notifier.isDark
+                            ? AppTheme.thirdColor
+                            : AppTheme.primaryColor,
                     title: Text(
                       "about".tr(),
                       style: GoogleFonts.jetBrainsMono(
                         textStyle: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
-                          color: notifier.isDark
-                              ? TextColor.secondaryColor
-                              : TextColor.primaryColor,
+                          color:
+                              notifier.isDark
+                                  ? TextColor.secondaryColor
+                                  : TextColor.primaryColor,
                         ),
                       ),
                     ),
                     leading: IconButton(
                       icon: Icon(
                         Icons.arrow_back,
-                        color: notifier.isDark
-                            ? TextColor.secondaryColor
-                            : TextColor.primaryColor,
+                        color:
+                            notifier.isDark
+                                ? TextColor.secondaryColor
+                                : TextColor.primaryColor,
                         semanticLabel: 'backtopage'.tr(),
                       ),
                       onPressed: () {
@@ -74,10 +77,7 @@ class _AboutPageState extends State<AboutPage> {
                     padding: const EdgeInsets.all(10.0),
                     child: Row(
                       children: [
-                        Icon(
-                          Icons.info,
-                          semanticLabel: 'informationicon'.tr(),
-                        ),
+                        Icon(Icons.info, semanticLabel: 'informationicon'.tr()),
                         const SizedBox(width: 10),
                         Expanded(
                           child: Text(
@@ -86,9 +86,10 @@ class _AboutPageState extends State<AboutPage> {
                               textStyle: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.bold,
-                                color: notifier.isDark
-                                    ? TextColor.secondaryColor
-                                    : TextColor.primaryColor,
+                                color:
+                                    notifier.isDark
+                                        ? TextColor.secondaryColor
+                                        : TextColor.primaryColor,
                               ),
                             ),
                           ),
@@ -112,9 +113,10 @@ class _AboutPageState extends State<AboutPage> {
                           textStyle: TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.bold,
-                            color: notifier.isDark
-                                ? TextColor.secondaryColor
-                                : TextColor.primaryColor,
+                            color:
+                                notifier.isDark
+                                    ? TextColor.secondaryColor
+                                    : TextColor.primaryColor,
                           ),
                         ),
                       ),

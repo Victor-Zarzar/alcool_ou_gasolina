@@ -7,7 +7,8 @@ class NotificationService {
       FlutterLocalNotificationsPlugin();
 
   static Future<void> onDidReceiveNotification(
-      NotificationResponse notificationResponse) async {
+    NotificationResponse notificationResponse,
+  ) async {
     debugPrint("Notification receive");
   }
 
@@ -19,9 +20,9 @@ class NotificationService {
 
     const InitializationSettings initializationSettings =
         InitializationSettings(
-      android: androidInitializationSettings,
-      iOS: iOSInitializationSettings,
-    );
+          android: androidInitializationSettings,
+          iOS: iOSInitializationSettings,
+        );
     await flutterLocalNotificationsPlugin.initialize(
       initializationSettings,
       onDidReceiveNotificationResponse: onDidReceiveNotification,
@@ -30,19 +31,21 @@ class NotificationService {
 
     await flutterLocalNotificationsPlugin
         .resolvePlatformSpecificImplementation<
-            AndroidFlutterLocalNotificationsPlugin>()
+          AndroidFlutterLocalNotificationsPlugin
+        >()
         ?.requestNotificationsPermission();
   }
 
   static Future<void> showInstantNotification(String title, String body) async {
     const NotificationDetails platformChannelSpecifics = NotificationDetails(
-        android: AndroidNotificationDetails(
-          'instant_notification_channel_id',
-          'Instant Notifications',
-          importance: Importance.max,
-          priority: Priority.high,
-        ),
-        iOS: DarwinNotificationDetails());
+      android: AndroidNotificationDetails(
+        'instant_notification_channel_id',
+        'Instant Notifications',
+        importance: Importance.max,
+        priority: Priority.high,
+      ),
+      iOS: DarwinNotificationDetails(),
+    );
 
     await flutterLocalNotificationsPlugin.show(
       0,
@@ -59,14 +62,18 @@ class NotificationService {
     required String payload,
   }) async {
     const AndroidNotificationDetails androidNotificationDetails =
-        AndroidNotificationDetails('weekly_channel_id', 'Weekly Notifications',
-            channelDescription: 'Weekly Notification Channel',
-            importance: Importance.max,
-            priority: Priority.high,
-            ticker: 'ticker');
+        AndroidNotificationDetails(
+          'weekly_channel_id',
+          'Weekly Notifications',
+          channelDescription: 'Weekly Notification Channel',
+          importance: Importance.max,
+          priority: Priority.high,
+          ticker: 'ticker',
+        );
 
-    const NotificationDetails notificationDetails =
-        NotificationDetails(android: androidNotificationDetails);
+    const NotificationDetails notificationDetails = NotificationDetails(
+      android: androidNotificationDetails,
+    );
 
     await flutterLocalNotificationsPlugin.periodicallyShow(
       2,
@@ -84,7 +91,11 @@ class NotificationService {
   }
 
   static Future<void> scheduleNotification(
-      int id, String title, String body, DateTime scheduledTime) async {
+    int id,
+    String title,
+    String body,
+    DateTime scheduledTime,
+  ) async {
     await flutterLocalNotificationsPlugin.zonedSchedule(
       id,
       title,
@@ -93,8 +104,10 @@ class NotificationService {
       const NotificationDetails(
         iOS: DarwinNotificationDetails(),
         android: AndroidNotificationDetails(
-            'your channel id', 'your channel name',
-            channelDescription: 'your channel description'),
+          'your channel id',
+          'your channel name',
+          channelDescription: 'your channel description',
+        ),
       ),
       androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
       uiLocalNotificationDateInterpretation:

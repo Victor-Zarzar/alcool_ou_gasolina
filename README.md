@@ -48,7 +48,7 @@ Run the app:
 
 ### Archictecture:
 
-<img src="assets/imgs/architecture.png" alt="intro page ios" width="250">
+<img src="assets/imgs/architecture.png" alt="architecture" width="1000" height="800">
 
 ### Version iOS:
 
@@ -57,4 +57,4 @@ Run the app:
 
 ### Version Android:
 
-<img src="assets/imgs/intropageandroid.png" alt="intro page android" width="250"> &nbsp; &nbsp; &nbsp; <img src="assets/imgs/homepageandroid.png" alt="home page android" width="250"> &nbsp; &nbsp; &nbsp; <img src="assets/imgs/homepageandroid2.png" alt="home page android 2" width="250">
+<img src="assets/imgs/homepageandroid.png" alt="home page android" width="250"> &nbsp; &nbsp; &nbsp; <img src="assets/imgs/homepageandroid2.png" alt="home page android 2" width="250">

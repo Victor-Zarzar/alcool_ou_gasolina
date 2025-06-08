@@ -1,9 +1,10 @@
+import 'package:alcool_ou_gasolina/features/app_assets.dart';
 import 'package:alcool_ou_gasolina/features/app_theme.dart';
+import 'package:alcool_ou_gasolina/features/responsive_extesion.dart';
 import 'package:alcool_ou_gasolina/features/theme_provider.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class ConsumptionPage extends StatefulWidget {
@@ -57,35 +58,14 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
                         : AlertDialogColor.secondaryColor,
                 content: Text(
                   'pleasefillinallfields'.tr(),
-                  style: GoogleFonts.jetBrainsMono(
-                    textStyle: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
-                      color:
-                          notifier.isDark
-                              ? TextColor.secondaryColor
-                              : TextColor.primaryColor,
-                    ),
-                  ),
+                  style: context.bodySmallDialog,
                 ),
                 actions: [
                   TextButton(
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    child: Text(
-                      'OK',
-                      style: GoogleFonts.jetBrainsMono(
-                        textStyle: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                          color:
-                              notifier.isDark
-                                  ? TextColor.secondaryColor
-                                  : TextColor.primaryColor,
-                        ),
-                      ),
-                    ),
+                    child: Text('OK', style: context.bodySmallDialog),
                   ),
                 ],
               );
@@ -117,19 +97,7 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
                 notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
             automaticallyImplyLeading: false,
             centerTitle: true,
-            title: Text(
-              'calculateconsumption'.tr(),
-              style: GoogleFonts.jetBrainsMono(
-                textStyle: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                  color:
-                      notifier.isDark
-                          ? TextColor.secondaryColor
-                          : TextColor.primaryColor,
-                ),
-              ),
-            ),
+            title: Text('calculateconsumption'.tr(), style: context.h1),
           ),
           backgroundColor:
               notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
@@ -148,39 +116,13 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
                       child: Text(
                         'infoconsumption'.tr(),
                         textAlign: TextAlign.center,
-                        style: GoogleFonts.jetBrainsMono(
-                          textStyle: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 12,
-                            color:
-                                notifier.isDark
-                                    ? TextColor.secondaryColor
-                                    : TextColor.primaryColor,
-                          ),
-                        ),
+                        style: context.h2,
                       ),
                     ),
                     const SizedBox(height: 50),
-                    Image.asset(
-                      "assets/gas.png",
-                      height: 140,
-                      width: 190,
-                      semanticLabel: 'dashboard'.tr(),
-                    ),
+                    Gasoline.asset(),
                     const SizedBox(height: 10),
-                    Text(
-                      'averageconsumption'.tr(),
-                      style: GoogleFonts.jetBrainsMono(
-                        textStyle: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                          color:
-                              notifier.isDark
-                                  ? TextColor.secondaryColor
-                                  : TextColor.primaryColor,
-                        ),
-                      ),
-                    ),
+                    Text('averageconsumption'.tr(), style: context.bodySmall),
                     const SizedBox(height: 20),
                     Center(
                       child: SizedBox(
@@ -199,13 +141,7 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
                           ),
                           decoration: InputDecoration(
                             labelText: 'kmsdriven'.tr(),
-                            labelStyle: TextStyle(
-                              fontSize: 10,
-                              color:
-                                  notifier.isDark
-                                      ? TextColor.secondaryColor
-                                      : TextColor.primaryColor,
-                            ),
+                            labelStyle: context.textSmall,
                             border: const OutlineInputBorder(),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -237,13 +173,7 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
                         ),
                         decoration: InputDecoration(
                           labelText: 'liters'.tr(),
-                          labelStyle: TextStyle(
-                            fontSize: 10,
-                            color:
-                                notifier.isDark
-                                    ? TextColor.secondaryColor
-                                    : TextColor.primaryColor,
-                          ),
+                          labelStyle: context.textSmall,
                           border: const OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
@@ -271,16 +201,7 @@ class _ConsumptionPageState extends State<ConsumptionPage> {
                         onPressed: loading ? null : handleCalc,
                         child: Text(
                           'calculate'.tr(),
-                          style: GoogleFonts.jetBrainsMono(
-                            textStyle: TextStyle(
-                              fontSize: 10,
-                              fontWeight: FontWeight.bold,
-                              color:
-                                  notifier.isDark
-                                      ? TextColor.secondaryColor
-                                      : TextColor.primaryColor,
-                            ),
-                          ),
+                          style: context.textSmallBold,
                         ),
                       ),
                     ),

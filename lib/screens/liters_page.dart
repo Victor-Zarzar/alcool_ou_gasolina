@@ -1,9 +1,10 @@
+import 'package:alcool_ou_gasolina/features/app_assets.dart';
 import 'package:alcool_ou_gasolina/features/app_theme.dart';
+import 'package:alcool_ou_gasolina/features/responsive_extesion.dart';
 import 'package:alcool_ou_gasolina/features/theme_provider.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class LitersPage extends StatefulWidget {
@@ -53,35 +54,14 @@ class _LitersPageState extends State<LitersPage> {
                         : AlertDialogColor.secondaryColor,
                 content: Text(
                   'pleasefillinallfields'.tr(),
-                  style: GoogleFonts.jetBrainsMono(
-                    textStyle: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
-                      color:
-                          notifier.isDark
-                              ? TextColor.secondaryColor
-                              : TextColor.primaryColor,
-                    ),
-                  ),
+                  style: context.bodySmallDialog,
                 ),
                 actions: [
                   TextButton(
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    child: Text(
-                      'OK',
-                      style: GoogleFonts.jetBrainsMono(
-                        textStyle: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                          color:
-                              notifier.isDark
-                                  ? TextColor.secondaryColor
-                                  : TextColor.primaryColor,
-                        ),
-                      ),
-                    ),
+                    child: Text('OK', style: context.bodySmallDialog),
                   ),
                 ],
               );
@@ -114,19 +94,7 @@ class _LitersPageState extends State<LitersPage> {
                 notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
             automaticallyImplyLeading: false,
             centerTitle: true,
-            title: Text(
-              'howmanylitersdidifill?'.tr(),
-              style: GoogleFonts.jetBrainsMono(
-                textStyle: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                  color:
-                      notifier.isDark
-                          ? TextColor.secondaryColor
-                          : TextColor.primaryColor,
-                ),
-              ),
-            ),
+            title: Text('howmanylitersdidifill?'.tr(), style: context.h1),
           ),
           backgroundColor:
               notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
@@ -145,41 +113,18 @@ class _LitersPageState extends State<LitersPage> {
                       child: Text(
                         'infoliters'.tr(),
                         textAlign: TextAlign.center,
-                        style: GoogleFonts.jetBrainsMono(
-                          textStyle: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 12,
-                            color:
-                                notifier.isDark
-                                    ? TextColor.secondaryColor
-                                    : TextColor.primaryColor,
-                          ),
-                        ),
+                        style: context.h2,
                       ),
                     ),
                     const SizedBox(height: 50),
-                    Image.asset(
-                      "assets/fuel.png",
-                      height: 140,
-                      width: 190,
-                      semanticLabel: 'fuelmarker'.tr(),
-                    ),
+                    FuelMarker.asset(),
                     const SizedBox(height: 10),
                     SizedBox(
                       width: 150,
                       child: Text(
                         'suppliedvalue'.tr(),
                         textAlign: TextAlign.center,
-                        style: GoogleFonts.jetBrainsMono(
-                          textStyle: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold,
-                            color:
-                                notifier.isDark
-                                    ? TextColor.secondaryColor
-                                    : TextColor.primaryColor,
-                          ),
-                        ),
+                        style: context.textSmallBold,
                       ),
                     ),
                     const SizedBox(height: 20),
@@ -200,13 +145,7 @@ class _LitersPageState extends State<LitersPage> {
                           ),
                           decoration: InputDecoration(
                             labelText: 'suppliedvaluers'.tr(),
-                            labelStyle: TextStyle(
-                              fontSize: 10,
-                              color:
-                                  notifier.isDark
-                                      ? TextColor.secondaryColor
-                                      : TextColor.primaryColor,
-                            ),
+                            labelStyle: context.textSmall,
                             border: const OutlineInputBorder(),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -239,13 +178,7 @@ class _LitersPageState extends State<LitersPage> {
                           ),
                           decoration: InputDecoration(
                             labelText: 'priceperlitre'.tr(),
-                            labelStyle: TextStyle(
-                              fontSize: 10,
-                              color:
-                                  notifier.isDark
-                                      ? TextColor.secondaryColor
-                                      : TextColor.primaryColor,
-                            ),
+                            labelStyle: context.textSmall,
                             border: const OutlineInputBorder(),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -274,33 +207,12 @@ class _LitersPageState extends State<LitersPage> {
                         onPressed: loading ? null : handleCalc,
                         child: Text(
                           'calculate'.tr(),
-                          style: GoogleFonts.jetBrainsMono(
-                            textStyle: TextStyle(
-                              fontSize: 10,
-                              fontWeight: FontWeight.bold,
-                              color:
-                                  notifier.isDark
-                                      ? TextColor.secondaryColor
-                                      : TextColor.primaryColor,
-                            ),
-                          ),
+                          style: context.textSmallBold,
                         ),
                       ),
                     ),
                     const SizedBox(height: 10),
-                    Text(
-                      resultText,
-                      style: GoogleFonts.jetBrainsMono(
-                        textStyle: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                          color:
-                              notifier.isDark
-                                  ? TextColor.secondaryColor
-                                  : TextColor.primaryColor,
-                        ),
-                      ),
-                    ),
+                    Text(resultText, style: context.textSmallBold),
                   ],
                 ),
               ),

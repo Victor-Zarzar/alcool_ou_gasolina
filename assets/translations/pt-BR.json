@@ -73,6 +73,9 @@
     "darkmode_icon": "Ícone modo escuro",
     "notifications_icon": "Ícone de notificações",
     "about_icon": "Ícone sobre",
+    "colors_icon": "Cores dos Ícones",
+    "arrow_icon": "Seta do Ícone",
+    "select_icon": "Selecionar Ícone",
     "notifications": "Notificações",
     "about": "Sobre",
     "backtopage": "Voltar a página",
@@ -80,5 +83,14 @@
     "description": "Este app foi desenvolvido para calcular qual combustível vale mais a pena, a última média de consumo, e para registrar os dados do veículo.",
     "alcoholresult": "Compensa usar Álcool!",
     "gasolineresult": "Compensa usar Gasolina!",
-    "developed": "Desenvolvido por: www.victorzarzar.com.br"
+    "developed": "Desenvolvido por: www.victorzarzar.com.br",
+    "theme": "Tema",
+    "select_theme": "Selecionar tema",
+    "light_theme": "Claro",
+    "dark_theme": "Escuro",
+    "system_theme": "Sistema",
+    "language": "Idioma",
+    "english": "Inglês",
+    "portuguese": "Português",
+    "spanish": "Espanhol"
 }

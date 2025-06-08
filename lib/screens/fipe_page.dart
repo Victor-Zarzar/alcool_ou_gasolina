@@ -1,6 +1,9 @@
+import 'package:alcool_ou_gasolina/features/app_assets.dart';
+import 'package:alcool_ou_gasolina/features/custom_container.dart';
+import 'package:alcool_ou_gasolina/features/responsive_extesion.dart';
+import 'package:alcool_ou_gasolina/features/shimmer_effect.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:alcool_ou_gasolina/features/app_theme.dart';
 import 'package:alcool_ou_gasolina/features/theme_provider.dart';
@@ -19,6 +22,12 @@ class _FipePageState extends State<FipePage> {
   String resultText = '';
 
   final _vehicleTypes = ['carros', 'motos', 'caminhoes'];
+
+  final Map<String, String> _vehicleTypeTranslations = {
+    'carros': 'cars',
+    'motos': 'motorcycles',
+    'caminhoes': 'trucks',
+  };
 
   String? _selectedType;
   String? _selectedBrand;
@@ -146,37 +155,13 @@ class _FipePageState extends State<FipePage> {
                   notifier.isDark
                       ? AlertDialogColor.primaryColor
                       : AlertDialogColor.secondaryColor,
-              content: Text(
-                message,
-                style: GoogleFonts.jetBrainsMono(
-                  textStyle: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
-                    color:
-                        notifier.isDark
-                            ? TextColor.secondaryColor
-                            : TextColor.primaryColor,
-                  ),
-                ),
-              ),
+              content: Text(message, style: context.bodySmallDialog),
               actions: [
                 TextButton(
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  child: Text(
-                    'OK'.tr(),
-                    style: GoogleFonts.jetBrainsMono(
-                      textStyle: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                        color:
-                            notifier.isDark
-                                ? TextColor.secondaryColor
-                                : TextColor.primaryColor,
-                      ),
-                    ),
-                  ),
+                  child: Text('OK'.tr(), style: context.bodySmallDialog),
                 ),
               ],
             );
@@ -197,19 +182,7 @@ class _FipePageState extends State<FipePage> {
               notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
           appBar: GFAppBar(
             centerTitle: true,
-            title: Text(
-              'fipetable'.tr(),
-              style: GoogleFonts.jetBrainsMono(
-                textStyle: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                  color:
-                      notifier.isDark
-                          ? TextColor.secondaryColor
-                          : TextColor.primaryColor,
-                ),
-              ),
-            ),
+            title: Text('fipetable'.tr(), style: context.h1),
             backgroundColor:
                 notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
             automaticallyImplyLeading: false,
@@ -227,59 +200,39 @@ class _FipePageState extends State<FipePage> {
                       child: Text(
                         'infofipe'.tr(),
                         textAlign: TextAlign.center,
-                        style: GoogleFonts.jetBrainsMono(
-                          textStyle: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 12,
-                            color:
-                                notifier.isDark
-                                    ? TextColor.secondaryColor
-                                    : TextColor.primaryColor,
-                          ),
-                        ),
+                        style: context.h2,
                       ),
                     ),
                     const SizedBox(height: 30),
-                    Image.asset(
-                      "assets/carfipe.png",
-                      height: 180,
-                      width: 230,
-                      semanticLabel: 'dashboard'.tr(),
-                    ),
-                    Container(
-                      width: 160,
-                      margin: const EdgeInsets.all(15),
+                    CarFipe.asset(),
+                    ResponsiveContainer(
+                      minWidth: 140,
+                      maxWidth: 240,
+                      margin: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 12,
+                      ),
                       decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(6),
                         border: Border.all(
                           color:
                               notifier.isDark
                                   ? FormColor.secondaryColor
                                   : FormColor.primaryColor,
-                          width: 1.0,
+                          width: 0.5,
                         ),
-                        borderRadius: BorderRadius.circular(8),
                       ),
-                      padding: const EdgeInsets.all(2),
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: DropdownButton<String>(
                         borderRadius: BorderRadius.circular(8),
                         isExpanded: true,
                         hint: Text(
                           'select_type'.tr(),
-                          style: GoogleFonts.jetBrainsMono(
-                            textStyle: TextStyle(
-                              fontSize:
-                                  MediaQuery.of(context).size.width * 0.03,
-                              fontWeight: FontWeight.bold,
-                              color:
-                                  notifier.isDark
-                                      ? TextColor.secondaryColor
-                                      : TextColor.primaryColor,
-                            ),
-                          ),
+                          style: context.bodySmall,
                         ),
                         dropdownColor:
                             notifier.isDark
-                                ? ButtonColor.thirdColor
+                                ? Colors.black.withValues(alpha: 0.9)
                                 : ButtonColor.primaryColor,
                         value: _selectedType,
                         underline: const SizedBox.shrink(),
@@ -310,21 +263,8 @@ class _FipePageState extends State<FipePage> {
                                     Icon(icon, color: iconColor),
                                     const SizedBox(width: 8),
                                     Text(
-                                      type.toUpperCase(),
-                                      style: GoogleFonts.jetBrainsMono(
-                                        textStyle: TextStyle(
-                                          fontSize:
-                                              MediaQuery.of(
-                                                context,
-                                              ).size.width *
-                                              0.03,
-                                          fontWeight: FontWeight.bold,
-                                          color:
-                                              notifier.isDark
-                                                  ? TextColor.secondaryColor
-                                                  : TextColor.primaryColor,
-                                        ),
-                                      ),
+                                      _vehicleTypeTranslations[type]!.tr(),
+                                      style: context.bodySmall,
                                     ),
                                   ],
                                 ),
@@ -339,40 +279,34 @@ class _FipePageState extends State<FipePage> {
                       ),
                     ),
                     if (_brands.isNotEmpty)
-                      Container(
-                        width: 170,
-                        margin: const EdgeInsets.all(15),
+                      ResponsiveContainer(
+                        minWidth: 140,
+                        maxWidth: 240,
+                        margin: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 12,
+                        ),
                         decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(6),
                           border: Border.all(
                             color:
                                 notifier.isDark
                                     ? FormColor.secondaryColor
                                     : FormColor.primaryColor,
-                            width: 1.0,
+                            width: 0.5,
                           ),
-                          borderRadius: BorderRadius.circular(8),
                         ),
-                        padding: const EdgeInsets.all(2),
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: DropdownButton<String>(
                           borderRadius: BorderRadius.circular(8),
                           isExpanded: true,
                           hint: Text(
                             'select_brand'.tr(),
-                            style: GoogleFonts.jetBrainsMono(
-                              textStyle: TextStyle(
-                                fontSize:
-                                    MediaQuery.of(context).size.width * 0.03,
-                                fontWeight: FontWeight.bold,
-                                color:
-                                    notifier.isDark
-                                        ? TextColor.secondaryColor
-                                        : TextColor.primaryColor,
-                              ),
-                            ),
+                            style: context.bodySmall,
                           ),
                           dropdownColor:
                               notifier.isDark
-                                  ? ButtonColor.thirdColor
+                                  ? Colors.black.withValues(alpha: 0.9)
                                   : ButtonColor.primaryColor,
                           value: _selectedBrand,
                           underline: const SizedBox.shrink(),
@@ -382,18 +316,7 @@ class _FipePageState extends State<FipePage> {
                                   value: brand['codigo'] as String,
                                   child: Text(
                                     brand['nome'] as String,
-                                    style: GoogleFonts.jetBrainsMono(
-                                      textStyle: TextStyle(
-                                        fontSize:
-                                            MediaQuery.of(context).size.width *
-                                            0.03,
-                                        fontWeight: FontWeight.bold,
-                                        color:
-                                            notifier.isDark
-                                                ? TextColor.secondaryColor
-                                                : TextColor.primaryColor,
-                                      ),
-                                    ),
+                                    style: context.bodySmall,
                                   ),
                                 );
                               }).toList(),
@@ -406,40 +329,34 @@ class _FipePageState extends State<FipePage> {
                         ),
                       ),
                     if (_models.isNotEmpty)
-                      Container(
-                        width: 350,
-                        margin: const EdgeInsets.all(15),
+                      ResponsiveContainer(
+                        minWidth: 140,
+                        maxWidth: 380,
+                        margin: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 12,
+                        ),
                         decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(6),
                           border: Border.all(
                             color:
                                 notifier.isDark
                                     ? FormColor.secondaryColor
                                     : FormColor.primaryColor,
-                            width: 1.0,
+                            width: 0.5,
                           ),
-                          borderRadius: BorderRadius.circular(8),
                         ),
-                        padding: const EdgeInsets.all(2),
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: DropdownButton<String>(
                           borderRadius: BorderRadius.circular(8),
                           isExpanded: true,
                           hint: Text(
                             'select_model'.tr(),
-                            style: GoogleFonts.jetBrainsMono(
-                              textStyle: TextStyle(
-                                fontSize:
-                                    MediaQuery.of(context).size.width * 0.03,
-                                fontWeight: FontWeight.bold,
-                                color:
-                                    notifier.isDark
-                                        ? TextColor.secondaryColor
-                                        : TextColor.primaryColor,
-                              ),
-                            ),
+                            style: context.bodySmall,
                           ),
                           dropdownColor:
                               notifier.isDark
-                                  ? ButtonColor.thirdColor
+                                  ? Colors.black.withValues(alpha: 0.9)
                                   : ButtonColor.primaryColor,
                           value: _selectedModel,
                           underline: const SizedBox.shrink(),
@@ -449,18 +366,7 @@ class _FipePageState extends State<FipePage> {
                                   value: model['codigo'].toString(),
                                   child: Text(
                                     model['nome'] as String,
-                                    style: GoogleFonts.jetBrainsMono(
-                                      textStyle: TextStyle(
-                                        fontSize:
-                                            MediaQuery.of(context).size.width *
-                                            0.03,
-                                        fontWeight: FontWeight.bold,
-                                        color:
-                                            notifier.isDark
-                                                ? TextColor.secondaryColor
-                                                : TextColor.primaryColor,
-                                      ),
-                                    ),
+                                    style: context.bodySmall,
                                   ),
                                 );
                               }).toList(),
@@ -477,40 +383,34 @@ class _FipePageState extends State<FipePage> {
                         ),
                       ),
                     if (_years.isNotEmpty)
-                      Container(
-                        width: 150,
-                        margin: const EdgeInsets.all(15),
+                      ResponsiveContainer(
+                        minWidth: 140,
+                        maxWidth: 180,
+                        margin: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 12,
+                        ),
                         decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(6),
                           border: Border.all(
                             color:
                                 notifier.isDark
                                     ? FormColor.secondaryColor
                                     : FormColor.primaryColor,
-                            width: 1.0,
+                            width: 0.5,
                           ),
-                          borderRadius: BorderRadius.circular(8),
                         ),
-                        padding: const EdgeInsets.all(2),
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: DropdownButton<String>(
                           borderRadius: BorderRadius.circular(8),
                           isExpanded: true,
                           hint: Text(
                             'select_the_year'.tr(),
-                            style: GoogleFonts.jetBrainsMono(
-                              textStyle: TextStyle(
-                                fontSize:
-                                    MediaQuery.of(context).size.width * 0.03,
-                                fontWeight: FontWeight.bold,
-                                color:
-                                    notifier.isDark
-                                        ? TextColor.secondaryColor
-                                        : TextColor.primaryColor,
-                              ),
-                            ),
+                            style: context.bodySmall,
                           ),
                           dropdownColor:
                               notifier.isDark
-                                  ? ButtonColor.thirdColor
+                                  ? Colors.black.withValues(alpha: 0.9)
                                   : ButtonColor.primaryColor,
                           value: _selectedYear,
                           underline: const SizedBox.shrink(),
@@ -520,18 +420,7 @@ class _FipePageState extends State<FipePage> {
                                   value: year['codigo'] as String,
                                   child: Text(
                                     year['nome'] as String,
-                                    style: GoogleFonts.jetBrainsMono(
-                                      textStyle: TextStyle(
-                                        fontSize:
-                                            MediaQuery.of(context).size.width *
-                                            0.03,
-                                        fontWeight: FontWeight.bold,
-                                        color:
-                                            notifier.isDark
-                                                ? TextColor.secondaryColor
-                                                : TextColor.primaryColor,
-                                      ),
-                                    ),
+                                    style: context.bodySmall,
                                   ),
                                 );
                               }).toList(),
@@ -549,24 +438,14 @@ class _FipePageState extends State<FipePage> {
                         ),
                       ),
                     if (_isLoading)
-                      const CircularProgressIndicator()
+                      const ShimmerComponent()
                     else if (_fipeResult != null)
                       SizedBox(
                         width: 300,
                         child: Text(
                           resultText,
                           textAlign: TextAlign.center,
-                          style: GoogleFonts.jetBrainsMono(
-                            textStyle: TextStyle(
-                              fontSize:
-                                  MediaQuery.of(context).size.width * 0.03,
-                              fontWeight: FontWeight.bold,
-                              color:
-                                  notifier.isDark
-                                      ? TextColor.secondaryColor
-                                      : TextColor.primaryColor,
-                            ),
-                          ),
+                          style: context.bodySmall,
                         ),
                       ),
                   ],

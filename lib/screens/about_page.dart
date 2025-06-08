@@ -1,9 +1,9 @@
 import 'package:alcool_ou_gasolina/features/app_theme.dart';
+import 'package:alcool_ou_gasolina/features/responsive_extesion.dart';
 import 'package:alcool_ou_gasolina/features/theme_provider.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -44,19 +44,7 @@ class _AboutPageState extends State<AboutPage> {
                         notifier.isDark
                             ? AppTheme.thirdColor
                             : AppTheme.primaryColor,
-                    title: Text(
-                      "about".tr(),
-                      style: GoogleFonts.jetBrainsMono(
-                        textStyle: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                          color:
-                              notifier.isDark
-                                  ? TextColor.secondaryColor
-                                  : TextColor.primaryColor,
-                        ),
-                      ),
-                    ),
+                    title: Text("about".tr(), style: context.h1),
                     leading: IconButton(
                       icon: Icon(
                         Icons.arrow_back,
@@ -82,16 +70,7 @@ class _AboutPageState extends State<AboutPage> {
                         Expanded(
                           child: Text(
                             "description".tr(),
-                            style: GoogleFonts.jetBrainsMono(
-                              textStyle: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                                color:
-                                    notifier.isDark
-                                        ? TextColor.secondaryColor
-                                        : TextColor.primaryColor,
-                              ),
-                            ),
+                            style: context.bodySmallBold,
                           ),
                         ),
                       ],
@@ -109,16 +88,7 @@ class _AboutPageState extends State<AboutPage> {
                       child: Text(
                         "developed".tr(),
                         textAlign: TextAlign.center,
-                        style: GoogleFonts.jetBrainsMono(
-                          textStyle: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold,
-                            color:
-                                notifier.isDark
-                                    ? TextColor.secondaryColor
-                                    : TextColor.primaryColor,
-                          ),
-                        ),
+                        style: context.bodySmallBold,
                       ),
                     ),
                   ),

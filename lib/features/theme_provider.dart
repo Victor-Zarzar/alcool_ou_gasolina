@@ -1,34 +1,45 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+enum ThemeModeOption { system, light, dark }
+
 class UiProvider extends ChangeNotifier {
-  bool _isDark = false;
-  bool get isDark => _isDark;
+  ThemeModeOption _themeMode = ThemeModeOption.system;
+  ThemeModeOption get themeMode => _themeMode;
 
   late SharedPreferences storage;
 
   final darkTheme = ThemeData(
-    primaryColor: Colors.black12,
     brightness: Brightness.dark,
-    primaryColorDark: Colors.black12,
+    primaryColor: Colors.black,
   );
 
   final lightTheme = ThemeData(
-    primaryColor: Colors.white,
     brightness: Brightness.light,
-    primaryColorDark: Colors.white,
+    primaryColor: Colors.white,
   );
 
-  changeTheme() {
-    _isDark = !isDark;
+  bool get isDark {
+    if (_themeMode == ThemeModeOption.dark) return true;
+    if (_themeMode == ThemeModeOption.light) return false;
+    final brightness = PlatformDispatcher.instance.platformBrightness;
+    return brightness == Brightness.dark;
+  }
 
-    storage.setBool("isDark", _isDark);
+  void changeTheme(ThemeModeOption mode) {
+    _themeMode = mode;
+    storage.setString("themeMode", mode.name);
     notifyListeners();
   }
 
-  init() async {
+  Future<void> init() async {
     storage = await SharedPreferences.getInstance();
-    _isDark = storage.getBool("isDark") ?? false;
+    final saved = storage.getString("themeMode");
+    _themeMode = ThemeModeOption.values.firstWhere(
+      (e) => e.name == saved,
+      orElse: () => ThemeModeOption.system,
+    );
     notifyListeners();
   }
 }

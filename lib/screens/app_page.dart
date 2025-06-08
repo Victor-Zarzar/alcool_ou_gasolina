@@ -1,3 +1,4 @@
+import 'package:alcool_ou_gasolina/controllers/locale_controller.dart';
 import 'package:alcool_ou_gasolina/features/app_theme.dart';
 import 'package:alcool_ou_gasolina/features/theme_provider.dart';
 import 'package:alcool_ou_gasolina/screens/consumption_page.dart';
@@ -21,6 +22,7 @@ class AppPage extends StatefulWidget {
 
 class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
   late TabController tabController;
+  final GlobalKey _tabBarKey = GlobalKey();
 
   @override
   void initState() {
@@ -32,13 +34,17 @@ class _AppPageState extends State<AppPage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     double myHeight = MediaQuery.of(context).size.height;
     double myWidth = MediaQuery.of(context).size.width;
-    return Consumer<UiProvider>(
-      builder: (context, notifier, child) {
+    final currentLocale = context.locale;
+    return Consumer<LocaleController>(
+      builder: (context, languageProvider, child) {
+        final notifier = Provider.of<UiProvider>(context);
         return Scaffold(
           body: SizedBox(
+            key: ValueKey(currentLocale),
             height: myHeight,
             width: myWidth,
             child: GFTabBarView(
+              key: _tabBarKey,
               controller: tabController,
               children: const <Widget>[
                 HomePage(),

@@ -1,3 +1,4 @@
+import 'package:alcool_ou_gasolina/controllers/locale_controller.dart';
 import 'package:alcool_ou_gasolina/controllers/notification_controller.dart';
 import 'package:alcool_ou_gasolina/features/theme_provider.dart';
 import 'package:alcool_ou_gasolina/screens/app_page.dart';
@@ -29,6 +30,7 @@ void main() async {
       child: MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (_) => NotificationController()),
+          ChangeNotifierProvider(create: (_) => LocaleController()),
           ChangeNotifierProvider(create: (_) => UiProvider()..init()),
         ],
         child: const MyApp(),

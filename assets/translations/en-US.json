@@ -73,6 +73,9 @@
     "darkmode_icon": "Dark mode icon",
     "notifications_icon": "Notifications icon",
     "about_icon": "Icon about",
+    "colors_icon": "Icon Colors",
+    "arrow_icon": "Icon Arrow",
+    "select_icon": "Select Icon",
     "notifications": "Notifications",
     "about": "About",
     "backtopage": "Back to page",
@@ -80,5 +83,14 @@
     "description": "This app was developed to calculate which fuel is most worth it, last average consumption, and to record vehicle data.",
     "alcoholresult": "It pays to use Alcohol!",
     "gasolineresult": "It pays to use Gasoline!",
-    "developed": "Developed by: www.victorzarzar.com.br"
+    "developed": "Developed by: www.victorzarzar.com.br",
+    "theme": "Theme",
+    "select_theme": "Select theme",
+    "light_theme": "Light",
+    "dark_theme": "Dark",
+    "system_theme": "System",
+    "language": "Language",
+    "english": "English",
+    "portuguese": "Portuguese",
+    "spanish": "Spanish"
 }

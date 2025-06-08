@@ -1,7 +1,11 @@
+import 'package:alcool_ou_gasolina/controllers/locale_controller.dart';
 import 'package:alcool_ou_gasolina/controllers/notification_controller.dart';
+import 'package:alcool_ou_gasolina/features/app_assets.dart';
 import 'package:alcool_ou_gasolina/features/app_theme.dart';
+import 'package:alcool_ou_gasolina/features/responsive_extesion.dart';
 import 'package:alcool_ou_gasolina/features/theme_provider.dart';
 import 'package:alcool_ou_gasolina/screens/about_page.dart';
+import 'package:alcool_ou_gasolina/screens/theme_page.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
@@ -29,19 +33,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
             automaticallyImplyLeading: false,
             centerTitle: true,
-            title: Text(
-              'settings'.tr(),
-              style: GoogleFonts.jetBrainsMono(
-                textStyle: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                  color:
-                      notifier.isDark
-                          ? TextColor.secondaryColor
-                          : TextColor.primaryColor,
-                ),
-              ),
-            ),
+            title: Text('settings'.tr(), style: context.h1),
           ),
           body: Container(
             color:
@@ -55,31 +47,137 @@ class _SettingsPageState extends State<SettingsPage> {
                   Padding(
                     padding: const EdgeInsets.only(top: 40),
                     child: ListTile(
-                      trailing: Switch(
-                        activeColor: SwitchColor.primaryColor,
-                        inactiveTrackColor: SwitchColor.secondaryColor,
-                        value: notifier.isDark,
-                        onChanged: (value) => notifier.changeTheme(),
-                      ),
                       leading: Icon(
-                        Icons.dark_mode,
-                        semanticLabel: 'notifications_icon'.tr(),
-                        size: 20,
+                        Icons.translate,
+                        color:
+                            notifier.isDark
+                                ? IconColor.thirdColor
+                                : IconColor.primaryColor,
                       ),
                       title: Text(
-                        'darkmode'.tr(),
-                        style: GoogleFonts.jetBrainsMono(
-                          textStyle: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold,
-                            color:
-                                notifier.isDark
-                                    ? TextColor.secondaryColor
-                                    : TextColor.primaryColor,
-                          ),
+                        'language'.tr(),
+                        style: context.bodyMediumFont,
+                      ),
+                      trailing: PopupMenuButton<Locale>(
+                        color:
+                            notifier.isDark
+                                ? PopupMenuColor.thirdColor
+                                : PopupMenuColor.primaryColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
                         ),
+                        icon: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(Icons.language, color: IconColor.thirdColor),
+                            const SizedBox(width: 4),
+                            Text('english'.tr(), style: context.bodyMediumFont),
+                            Icon(
+                              Icons.arrow_drop_down,
+                              color: IconColor.thirdColor,
+                              semanticLabel: 'arrow_icon'.tr(),
+                            ),
+                          ],
+                        ),
+                        onSelected: (Locale locale) {
+                          Provider.of<LocaleController>(
+                            context,
+                            listen: false,
+                          ).changeLanguage(context, locale);
+                        },
+                        itemBuilder:
+                            (BuildContext context) => [
+                              PopupMenuItem(
+                                value: const Locale('en', 'US'),
+                                child: Row(
+                                  children: [
+                                    EN.asset(),
+                                    const SizedBox(width: 8),
+                                    Text(
+                                      'english'.tr(),
+                                      style: GoogleFonts.jetBrainsMono(
+                                        textStyle: TextStyle(
+                                          color:
+                                              notifier.isDark
+                                                  ? TextColor.secondaryColor
+                                                  : TextColor.primaryColor,
+                                          fontSize: 14,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              PopupMenuItem(
+                                value: const Locale('pt', 'BR'),
+                                child: Row(
+                                  children: [
+                                    PTBR.asset(),
+                                    const SizedBox(width: 8),
+                                    Text(
+                                      'portuguese'.tr(),
+                                      style: GoogleFonts.roboto(
+                                        textStyle: TextStyle(
+                                          color:
+                                              notifier.isDark
+                                                  ? TextColor.secondaryColor
+                                                  : TextColor.primaryColor,
+                                          fontSize: 14,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              PopupMenuItem(
+                                value: const Locale('es'),
+                                child: Row(
+                                  children: [
+                                    ES.asset(),
+                                    const SizedBox(width: 8),
+                                    Text(
+                                      'spanish'.tr(),
+                                      style: GoogleFonts.jetBrainsMono(
+                                        textStyle: TextStyle(
+                                          color:
+                                              notifier.isDark
+                                                  ? TextColor.secondaryColor
+                                                  : TextColor.primaryColor,
+                                          fontSize: 14,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
                       ),
                     ),
+                  ),
+                  ListTile(
+                    leading: Icon(
+                      Icons.color_lens,
+                      semanticLabel: 'arrow_icon'.tr(),
+                      color:
+                          notifier.isDark
+                              ? IconColor.thirdColor
+                              : IconColor.primaryColor,
+                    ),
+                    title: Text('theme'.tr(), style: context.bodyMediumFont),
+                    trailing: Icon(
+                      Icons.arrow_forward,
+                      semanticLabel: 'arrow_icon'.tr(),
+                      color:
+                          notifier.isDark
+                              ? IconColor.thirdColor
+                              : IconColor.primaryColor,
+                    ),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => const ThemePage()),
+                      );
+                    },
                   ),
                   ListTile(
                     leading: Icon(
@@ -89,16 +187,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     ),
                     title: Text(
                       'notifications'.tr(),
-                      style: GoogleFonts.jetBrainsMono(
-                        textStyle: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                          color:
-                              notifier.isDark
-                                  ? TextColor.secondaryColor
-                                  : TextColor.primaryColor,
-                        ),
-                      ),
+                      style: context.bodyMediumFont,
                     ),
                     trailing: Switch(
                       value: notificationController.notificationsEnabled,
@@ -119,19 +208,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       semanticLabel: 'darkmode_icon'.tr(),
                       size: 20,
                     ),
-                    title: Text(
-                      'about'.tr(),
-                      style: GoogleFonts.jetBrainsMono(
-                        textStyle: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                          color:
-                              notifier.isDark
-                                  ? TextColor.secondaryColor
-                                  : TextColor.primaryColor,
-                        ),
-                      ),
-                    ),
+                    title: Text('about'.tr(), style: context.bodyMediumFont),
                     onTap: () {
                       Navigator.push(
                         context,

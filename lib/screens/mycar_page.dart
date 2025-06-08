@@ -1,9 +1,10 @@
+import 'package:alcool_ou_gasolina/features/app_assets.dart';
 import 'package:alcool_ou_gasolina/features/app_theme.dart';
+import 'package:alcool_ou_gasolina/features/responsive_extesion.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../features/theme_provider.dart';
@@ -79,35 +80,14 @@ class _MyCarPageState extends State<MyCarPage> {
                       : AlertDialogColor.secondaryColor,
               content: Text(
                 'pleasefillinallfields'.tr(),
-                style: GoogleFonts.jetBrainsMono(
-                  textStyle: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
-                    color:
-                        notifier.isDark
-                            ? TextColor.secondaryColor
-                            : TextColor.primaryColor,
-                  ),
-                ),
+                style: context.bodySmallDialog,
               ),
               actions: [
                 TextButton(
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  child: Text(
-                    'OK',
-                    style: GoogleFonts.jetBrainsMono(
-                      textStyle: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                        color:
-                            notifier.isDark
-                                ? TextColor.secondaryColor
-                                : TextColor.primaryColor,
-                      ),
-                    ),
-                  ),
+                  child: Text('OK', style: context.bodySmallDialog),
                 ),
               ],
             );
@@ -140,35 +120,14 @@ class _MyCarPageState extends State<MyCarPage> {
                       : AlertDialogColor.secondaryColor,
               content: Text(
                 'datasavedsuccessfully'.tr(),
-                style: GoogleFonts.jetBrainsMono(
-                  textStyle: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
-                    color:
-                        notifier.isDark
-                            ? TextColor.secondaryColor
-                            : TextColor.primaryColor,
-                  ),
-                ),
+                style: context.bodySmallDialog,
               ),
               actions: [
                 TextButton(
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  child: Text(
-                    'OK',
-                    style: GoogleFonts.jetBrainsMono(
-                      textStyle: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                        color:
-                            notifier.isDark
-                                ? TextColor.secondaryColor
-                                : TextColor.primaryColor,
-                      ),
-                    ),
-                  ),
+                  child: Text('OK', style: context.bodySmallDialog),
                 ),
               ],
             );
@@ -224,35 +183,14 @@ class _MyCarPageState extends State<MyCarPage> {
                       : AlertDialogColor.secondaryColor,
               content: Text(
                 'nodatatodelete'.tr(),
-                style: GoogleFonts.jetBrainsMono(
-                  textStyle: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
-                    color:
-                        notifier.isDark
-                            ? TextColor.secondaryColor
-                            : TextColor.primaryColor,
-                  ),
-                ),
+                style: context.bodySmallDialog,
               ),
               actions: [
                 TextButton(
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  child: Text(
-                    'OK',
-                    style: GoogleFonts.jetBrainsMono(
-                      textStyle: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                        color:
-                            notifier.isDark
-                                ? TextColor.secondaryColor
-                                : TextColor.primaryColor,
-                      ),
-                    ),
-                  ),
+                  child: Text('OK', style: context.bodySmallDialog),
                 ),
               ],
             );
@@ -275,35 +213,14 @@ class _MyCarPageState extends State<MyCarPage> {
                       : ButtonColor.secondaryColor,
               content: Text(
                 'successfullydeleted'.tr(),
-                style: GoogleFonts.jetBrainsMono(
-                  textStyle: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
-                    color:
-                        notifier.isDark
-                            ? TextColor.secondaryColor
-                            : TextColor.secondaryColor,
-                  ),
-                ),
+                style: context.bodySmallDialog,
               ),
               actions: [
                 TextButton(
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  child: Text(
-                    'OK',
-                    style: GoogleFonts.jetBrainsMono(
-                      textStyle: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                        color:
-                            notifier.isDark
-                                ? TextColor.secondaryColor
-                                : TextColor.secondaryColor,
-                      ),
-                    ),
-                  ),
+                  child: Text('OK', style: context.bodySmallDialog),
                 ),
               ],
             );
@@ -330,19 +247,7 @@ class _MyCarPageState extends State<MyCarPage> {
                   notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
               automaticallyImplyLeading: false,
               centerTitle: true,
-              title: Text(
-                'mycar'.tr(),
-                style: GoogleFonts.jetBrainsMono(
-                  textStyle: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                    color:
-                        notifier.isDark
-                            ? TextColor.secondaryColor
-                            : TextColor.primaryColor,
-                  ),
-                ),
-              ),
+              title: Text('mycar'.tr(), style: context.h1),
             ),
             body: GestureDetector(
               onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
@@ -355,19 +260,7 @@ class _MyCarPageState extends State<MyCarPage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Text(
-                            'save'.tr(),
-                            style: GoogleFonts.jetBrainsMono(
-                              textStyle: TextStyle(
-                                fontSize: 10,
-                                fontWeight: FontWeight.bold,
-                                color:
-                                    notifier.isDark
-                                        ? TextColor.secondaryColor
-                                        : TextColor.primaryColor,
-                              ),
-                            ),
-                          ),
+                          Text('save'.tr(), style: context.bodyIconButton),
                           const SizedBox(width: 6),
                           GFIconButton(
                             type: GFButtonType.outline2x,
@@ -413,42 +306,13 @@ class _MyCarPageState extends State<MyCarPage> {
                             ),
                           ),
                           const SizedBox(width: 6),
-                          Text(
-                            'delete'.tr(),
-                            style: GoogleFonts.jetBrainsMono(
-                              textStyle: TextStyle(
-                                fontSize: 10,
-                                fontWeight: FontWeight.bold,
-                                color:
-                                    notifier.isDark
-                                        ? TextColor.secondaryColor
-                                        : TextColor.primaryColor,
-                              ),
-                            ),
-                          ),
+                          Text('delete'.tr(), style: context.bodyIconButton),
                           const SizedBox(width: 8),
                         ],
                       ),
                     ),
-                    Image.asset(
-                      "assets/car.png",
-                      height: 140,
-                      width: 190,
-                      semanticLabel: 'imageofacar'.tr(),
-                    ),
-                    Text(
-                      "savecar".tr(),
-                      style: GoogleFonts.jetBrainsMono(
-                        textStyle: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                          color:
-                              notifier.isDark
-                                  ? TextColor.secondaryColor
-                                  : TextColor.primaryColor,
-                        ),
-                      ),
-                    ),
+                    Car.asset(),
+                    Text("savecar".tr(), style: context.bodySmall),
                     const SizedBox(height: 20),
                     Center(
                       child: SizedBox(
@@ -467,13 +331,7 @@ class _MyCarPageState extends State<MyCarPage> {
                           ],
                           decoration: InputDecoration(
                             labelText: 'plate'.tr(),
-                            labelStyle: TextStyle(
-                              fontSize: 10,
-                              color:
-                                  notifier.isDark
-                                      ? TextColor.secondaryColor
-                                      : TextColor.primaryColor,
-                            ),
+                            labelStyle: context.textSmall,
                             border: const OutlineInputBorder(),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -505,13 +363,7 @@ class _MyCarPageState extends State<MyCarPage> {
                         ],
                         decoration: InputDecoration(
                           labelText: 'carmodel'.tr(),
-                          labelStyle: TextStyle(
-                            fontSize: 10,
-                            color:
-                                notifier.isDark
-                                    ? TextColor.secondaryColor
-                                    : TextColor.primaryColor,
-                          ),
+                          labelStyle: context.textSmall,
                           border: const OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
@@ -540,13 +392,7 @@ class _MyCarPageState extends State<MyCarPage> {
                         focusNode: _yearFocus,
                         decoration: InputDecoration(
                           labelText: 'year'.tr(),
-                          labelStyle: TextStyle(
-                            fontSize: 10,
-                            color:
-                                notifier.isDark
-                                    ? TextColor.secondaryColor
-                                    : TextColor.primaryColor,
-                          ),
+                          labelStyle: context.textSmall,
                           border: const OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
@@ -573,13 +419,7 @@ class _MyCarPageState extends State<MyCarPage> {
                         ],
                         decoration: InputDecoration(
                           labelText: 'lastconsumption'.tr(),
-                          labelStyle: TextStyle(
-                            fontSize: 10,
-                            color:
-                                notifier.isDark
-                                    ? TextColor.secondaryColor
-                                    : TextColor.primaryColor,
-                          ),
+                          labelStyle: context.textSmall,
                           border: const OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(

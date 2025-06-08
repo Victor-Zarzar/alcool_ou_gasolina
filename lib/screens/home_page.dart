@@ -1,9 +1,10 @@
+import 'package:alcool_ou_gasolina/features/app_assets.dart';
 import 'package:alcool_ou_gasolina/features/app_theme.dart';
+import 'package:alcool_ou_gasolina/features/responsive_extesion.dart';
 import 'package:alcool_ou_gasolina/features/theme_provider.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -53,35 +54,14 @@ class _HomePageState extends State<HomePage> {
                         : AlertDialogColor.secondaryColor,
                 content: Text(
                   'pleasefillinallfields'.tr(),
-                  style: GoogleFonts.jetBrainsMono(
-                    textStyle: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
-                      color:
-                          notifier.isDark
-                              ? TextColor.secondaryColor
-                              : TextColor.primaryColor,
-                    ),
-                  ),
+                  style: context.bodySmallDialog,
                 ),
                 actions: [
                   TextButton(
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    child: Text(
-                      'OK',
-                      style: GoogleFonts.jetBrainsMono(
-                        textStyle: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                          color:
-                              notifier.isDark
-                                  ? TextColor.secondaryColor
-                                  : TextColor.primaryColor,
-                        ),
-                      ),
-                    ),
+                    child: Text('OK', style: context.bodySmallDialog),
                   ),
                 ],
               );
@@ -127,19 +107,7 @@ class _HomePageState extends State<HomePage> {
                 notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
             automaticallyImplyLeading: false,
             centerTitle: true,
-            title: Text(
-              'titleappbar'.tr(),
-              style: GoogleFonts.jetBrainsMono(
-                textStyle: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                  color:
-                      notifier.isDark
-                          ? TextColor.secondaryColor
-                          : TextColor.primaryColor,
-                ),
-              ),
-            ),
+            title: Text('titleappbar'.tr(), style: context.h1),
           ),
           backgroundColor:
               notifier.isDark ? AppTheme.thirdColor : AppTheme.primaryColor,
@@ -158,39 +126,13 @@ class _HomePageState extends State<HomePage> {
                       child: Text(
                         'whichonepaysmore'.tr(),
                         textAlign: TextAlign.center,
-                        style: GoogleFonts.jetBrainsMono(
-                          textStyle: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 12,
-                            color:
-                                notifier.isDark
-                                    ? TextColor.secondaryColor
-                                    : TextColor.primaryColor,
-                          ),
-                        ),
+                        style: context.h2,
                       ),
                     ),
                     const SizedBox(height: 50),
-                    Image.asset(
-                      "assets/imageone.png",
-                      height: 140,
-                      width: 190,
-                      semanticLabel: 'fuelimage'.tr(),
-                    ),
+                    Fuel.asset(),
                     const SizedBox(height: 10),
-                    Text(
-                      "priceforlitre".tr(),
-                      style: GoogleFonts.jetBrainsMono(
-                        textStyle: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                          color:
-                              notifier.isDark
-                                  ? TextColor.secondaryColor
-                                  : TextColor.primaryColor,
-                        ),
-                      ),
-                    ),
+                    Text("priceforlitre".tr(), style: context.bodySmall),
                     const SizedBox(height: 20),
                     Center(
                       child: SizedBox(
@@ -209,13 +151,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                           decoration: InputDecoration(
                             labelText: 'gasoline'.tr(),
-                            labelStyle: TextStyle(
-                              fontSize: 10,
-                              color:
-                                  notifier.isDark
-                                      ? TextColor.secondaryColor
-                                      : TextColor.primaryColor,
-                            ),
+                            labelStyle: context.textSmall,
                             border: const OutlineInputBorder(),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -247,13 +183,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         decoration: InputDecoration(
                           labelText: 'alcohol'.tr(),
-                          labelStyle: TextStyle(
-                            fontSize: 10,
-                            color:
-                                notifier.isDark
-                                    ? TextColor.secondaryColor
-                                    : TextColor.primaryColor,
-                          ),
+                          labelStyle: context.textSmall,
                           border: const OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
@@ -281,16 +211,7 @@ class _HomePageState extends State<HomePage> {
                         onPressed: loading ? null : handleCalc,
                         child: Text(
                           'calculate'.tr(),
-                          style: GoogleFonts.jetBrainsMono(
-                            textStyle: TextStyle(
-                              fontSize: 10,
-                              fontWeight: FontWeight.bold,
-                              color:
-                                  notifier.isDark
-                                      ? TextColor.secondaryColor
-                                      : TextColor.primaryColor,
-                            ),
-                          ),
+                          style: context.textSmallBold,
                         ),
                       ),
                     ),

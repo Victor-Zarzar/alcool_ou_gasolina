@@ -107,3 +107,24 @@ class AlertDialogColor {
 
   static Color get secondaryColor => const Color(0xFFFFFFFF);
 }
+
+class BackGroundColor {
+  BackGroundColor._();
+  static Color get primaryColor => const Color(0xFF000000);
+  static Color get secondaryColor => const Color(0xFFFFFFFF);
+}
+
+class PopupMenuColor {
+  PopupMenuColor._();
+  static Color get primaryColor => const Color(0xFFFFFFFF);
+  static Color get secondaryColor => const Color(0xFF212121);
+  static Color get thirdColor => const Color(0xFF000000);
+}
+
+class ShimmerColor {
+  ShimmerColor._();
+
+  static Color get primaryColor => const Color(0xFF212121);
+
+  static Color get secondaryColor => const Color(0xFFFFFFFF);
+}
